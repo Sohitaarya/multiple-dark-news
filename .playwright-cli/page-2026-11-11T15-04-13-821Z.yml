@@ -1,0 +1,1244 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - generic [ref=e7]:
+      - link "SA SOHIT AARYA /// PORTFOLIO • DEVELOPER • CREATOR" [ref=e8] [cursor=pointer]:
+        - /url: "#hero"
+        - generic [ref=e9]: SA
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: SOHIT AARYA
+            - generic [ref=e14]: ///
+          - generic [ref=e15]: PORTFOLIO • DEVELOPER • CREATOR
+      - generic [ref=e16]:
+        - button "01 About" [ref=e17] [cursor=pointer]
+        - button "02 What I Do" [ref=e18] [cursor=pointer]
+        - button "03 331 Tools" [ref=e19] [cursor=pointer]
+        - button "04 Projects" [ref=e20] [cursor=pointer]
+        - button "05 Progress" [ref=e21] [cursor=pointer]
+        - button "06 Social" [ref=e22] [cursor=pointer]
+        - button "07 Journey" [ref=e23] [cursor=pointer]
+        - button "08 Contact" [ref=e24] [cursor=pointer]
+      - generic [ref=e25]:
+        - button "331 Tools Suite" [ref=e26] [cursor=pointer]
+        - button "LET'S CONNECT" [ref=e30] [cursor=pointer]
+  - generic [ref=e36]:
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic:
+          - img "Sohit Aarya - Full-Stack Developer & Creator"
+        - generic [ref=e40]:
+          - generic [ref=e43]:
+            - generic [ref=e44]: SOHIT AARYA
+            - generic [ref=e45]: Founder & Lead Architect
+          - generic [ref=e46]: VERIFIED
+      - generic [ref=e47]: “Dream Big, Build Bigger.”
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e55]: PORTFOLIO • DEVELOPER • CREATOR
+        - generic [ref=e56]: "|"
+        - generic [ref=e57]: VERIFIED 2026
+      - generic [ref=e58]:
+        - heading "SOHIT AARYA///" [level=1] [ref=e59]
+        - generic [ref=e60]: BUILDING DIGITAL EXPERIENCES. CREATING WHAT'S NEXT.
+      - paragraph [ref=e61]: I explore technology, build digital products, develop useful tools and turn ideas into working projects. Focused on zero-upload client privacy and accessible digital empowerment.
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: Web Developer
+            - generic [ref=e70]: "01"
+          - generic [ref=e71]: High-speed modern web applications & systems
+        - generic [ref=e72]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: AI & Tech
+            - generic [ref=e79]: "02"
+          - generic [ref=e80]: In-browser neural processing & client algorithms
+        - generic [ref=e81]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: Digital Creator
+            - generic [ref=e90]: "03"
+          - generic [ref=e91]: MultipleDarkNews ecosystem & tools builder
+      - generic [ref=e92]:
+        - button "EXPLORE 331 TOOLS" [ref=e93] [cursor=pointer]
+        - button "VIEW MY WORK" [ref=e99] [cursor=pointer]
+        - button "CONTACT ME" [ref=e101] [cursor=pointer]
+      - generic [ref=e106]:
+        - generic [ref=e107]: "VERIFIED CHANNELS:"
+        - generic [ref=e108]:
+          - link "LinkedIn Sohit Aarya" [ref=e109] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/sohit-aarya-81704a321?utm_source=share_via&utm_content=profile&utm_medium=member_android
+          - link "Instagram @sohit__aarya" [ref=e114] [cursor=pointer]:
+            - /url: https://www.instagram.com/sohit__aarya?dlrf=NWZsYjNsZnZ3ZWdm
+          - link "Facebook Sohit Aarya" [ref=e118] [cursor=pointer]:
+            - /url: https://www.facebook.com/share/1A1CNnw6VY/
+          - link "YouTube @thynkova" [ref=e121] [cursor=pointer]:
+            - /url: https://youtube.com/@thynkova?si=9diIjidVgHqqTixg
+          - link "Pinterest Sohit Aarya" [ref=e125] [cursor=pointer]:
+            - /url: https://pin.it/1yvzB0klX
+          - link "GitHub @Sohitaarya" [ref=e128] [cursor=pointer]:
+            - /url: https://github.com/Sohitaarya
+          - link "Telegram @sohitaarya" [ref=e132] [cursor=pointer]:
+            - /url: https://t.me
+  - generic [ref=e138]:
+    - generic [ref=e139]:
+      - generic [ref=e140]: SOHIT AARYA
+      - generic [ref=e141]: ///
+    - generic [ref=e142]:
+      - generic [ref=e143]: 331 IN-BROWSER TOOLS
+      - generic [ref=e144]: ///
+    - generic [ref=e145]:
+      - generic [ref=e146]: ZERO-LATENCY ENGINE
+      - generic [ref=e147]: ///
+    - generic [ref=e148]:
+      - generic [ref=e149]: CLIENT-SIDE PRIVACY
+      - generic [ref=e150]: ///
+    - generic [ref=e151]:
+      - generic [ref=e152]: WEBASSEMBLY POWERED
+      - generic [ref=e153]: ///
+    - generic [ref=e154]:
+      - generic [ref=e155]: INNOVATE • CREATE • GROW
+      - generic [ref=e156]: ///
+    - generic [ref=e157]:
+      - generic [ref=e158]: DREAM BIG, BUILD BIGGER
+      - generic [ref=e159]: ///
+    - generic [ref=e160]:
+      - generic [ref=e161]: MULTIPLEDARKNEWS
+      - generic [ref=e162]: ///
+    - generic [ref=e163]:
+      - generic [ref=e164]: AARYA AI
+      - generic [ref=e165]: ///
+    - generic [ref=e166]:
+      - generic [ref=e167]: EXAMFORGE AI
+      - generic [ref=e168]: ///
+    - generic [ref=e169]:
+      - generic [ref=e170]: SOHIT AARYA
+      - generic [ref=e171]: ///
+    - generic [ref=e172]:
+      - generic [ref=e173]: 331 IN-BROWSER TOOLS
+      - generic [ref=e174]: ///
+    - generic [ref=e175]:
+      - generic [ref=e176]: ZERO-LATENCY ENGINE
+      - generic [ref=e177]: ///
+    - generic [ref=e178]:
+      - generic [ref=e179]: CLIENT-SIDE PRIVACY
+      - generic [ref=e180]: ///
+    - generic [ref=e181]:
+      - generic [ref=e182]: WEBASSEMBLY POWERED
+      - generic [ref=e183]: ///
+    - generic [ref=e184]:
+      - generic [ref=e185]: INNOVATE • CREATE • GROW
+      - generic [ref=e186]: ///
+    - generic [ref=e187]:
+      - generic [ref=e188]: DREAM BIG, BUILD BIGGER
+      - generic [ref=e189]: ///
+    - generic [ref=e190]:
+      - generic [ref=e191]: MULTIPLEDARKNEWS
+      - generic [ref=e192]: ///
+    - generic [ref=e193]:
+      - generic [ref=e194]: AARYA AI
+      - generic [ref=e195]: ///
+    - generic [ref=e196]:
+      - generic [ref=e197]: EXAMFORGE AI
+      - generic [ref=e198]: ///
+  - generic [ref=e199]:
+    - generic [ref=e200]:
+      - generic [ref=e201]: INTERACTIVE 3D ECOSYSTEM CONSOLE
+      - heading "EXPERIENCE THE DIGITAL ENGINE" [level=2] [ref=e204]
+    - generic [ref=e205]:
+      - generic [ref=e206]:
+        - button "01. 331" [ref=e207] [cursor=pointer]:
+          - generic [ref=e208]: "01."
+          - generic [ref=e209]: "331"
+        - button "02. MULTIPLEDARKNEWS.COM" [ref=e210] [cursor=pointer]:
+          - generic [ref=e211]: "02."
+          - generic [ref=e212]: MULTIPLEDARKNEWS.COM
+        - button "03. AARYA" [ref=e213] [cursor=pointer]:
+          - generic [ref=e214]: "03."
+          - generic [ref=e215]: AARYA
+        - button "04. EXAMFORGE" [ref=e216] [cursor=pointer]:
+          - generic [ref=e217]: "04."
+          - generic [ref=e218]: EXAMFORGE
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - generic [ref=e222]: SYSTEM CORE ONLINE
+          - generic [ref=e226]: ONLINE • 331 LIVE
+        - generic [ref=e227]:
+          - generic [ref=e234]:
+            - generic [ref=e235]:
+              - generic [ref=e236]: "01"
+              - generic [ref=e237]: /
+              - generic [ref=e238]: HIGH VELOCITY WASM
+            - heading "331 TOOLS ECOSYSTEM" [level=3] [ref=e239]
+            - paragraph [ref=e240]: In-Browser Client Engine
+          - generic [ref=e246]:
+            - generic [ref=e249]: "ACTIVE VELOCITY:"
+            - generic [ref=e250]: 331 / 331 TOOLS
+          - paragraph [ref=e251]: Zero server uploads. 100% private, instantaneous PDF, image, developer & converter utilities.
+          - generic [ref=e252]:
+            - generic [ref=e253]: Zero Server Dependencies
+            - button "LAUNCH 331 TOOLS" [ref=e259] [cursor=pointer]
+  - generic [ref=e264]:
+    - generic [ref=e265]:
+      - generic [ref=e266]:
+        - generic [ref=e267]:
+          - generic [ref=e268]: SECTION 04
+          - generic [ref=e269]: /
+          - generic [ref=e270]: FEATURED WORKS & SYSTEMS
+        - heading "MY PROJECTS" [level=2] [ref=e271]
+      - generic [ref=e272]: DIGITAL PRODUCTS & ECOSYSTEMS
+    - generic [ref=e273]:
+      - generic [ref=e275]:
+        - generic [ref=e277]:
+          - generic [ref=e278]: 2025–2026 • Ecosystem & Web App
+          - generic [ref=e284]:
+            - generic [ref=e285]: "01"
+            - generic [ref=e286]: MultipleDarkNews Tools Platform
+            - generic [ref=e287]: 331 In-Browser Online Tools Ecosystem
+          - generic [ref=e288]:
+            - generic [ref=e289]: COMPLETED
+            - generic [ref=e292]: Production Ready
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - generic [ref=e296]: PROJECT 01
+              - generic [ref=e297]: •
+              - generic [ref=e298]: Ecosystem & Web App
+            - heading "MultipleDarkNews Tools Platform" [level=3] [ref=e299]
+            - generic [ref=e300]: 331 In-Browser Online Tools Ecosystem
+          - paragraph [ref=e301]: A flagship, production-ready online tools platform featuring 331 specialized client-side utilities across 12 distinct categories. Everything processes in local browser memory with zero file uploads, zero watermarks, and ₹0 server maintenance cost.
+          - generic [ref=e302]:
+            - generic [ref=e303]: "Core Innovations:"
+            - generic [ref=e304]:
+              - generic [ref=e305]: 331 verified production-ready tools (PDF, Image, Developer, Calculators, SEO, Video, Audio)
+              - generic [ref=e310]: 100% Client-side sandbox with zero cloud file storage
+              - generic [ref=e315]: Automated Google & Bing Sitemaps API ping dispatcher
+              - generic [ref=e320]: Password-protected Admin Governance Dashboard with SHA-256 passkey
+              - generic [ref=e325]: Full technical SEO with Schema.org JSON-LD for every tool
+          - generic [ref=e330]:
+            - generic [ref=e331]: "Architecture & Stacks:"
+            - generic [ref=e332]:
+              - generic [ref=e333]: React 19
+              - generic [ref=e334]: TypeScript
+              - generic [ref=e335]: Tailwind CSS
+              - generic [ref=e336]: PDF-Lib
+              - generic [ref=e337]: Canvas 2D
+              - generic [ref=e338]: Three.js
+              - generic [ref=e339]: Web Speech API
+              - generic [ref=e340]: Web Crypto
+          - generic [ref=e341]:
+            - button "Launch Live In-Browser" [ref=e342] [cursor=pointer]
+            - link "Visit External Website" [ref=e346] [cursor=pointer]:
+              - /url: https://multipledarknews.com/#tool/pdf-compressor
+            - button "Explore 331 Tools Suite →" [ref=e352]
+      - generic [ref=e354]:
+        - generic [ref=e356]:
+          - generic [ref=e357]: 2024–2026 • Digital Publishing & Media
+          - generic [ref=e363]:
+            - generic [ref=e364]: "02"
+            - generic [ref=e365]: MultipleDarkNews.com
+            - generic [ref=e366]: Digital Publishing & Technology Ecosystem
+          - generic [ref=e367]:
+            - generic [ref=e368]: BETA ACTIVE
+            - generic [ref=e371]: Production Ready
+        - generic [ref=e372]:
+          - generic [ref=e373]:
+            - generic [ref=e374]:
+              - generic [ref=e375]: PROJECT 02
+              - generic [ref=e376]: •
+              - generic [ref=e377]: Digital Publishing & Media
+            - heading "MultipleDarkNews.com" [level=3] [ref=e378]
+            - generic [ref=e379]: Digital Publishing & Technology Ecosystem
+          - paragraph [ref=e380]: Sohit Aarya’s premier digital news, technology analysis, and media ecosystem serving thousands of international readers with in-depth tech insights, software breakdowns, and tools.
+          - generic [ref=e381]:
+            - generic [ref=e382]: "Core Innovations:"
+            - generic [ref=e383]:
+              - generic [ref=e384]: High-speed content delivery network
+              - generic [ref=e389]: Comprehensive tech news coverage & tutorials
+              - generic [ref=e394]: Integrated tools suite connection
+              - generic [ref=e399]: International readership across US, UK, and India
+          - generic [ref=e404]:
+            - generic [ref=e405]: "Architecture & Stacks:"
+            - generic [ref=e406]:
+              - generic [ref=e407]: WordPress
+              - generic [ref=e408]: Nginx
+              - generic [ref=e409]: Cloudflare
+              - generic [ref=e410]: PHP
+              - generic [ref=e411]: SEO Optimization
+          - generic [ref=e412]:
+            - link "Visit External Website" [ref=e413] [cursor=pointer]:
+              - /url: https://multipledarknews.com
+            - button "Explore 331 Tools Suite →" [ref=e419]
+      - generic [ref=e421]:
+        - generic [ref=e423]:
+          - generic [ref=e424]: 2025–2026 • AI & Speech Engineering
+          - generic [ref=e430]:
+            - generic [ref=e431]: "03"
+            - generic [ref=e432]: Aarya AI Systems
+            - generic [ref=e433]: Browser-Native Intelligent Assistant & Speech Tools
+          - generic [ref=e434]:
+            - generic [ref=e435]: IN PROGRESS
+            - generic [ref=e438]: Production Ready
+        - generic [ref=e439]:
+          - generic [ref=e440]:
+            - generic [ref=e441]:
+              - generic [ref=e442]: PROJECT 03
+              - generic [ref=e443]: •
+              - generic [ref=e444]: AI & Speech Engineering
+            - heading "Aarya AI Systems" [level=3] [ref=e445]
+            - generic [ref=e446]: Browser-Native Intelligent Assistant & Speech Tools
+          - paragraph [ref=e447]: A suite of client-side intelligent tools and conversational speech interfaces engineered to run without external API key quotas, featuring real-time mic transcription, voice synthesis, and local knowledge synthesis.
+          - generic [ref=e448]:
+            - generic [ref=e449]: "Core Innovations:"
+            - generic [ref=e450]:
+              - generic [ref=e451]: Live voice assistant with real-time audio oscilloscope animation
+              - generic [ref=e456]: Multi-language transcription (English, Hindi, Spanish, French, German)
+              - generic [ref=e461]: Zero API key configuration required
+              - generic [ref=e466]: Export transcripts to TXT and clipboard
+          - generic [ref=e471]:
+            - generic [ref=e472]: "Architecture & Stacks:"
+            - generic [ref=e473]:
+              - generic [ref=e474]: Web Speech API
+              - generic [ref=e475]: SpeechSynthesis
+              - generic [ref=e476]: HTML5 Audio
+              - generic [ref=e477]: Canvas 2D Waveform
+          - generic [ref=e478]:
+            - button "Launch Live In-Browser" [ref=e479] [cursor=pointer]
+            - button "Explore 331 Tools Suite →" [ref=e483]
+      - generic [ref=e485]:
+        - generic [ref=e487]:
+          - generic [ref=e488]: 2026 • Education Technology
+          - generic [ref=e494]:
+            - generic [ref=e495]: "04"
+            - generic [ref=e496]: ExamForge AI
+            - generic [ref=e497]: Next-Generation Student Revision & Exam Preparation Engine
+          - generic [ref=e498]:
+            - generic [ref=e499]: IN PROGRESS
+            - generic [ref=e502]: Production Ready
+        - generic [ref=e503]:
+          - generic [ref=e504]:
+            - generic [ref=e505]:
+              - generic [ref=e506]: PROJECT 04
+              - generic [ref=e507]: •
+              - generic [ref=e508]: Education Technology
+            - heading "ExamForge AI" [level=3] [ref=e509]
+            - generic [ref=e510]: Next-Generation Student Revision & Exam Preparation Engine
+          - paragraph [ref=e511]: An upcoming automated study suite providing timetable generation, formula sheet creators, GPA calculation, exam countdowns, and topic flashcard builders tailored for competitive and academic examinations.
+          - generic [ref=e512]:
+            - generic [ref=e513]: "Core Innovations:"
+            - generic [ref=e514]:
+              - generic [ref=e515]: Multi-grading scale GPA & CGPA calculation engine
+              - generic [ref=e520]: Interactive exam countdown with urgency visualizer
+              - generic [ref=e525]: Printable revision schedule generator
+              - generic [ref=e530]: Zero registration required
+          - generic [ref=e535]:
+            - generic [ref=e536]: "Architecture & Stacks:"
+            - generic [ref=e537]:
+              - generic [ref=e538]: React
+              - generic [ref=e539]: TypeScript
+              - generic [ref=e540]: LocalStorage
+              - generic [ref=e541]: PDF Export
+          - generic [ref=e542]:
+            - button "Launch Live In-Browser" [ref=e543] [cursor=pointer]
+            - button "Explore 331 Tools Suite →" [ref=e547]
+      - generic [ref=e549]:
+        - generic [ref=e551]:
+          - generic [ref=e552]: 2026 • Next-Gen Ecosystem (2,500 Tools)
+          - generic [ref=e558]:
+            - generic [ref=e559]: "05"
+            - generic [ref=e560]: Flov Ecosystem
+            - generic [ref=e561]: Next-Gen Massive 2,500 Online Tools Platform (In Progress)
+          - generic [ref=e562]:
+            - generic [ref=e563]: IN PROGRESS
+            - generic [ref=e566]: Production Ready
+        - generic [ref=e567]:
+          - generic [ref=e568]:
+            - generic [ref=e569]:
+              - generic [ref=e570]: PROJECT 05
+              - generic [ref=e571]: •
+              - generic [ref=e572]: Next-Gen Ecosystem (2,500 Tools)
+            - heading "Flov Ecosystem" [level=3] [ref=e573]
+            - generic [ref=e574]: Next-Gen Massive 2,500 Online Tools Platform (In Progress)
+          - paragraph [ref=e575]: An ambitious, next-generation web ecosystem currently under active development by Sohit Aarya, designed to scale the tools architecture to over 2,500 specialized online utilities with advanced modular client processing.
+          - generic [ref=e576]:
+            - generic [ref=e577]: "Core Innovations:"
+            - generic [ref=e578]:
+              - generic [ref=e579]: "Massive scaling target: 2,500 specialized online tools"
+              - generic [ref=e584]: Advanced modular category indexing and instant search
+              - generic [ref=e589]: Zero-latency client-side execution sandbox
+              - generic [ref=e594]: Unified developer plugin architecture
+          - generic [ref=e599]:
+            - generic [ref=e600]: "Architecture & Stacks:"
+            - generic [ref=e601]:
+              - generic [ref=e602]: React 19
+              - generic [ref=e603]: TypeScript
+              - generic [ref=e604]: Modular Registry
+              - generic [ref=e605]: WASM
+          - button "Explore 331 Tools Suite →" [ref=e607]
+  - generic [ref=e610]:
+    - generic [ref=e611]:
+      - generic [ref=e612]: SOHIT AARYA
+      - generic [ref=e613]: ///
+    - generic [ref=e614]:
+      - generic [ref=e615]: 331 IN-BROWSER TOOLS
+      - generic [ref=e616]: ///
+    - generic [ref=e617]:
+      - generic [ref=e618]: ZERO-LATENCY ENGINE
+      - generic [ref=e619]: ///
+    - generic [ref=e620]:
+      - generic [ref=e621]: CLIENT-SIDE PRIVACY
+      - generic [ref=e622]: ///
+    - generic [ref=e623]:
+      - generic [ref=e624]: WEBASSEMBLY POWERED
+      - generic [ref=e625]: ///
+    - generic [ref=e626]:
+      - generic [ref=e627]: INNOVATE • CREATE • GROW
+      - generic [ref=e628]: ///
+    - generic [ref=e629]:
+      - generic [ref=e630]: DREAM BIG, BUILD BIGGER
+      - generic [ref=e631]: ///
+    - generic [ref=e632]:
+      - generic [ref=e633]: MULTIPLEDARKNEWS
+      - generic [ref=e634]: ///
+    - generic [ref=e635]:
+      - generic [ref=e636]: AARYA AI
+      - generic [ref=e637]: ///
+    - generic [ref=e638]:
+      - generic [ref=e639]: EXAMFORGE AI
+      - generic [ref=e640]: ///
+    - generic [ref=e641]:
+      - generic [ref=e642]: SOHIT AARYA
+      - generic [ref=e643]: ///
+    - generic [ref=e644]:
+      - generic [ref=e645]: 331 IN-BROWSER TOOLS
+      - generic [ref=e646]: ///
+    - generic [ref=e647]:
+      - generic [ref=e648]: ZERO-LATENCY ENGINE
+      - generic [ref=e649]: ///
+    - generic [ref=e650]:
+      - generic [ref=e651]: CLIENT-SIDE PRIVACY
+      - generic [ref=e652]: ///
+    - generic [ref=e653]:
+      - generic [ref=e654]: WEBASSEMBLY POWERED
+      - generic [ref=e655]: ///
+    - generic [ref=e656]:
+      - generic [ref=e657]: INNOVATE • CREATE • GROW
+      - generic [ref=e658]: ///
+    - generic [ref=e659]:
+      - generic [ref=e660]: DREAM BIG, BUILD BIGGER
+      - generic [ref=e661]: ///
+    - generic [ref=e662]:
+      - generic [ref=e663]: MULTIPLEDARKNEWS
+      - generic [ref=e664]: ///
+    - generic [ref=e665]:
+      - generic [ref=e666]: AARYA AI
+      - generic [ref=e667]: ///
+    - generic [ref=e668]:
+      - generic [ref=e669]: EXAMFORGE AI
+      - generic [ref=e670]: ///
+  - generic [ref=e672]:
+    - generic [ref=e673]:
+      - generic [ref=e674]:
+        - generic [ref=e675]:
+          - generic [ref=e677]: SECTION 01
+          - generic [ref=e678]: /
+          - generic [ref=e679]: IDENTITY & FOUNDATION
+        - heading "WHO IS SOHIT AARYA?" [level=2] [ref=e680]
+      - generic [ref=e681]: DIGITAL FOUNDER • TOOL ARCHITECT
+    - generic [ref=e689]:
+      - generic [ref=e690]:
+        - generic [ref=e691]:
+          - generic [ref=e692]:
+            - generic [ref=e693]: SYSTEM TELEMETRY
+            - generic [ref=e696]: "ID: SOHIT-CORE-331"
+          - generic [ref=e697]:
+            - generic [ref=e698]:
+              - generic [ref=e702]: SA CORE
+              - generic [ref=e707]: 331 TOOLS
+              - generic [ref=e708]: 0ms UPLOAD
+            - generic [ref=e709]:
+              - generic [ref=e710]: "CLIENT LATENCY:"
+              - generic [ref=e720]: < 1.2ms
+          - generic [ref=e725]:
+            - generic [ref=e726]: Zero-Retention Architecture
+            - text: All 331 tools run 100% inside visitor browser memory. No server uploads.
+        - generic [ref=e727]:
+          - generic [ref=e728]:
+            - generic [ref=e729]: 331+
+            - generic [ref=e730]: Online In-Browser Tools
+          - generic [ref=e731]:
+            - generic [ref=e732]: "12"
+            - generic [ref=e733]: Tool Categories
+          - generic [ref=e734]:
+            - generic [ref=e735]: 0%
+            - generic [ref=e736]: Server Upload Required
+          - generic [ref=e737]:
+            - generic [ref=e738]: 100%
+            - generic [ref=e739]: Open Ecosystem Uptime
+      - generic [ref=e740]:
+        - generic [ref=e741]:
+          - heading "Turning Technical Curiosity Into Working Digital Utility" [level=3] [ref=e742]
+          - paragraph [ref=e743]: "Sohit Aarya is a passionate technology developer, digital product architect, and creator driven by a singular philosophy: build tools and software that empower people without subscriptions, paywalls, or compromises."
+          - paragraph [ref=e744]: From architecting full-stack web applications to engineering client-side WebAssembly and Canvas algorithms, Sohit blends deep technical execution with bold aesthetic design. He created the MultipleDarkNews 331-tool ecosystem to prove that powerful digital utilities—from PDF manipulation and image compression to cryptographic hashing and code formatting—can run 100% client-side in the user’s browser with zero cloud file storage.
+          - paragraph [ref=e745]: Constantly exploring the frontier of technology, AI integration, and high-performance frontend engineering, Sohit focuses on building fast, secure, and privacy-first digital platforms that make everyday tasks effortless for students, developers, and creators worldwide.
+        - generic [ref=e746]:
+          - generic [ref=e747]: "CORE ARCHITECTURAL PILLARS:"
+          - generic [ref=e753]:
+            - generic [ref=e754]:
+              - generic [ref=e755]: "01"
+              - generic [ref=e756]: Privacy-First Architecture
+              - generic [ref=e757]: Files and data stay inside the client browser. Zero remote tracking, zero surveillance, and complete user data sovereignty.
+            - generic [ref=e758]:
+              - generic [ref=e759]: "02"
+              - generic [ref=e760]: Scalable Engineering
+              - generic [ref=e761]: Architecting modular, TypeScript-powered web systems with hardware-accelerated WebAssembly and HTML5 Canvas engines.
+            - generic [ref=e762]:
+              - generic [ref=e763]: "03"
+              - generic [ref=e764]: Zero-Cost Accessibility
+              - generic [ref=e765]: Empowering millions with unwatermarked, free-forever digital utilities that require neither signup nor paid API keys.
+        - generic [ref=e766]:
+          - generic [ref=e767]:
+            - generic [ref=e768]: Technical Expertise & Tooling Stack
+            - generic [ref=e772]: Verified In Codebase
+          - generic [ref=e773]:
+            - generic [ref=e774]:
+              - generic [ref=e775]: "Frontend & Interactive Graphics:"
+              - generic [ref=e776]:
+                - generic [ref=e777]: React 19
+                - generic [ref=e778]: TypeScript
+                - generic [ref=e779]: Tailwind CSS
+                - generic [ref=e780]: Next.js
+                - generic [ref=e781]: HTML5 Canvas 2D
+                - generic [ref=e782]: Three.js / WebGL
+                - generic [ref=e783]: Framer Motion
+            - generic [ref=e784]:
+              - generic [ref=e785]: "Client Engines, WebAssembly & APIs:"
+              - generic [ref=e786]:
+                - generic [ref=e787]: Node.js
+                - generic [ref=e788]: Express
+                - generic [ref=e789]: WebSockets
+                - generic [ref=e790]: WebAssembly (WASM)
+                - generic [ref=e791]: Web Workers
+                - generic [ref=e792]: Web Speech API
+                - generic [ref=e793]: Web Crypto API
+            - generic [ref=e794]:
+              - generic [ref=e795]: "Programmatic SEO & Indexation:"
+              - generic [ref=e796]:
+                - generic [ref=e797]: Technical SEO
+                - generic [ref=e798]: Schema.org JSON-LD
+                - generic [ref=e799]: XML Sitemaps Protocol
+                - generic [ref=e800]: Google Search Console
+                - generic [ref=e801]: Cloud Architecture
+  - generic [ref=e803]:
+    - generic [ref=e804]:
+      - generic [ref=e805]:
+        - generic [ref=e806]:
+          - generic [ref=e807]: SECTION 02
+          - generic [ref=e808]: /
+          - generic [ref=e809]: CAPABILITIES & EXPERTISE
+        - heading "WHAT I DO & BUILD" [level=2] [ref=e810]
+      - generic [ref=e811]: 8 SPECIALIZED ENGINEERING DISCIPLINES
+    - generic [ref=e812]:
+      - generic [ref=e813] [cursor=pointer]:
+        - generic [ref=e814]:
+          - generic [ref=e815]: "01"
+          - generic [ref=e821]: Core Engineering
+          - heading "Website Development" [level=3] [ref=e822]
+          - paragraph [ref=e823]: Crafting bespoke, lightning-fast responsive websites with cinematic dark typography, accessible structure, and pixel-perfect responsiveness across all screen sizes.
+        - generic [ref=e824]:
+          - generic [ref=e825]:
+            - generic [ref=e826]: React
+            - generic [ref=e827]: TypeScript
+            - generic [ref=e828]: Tailwind CSS
+          - generic [ref=e829]: View Details
+      - generic [ref=e834] [cursor=pointer]:
+        - generic [ref=e835]:
+          - generic [ref=e836]: "02"
+          - generic [ref=e841]: Full-Stack Development
+          - heading "Web Applications" [level=3] [ref=e842]
+          - paragraph [ref=e843]: Building interactive Single Page Applications (SPAs) and Progressive Web Apps (PWAs) featuring client-authoritative state, offline storage, and responsive UX.
+        - generic [ref=e844]:
+          - generic [ref=e845]:
+            - generic [ref=e846]: React
+            - generic [ref=e847]: TypeScript
+            - generic [ref=e848]: Express
+          - generic [ref=e849]: View Details
+      - generic [ref=e854] [cursor=pointer]:
+        - generic [ref=e855]:
+          - generic [ref=e856]: "03"
+          - generic [ref=e862]: Intelligent Systems
+          - heading "AI Tools & Technology" [level=3] [ref=e863]
+          - paragraph [ref=e864]: Developing privacy-focused, in-browser neural and algorithmic tools including local speech dictation, procedural synthesis, and heuristic text processing without API key billing.
+        - generic [ref=e865]:
+          - generic [ref=e866]:
+            - generic [ref=e867]: Web Speech API
+            - generic [ref=e868]: Canvas 2D
+            - generic [ref=e869]: SpeechSynthesis
+          - generic [ref=e870]: View Details
+      - generic [ref=e875] [cursor=pointer]:
+        - generic [ref=e876]:
+          - generic [ref=e877]: "04"
+          - generic [ref=e882]: Systems & Tooling
+          - heading "Automation Systems" [level=3] [ref=e883]
+          - paragraph [ref=e884]: Engineering automated workflows, job processors, batch transformation pipelines, and automated search engine sitemap ping dispatchers for rapid indexation.
+        - generic [ref=e885]:
+          - generic [ref=e886]:
+            - generic [ref=e887]: Web Workers
+            - generic [ref=e888]: Node.js
+            - generic [ref=e889]: Job Processor
+          - generic [ref=e890]: View Details
+      - generic [ref=e895] [cursor=pointer]:
+        - generic [ref=e896]:
+          - generic [ref=e897]: "05"
+          - generic [ref=e903]: Growth & Visibility
+          - heading "SEO & Digital Publishing" [level=3] [ref=e904]
+          - paragraph [ref=e905]: Architecting programmatic SEO engines, dynamic Schema.org JSON-LD structured data, XML sitemaps containing 325+ indexed URLs, and SERP simulation tools.
+        - generic [ref=e906]:
+          - generic [ref=e907]:
+            - generic [ref=e908]: SEO Protocols
+            - generic [ref=e909]: JSON-LD
+            - generic [ref=e910]: XML Sitemaps
+          - generic [ref=e911]: View Details
+      - generic [ref=e916] [cursor=pointer]:
+        - generic [ref=e917]:
+          - generic [ref=e918]: "06"
+          - generic [ref=e924]: End-to-End Products
+          - heading "Digital Product Development" [level=3] [ref=e925]
+          - paragraph [ref=e926]: Transforming conceptual product briefs into fully operational web suites, complete with design systems, administration controls, and user onboarding flows.
+        - generic [ref=e927]:
+          - generic [ref=e928]:
+            - generic [ref=e929]: Product Strategy
+            - generic [ref=e930]: UI/UX Design
+            - generic [ref=e931]: Full-Stack Stack
+          - generic [ref=e932]: View Details
+      - generic [ref=e937] [cursor=pointer]:
+        - generic [ref=e938]:
+          - generic [ref=e939]: "07"
+          - generic [ref=e947]: Specialized Utilities
+          - heading "Software Projects" [level=3] [ref=e948]
+          - paragraph [ref=e949]: Building specialized algorithmic tools—from PDF encryption/decryption and splitters to barcode/QR generators and mathematical calculation engines.
+        - generic [ref=e950]:
+          - generic [ref=e951]:
+            - generic [ref=e952]: PDF-Lib
+            - generic [ref=e953]: Web Crypto
+            - generic [ref=e954]: QR Engine
+          - generic [ref=e955]: View Details
+      - generic [ref=e960] [cursor=pointer]:
+        - generic [ref=e961]:
+          - generic [ref=e962]: "08"
+          - generic [ref=e969]: Interactive Media
+          - heading "Creative Technology" [level=3] [ref=e970]
+          - paragraph [ref=e971]: Designing high-impact interactive visual experiences, WebGL Three.js 3D viewers, dynamic audio visualizers, and procedural canvas graphics.
+        - generic [ref=e972]:
+          - generic [ref=e973]:
+            - generic [ref=e974]: Three.js
+            - generic [ref=e975]: WebGL
+            - generic [ref=e976]: Web Audio API
+          - generic [ref=e977]: View Details
+  - generic [ref=e983]:
+    - generic [ref=e984]:
+      - generic [ref=e985]:
+        - generic [ref=e986]:
+          - generic [ref=e988]: SECTION 03
+          - generic [ref=e989]: /
+          - generic [ref=e990]: IN-BROWSER UTILITY SUITE
+        - heading "331 TOOLS. ONE DIGITAL ECOSYSTEM." [level=2] [ref=e991]
+      - generic [ref=e992]: 331/331 VERIFIED PRODUCTION READY
+    - generic [ref=e995]:
+      - generic [ref=e996]:
+        - generic [ref=e997]: 100% Client-Side In-Memory Execution • Zero Server Uploads
+        - heading "Lightning-Fast Utilities Powered By WebAssembly & Canvas" [level=3] [ref=e1002]
+        - paragraph [ref=e1003]: Sohit Aarya’s 331-tool ecosystem delivers high-performance utilities across 12 distinct categories—from PDF compression and image conversion to developer JSON formatting and SEO audits. Everything runs locally in your browser memory.
+        - generic [ref=e1004]:
+          - generic [ref=e1005]: 0% Data Retention
+          - generic [ref=e1010]: Instant Execution
+      - button "LAUNCH 331 TOOLS SUITE" [ref=e1015] [cursor=pointer]
+    - generic [ref=e1021]:
+      - generic [ref=e1022]:
+        - generic [ref=e1023]: "Explore By Category (12 Suites):"
+        - generic [ref=e1024]: Click any suite to open category directory
+      - generic [ref=e1025]:
+        - generic [ref=e1026] [cursor=pointer]:
+          - generic [ref=e1027]:
+            - generic [ref=e1028]: 35 TOOLS
+            - heading "PDF Tools" [level=4] [ref=e1033]
+            - paragraph [ref=e1034]: Compress, merge, split, rotate, convert, protect, sign, and edit PDF documents right in your browser.
+          - generic [ref=e1035]: Open Suite
+        - generic [ref=e1039] [cursor=pointer]:
+          - generic [ref=e1040]:
+            - generic [ref=e1041]: 40 TOOLS
+            - heading "Image Tools" [level=4] [ref=e1046]
+            - paragraph [ref=e1047]: Compress, resize, crop, convert, remove background, watermark, and manipulate images with zero quality loss.
+          - generic [ref=e1048]: Open Suite
+        - generic [ref=e1052] [cursor=pointer]:
+          - generic [ref=e1053]:
+            - generic [ref=e1054]: 40 TOOLS
+            - heading "Developer Tools" [level=4] [ref=e1059]
+            - paragraph [ref=e1060]: Format, validate, minify JSON/HTML/CSS/SQL, encode/decode Base64/JWT, generate QR codes, regex tester.
+          - generic [ref=e1061]: Open Suite
+        - generic [ref=e1065] [cursor=pointer]:
+          - generic [ref=e1066]:
+            - generic [ref=e1067]: 30 TOOLS
+            - heading "Text Tools" [level=4] [ref=e1072]
+            - paragraph [ref=e1073]: Word counter, text diff, case converter, remove duplicates, lorem ipsum generator, markdown to HTML.
+          - generic [ref=e1074]: Open Suite
+        - generic [ref=e1078] [cursor=pointer]:
+          - generic [ref=e1079]:
+            - generic [ref=e1080]: 30 TOOLS
+            - heading "Calculator Tools" [level=4] [ref=e1085]
+            - paragraph [ref=e1086]: Financial, health, age, loan EMI, GST, percentage, scientific and daily mathematical calculators.
+          - generic [ref=e1087]: Open Suite
+        - generic [ref=e1091] [cursor=pointer]:
+          - generic [ref=e1092]:
+            - generic [ref=e1093]: 20 TOOLS
+            - heading "Unit Converters" [level=4] [ref=e1098]
+            - paragraph [ref=e1099]: Convert length, weight, area, volume, temperature, digital storage, speed, and numerical systems instantly.
+          - generic [ref=e1100]: Open Suite
+        - generic [ref=e1104] [cursor=pointer]:
+          - generic [ref=e1105]:
+            - generic [ref=e1106]: 25 TOOLS
+            - heading "SEO Tools" [level=4] [ref=e1111]
+            - paragraph [ref=e1112]: SERP preview, meta tag analyzer, OpenGraph generator, robots.txt tester, keyword density calculator.
+          - generic [ref=e1113]: Open Suite
+        - generic [ref=e1117] [cursor=pointer]:
+          - generic [ref=e1118]:
+            - generic [ref=e1119]: 15 TOOLS
+            - heading "Security Tools" [level=4] [ref=e1124]
+            - paragraph [ref=e1125]: Cryptographic hash generators, strong password creator, password entropy checker, 2FA validator.
+          - generic [ref=e1126]: Open Suite
+        - generic [ref=e1130] [cursor=pointer]:
+          - generic [ref=e1131]:
+            - generic [ref=e1132]: 20 TOOLS
+            - heading "Education Tools" [level=4] [ref=e1137]
+            - paragraph [ref=e1138]: Exam countdown timer, GPA calculator, study timetable maker, flashcards, reading time calculator.
+          - generic [ref=e1139]: Open Suite
+        - generic [ref=e1143] [cursor=pointer]:
+          - generic [ref=e1144]:
+            - generic [ref=e1145]: 20 TOOLS
+            - heading "Social Media Tools" [level=4] [ref=e1150]
+            - paragraph [ref=e1151]: YouTube thumbnail downloader, tag generator, social image resizer, post formatter, character counters.
+          - generic [ref=e1152]: Open Suite
+        - generic [ref=e1156] [cursor=pointer]:
+          - generic [ref=e1157]:
+            - generic [ref=e1158]: 25 TOOLS
+            - heading "Video Tools" [level=4] [ref=e1163]
+            - paragraph [ref=e1164]: Client-side and worker-based video trimming, frame extraction, aspect ratio conversion, and converters.
+          - generic [ref=e1165]: Open Suite
+        - generic [ref=e1169] [cursor=pointer]:
+          - generic [ref=e1170]:
+            - generic [ref=e1171]: 25 TOOLS
+            - heading "Audio Tools" [level=4] [ref=e1176]
+            - paragraph [ref=e1177]: Audio trimming, speed changer, volume booster, waveform generator, silence remover, and format converters.
+          - generic [ref=e1178]: Open Suite
+    - button "View All 331 Verified Online Tools in Master Directory" [ref=e1183] [cursor=pointer]
+  - generic [ref=e1190]:
+    - generic [ref=e1191]:
+      - generic [ref=e1192]:
+        - generic [ref=e1193]:
+          - generic [ref=e1194]: SECTION 05
+          - generic [ref=e1195]: /
+          - generic [ref=e1196]: LIVE DEVELOPMENT DASHBOARD
+        - heading "WORK IN PROGRESS NOT EVERYTHING IS FINISHED. EVERYTHING IS MOVING." [level=2] [ref=e1197]
+      - generic [ref=e1198]: REAL-TIME TRANSPARENCY
+    - generic [ref=e1199]:
+      - button "All Milestones" [ref=e1200] [cursor=pointer]
+      - button "completed" [ref=e1201] [cursor=pointer]
+      - button "testing" [ref=e1202] [cursor=pointer]
+      - button "in progress" [ref=e1203] [cursor=pointer]
+    - generic [ref=e1204]:
+      - generic [ref=e1205]:
+        - generic [ref=e1206]:
+          - generic [ref=e1207]: Core Platform
+          - generic [ref=e1208]: Completed
+        - generic [ref=e1211]:
+          - heading "331 Tools Platform - Production Polish & Admin Security" [level=3] [ref=e1212]
+          - generic [ref=e1213]: "Last Updated: November 2026"
+        - generic [ref=e1215]:
+          - generic [ref=e1216]: Execution Velocity
+          - generic [ref=e1217]: 100%
+        - generic [ref=e1220]:
+          - generic [ref=e1221]: "Completed & Deployed:"
+          - generic [ref=e1226]:
+            - generic [ref=e1227]:
+              - generic [ref=e1228]: ✓
+              - generic [ref=e1229]: Built all 331 tools with 100% in-browser execution
+            - generic [ref=e1230]:
+              - generic [ref=e1231]: ✓
+              - generic [ref=e1232]: Admin Dashboard SHA-256 passkey authorization & lockout gate
+            - generic [ref=e1233]:
+              - generic [ref=e1234]: ✓
+              - generic [ref=e1235]: Automated Google & Bing Sitemaps API ping dispatcher
+            - generic [ref=e1236]:
+              - generic [ref=e1237]: ✓
+              - generic [ref=e1238]: Zero API-key reliance for 100% free hosting
+        - generic [ref=e1239]:
+          - generic [ref=e1240]: "In Active Development:"
+          - generic [ref=e1246]:
+            - generic [ref=e1247]: ⏳
+            - generic [ref=e1248]: Subdomain DNS automated verification assistance
+        - generic [ref=e1249]:
+          - generic [ref=e1250]: "Next Milestone:"
+          - generic [ref=e1251]: Deploy to Cloud Run production subdomain
+      - generic [ref=e1252]:
+        - generic [ref=e1253]:
+          - generic [ref=e1254]: AI Engine
+          - generic [ref=e1255]: Testing
+        - generic [ref=e1258]:
+          - heading "Aarya AI Speech & Interactive Voice Assistant" [level=3] [ref=e1259]
+          - generic [ref=e1260]: "Last Updated: November 2026"
+        - generic [ref=e1262]:
+          - generic [ref=e1263]: Execution Velocity
+          - generic [ref=e1264]: 90%
+        - generic [ref=e1267]:
+          - generic [ref=e1268]: "Completed & Deployed:"
+          - generic [ref=e1273]:
+            - generic [ref=e1274]:
+              - generic [ref=e1275]: ✓
+              - generic [ref=e1276]: Browser-native Web Speech API dictation
+            - generic [ref=e1277]:
+              - generic [ref=e1278]: ✓
+              - generic [ref=e1279]: Interactive real-time oscilloscope canvas animation
+            - generic [ref=e1280]:
+              - generic [ref=e1281]: ✓
+              - generic [ref=e1282]: Local conversational heuristics & speech synthesis
+        - generic [ref=e1283]:
+          - generic [ref=e1284]: "In Active Development:"
+          - generic [ref=e1290]:
+            - generic [ref=e1291]: ⏳
+            - generic [ref=e1292]: Offline speech-to-text model fallback via ONNX Runtime Web
+        - generic [ref=e1293]:
+          - generic [ref=e1294]: "Next Milestone:"
+          - generic [ref=e1295]: Add custom accent pitch modifier
+      - generic [ref=e1296]:
+        - generic [ref=e1297]:
+          - generic [ref=e1298]: Education Platform
+          - generic [ref=e1299]: In Progress
+        - generic [ref=e1302]:
+          - heading "ExamForge AI - Exam Prep & Flashcards Workflow" [level=3] [ref=e1303]
+          - generic [ref=e1304]: "Last Updated: November 2026"
+        - generic [ref=e1306]:
+          - generic [ref=e1307]: Execution Velocity
+          - generic [ref=e1308]: 75%
+        - generic [ref=e1311]:
+          - generic [ref=e1312]: "Completed & Deployed:"
+          - generic [ref=e1317]:
+            - generic [ref=e1318]:
+              - generic [ref=e1319]: ✓
+              - generic [ref=e1320]: GPA & CGPA calculation algorithms
+            - generic [ref=e1321]:
+              - generic [ref=e1322]: ✓
+              - generic [ref=e1323]: Exam countdown timer with study reminders
+            - generic [ref=e1324]:
+              - generic [ref=e1325]: ✓
+              - generic [ref=e1326]: Study timetable template builder
+        - generic [ref=e1327]:
+          - generic [ref=e1328]: "In Active Development:"
+          - generic [ref=e1333]:
+            - generic [ref=e1334]:
+              - generic [ref=e1335]: ⏳
+              - generic [ref=e1336]: Spaced-repetition flashcard generator with local storage persistence
+            - generic [ref=e1337]:
+              - generic [ref=e1338]: ⏳
+              - generic [ref=e1339]: PDF formula cheat-sheet exporter
+        - generic [ref=e1340]:
+          - generic [ref=e1341]: "Next Milestone:"
+          - generic [ref=e1342]: Launch dedicated ExamForge study mode
+      - generic [ref=e1343]:
+        - generic [ref=e1344]:
+          - generic [ref=e1345]: Progressive Web App
+          - generic [ref=e1346]: In Progress
+        - generic [ref=e1349]:
+          - heading "PWA Offline Mode & Native Desktop Installation" [level=3] [ref=e1350]
+          - generic [ref=e1351]: "Last Updated: November 2026"
+        - generic [ref=e1353]:
+          - generic [ref=e1354]: Execution Velocity
+          - generic [ref=e1355]: 60%
+        - generic [ref=e1358]:
+          - generic [ref=e1359]: "Completed & Deployed:"
+          - generic [ref=e1364]:
+            - generic [ref=e1365]:
+              - generic [ref=e1366]: ✓
+              - generic [ref=e1367]: Service Worker caching manifests
+            - generic [ref=e1368]:
+              - generic [ref=e1369]: ✓
+              - generic [ref=e1370]: Mobile web application manifest configuration
+        - generic [ref=e1371]:
+          - generic [ref=e1372]: "In Active Development:"
+          - generic [ref=e1377]:
+            - generic [ref=e1378]:
+              - generic [ref=e1379]: ⏳
+              - generic [ref=e1380]: Offline background asset synchronization
+            - generic [ref=e1381]:
+              - generic [ref=e1382]: ⏳
+              - generic [ref=e1383]: Native desktop shortcut installation banner
+        - generic [ref=e1384]:
+          - generic [ref=e1385]: "Next Milestone:"
+          - generic [ref=e1386]: 100% offline functionality across all PDF tools
+      - generic [ref=e1387]:
+        - generic [ref=e1388]:
+          - generic [ref=e1389]: Next-Gen Platform
+          - generic [ref=e1390]: In Progress
+        - generic [ref=e1393]:
+          - heading "Flov Ecosystem - 2,500 Online Tools Platform" [level=3] [ref=e1394]
+          - generic [ref=e1395]: "Last Updated: November 2026"
+        - generic [ref=e1397]:
+          - generic [ref=e1398]: Execution Velocity
+          - generic [ref=e1399]: 45%
+        - generic [ref=e1402]:
+          - generic [ref=e1403]: "Completed & Deployed:"
+          - generic [ref=e1408]:
+            - generic [ref=e1409]:
+              - generic [ref=e1410]: ✓
+              - generic [ref=e1411]: Architecture blueprint for 2,500 specialized tools
+            - generic [ref=e1412]:
+              - generic [ref=e1413]: ✓
+              - generic [ref=e1414]: Modular client-side registry design
+            - generic [ref=e1415]:
+              - generic [ref=e1416]: ✓
+              - generic [ref=e1417]: High-performance WASM sandboxing model
+        - generic [ref=e1418]:
+          - generic [ref=e1419]: "In Active Development:"
+          - generic [ref=e1424]:
+            - generic [ref=e1425]:
+              - generic [ref=e1426]: ⏳
+              - generic [ref=e1427]: Automated code generation pipelines for tool templates
+            - generic [ref=e1428]:
+              - generic [ref=e1429]: ⏳
+              - generic [ref=e1430]: Bulk UI component optimization
+        - generic [ref=e1431]:
+          - generic [ref=e1432]: "Next Milestone:"
+          - generic [ref=e1433]: Release first batch of 500 core tools on Flov preview
+  - generic [ref=e1436]:
+    - generic [ref=e1437]:
+      - generic [ref=e1438]: SOHIT AARYA
+      - generic [ref=e1439]: ///
+    - generic [ref=e1440]:
+      - generic [ref=e1441]: 331 IN-BROWSER TOOLS
+      - generic [ref=e1442]: ///
+    - generic [ref=e1443]:
+      - generic [ref=e1444]: ZERO-LATENCY ENGINE
+      - generic [ref=e1445]: ///
+    - generic [ref=e1446]:
+      - generic [ref=e1447]: CLIENT-SIDE PRIVACY
+      - generic [ref=e1448]: ///
+    - generic [ref=e1449]:
+      - generic [ref=e1450]: WEBASSEMBLY POWERED
+      - generic [ref=e1451]: ///
+    - generic [ref=e1452]:
+      - generic [ref=e1453]: INNOVATE • CREATE • GROW
+      - generic [ref=e1454]: ///
+    - generic [ref=e1455]:
+      - generic [ref=e1456]: DREAM BIG, BUILD BIGGER
+      - generic [ref=e1457]: ///
+    - generic [ref=e1458]:
+      - generic [ref=e1459]: MULTIPLEDARKNEWS
+      - generic [ref=e1460]: ///
+    - generic [ref=e1461]:
+      - generic [ref=e1462]: AARYA AI
+      - generic [ref=e1463]: ///
+    - generic [ref=e1464]:
+      - generic [ref=e1465]: EXAMFORGE AI
+      - generic [ref=e1466]: ///
+    - generic [ref=e1467]:
+      - generic [ref=e1468]: SOHIT AARYA
+      - generic [ref=e1469]: ///
+    - generic [ref=e1470]:
+      - generic [ref=e1471]: 331 IN-BROWSER TOOLS
+      - generic [ref=e1472]: ///
+    - generic [ref=e1473]:
+      - generic [ref=e1474]: ZERO-LATENCY ENGINE
+      - generic [ref=e1475]: ///
+    - generic [ref=e1476]:
+      - generic [ref=e1477]: CLIENT-SIDE PRIVACY
+      - generic [ref=e1478]: ///
+    - generic [ref=e1479]:
+      - generic [ref=e1480]: WEBASSEMBLY POWERED
+      - generic [ref=e1481]: ///
+    - generic [ref=e1482]:
+      - generic [ref=e1483]: INNOVATE • CREATE • GROW
+      - generic [ref=e1484]: ///
+    - generic [ref=e1485]:
+      - generic [ref=e1486]: DREAM BIG, BUILD BIGGER
+      - generic [ref=e1487]: ///
+    - generic [ref=e1488]:
+      - generic [ref=e1489]: MULTIPLEDARKNEWS
+      - generic [ref=e1490]: ///
+    - generic [ref=e1491]:
+      - generic [ref=e1492]: AARYA AI
+      - generic [ref=e1493]: ///
+    - generic [ref=e1494]:
+      - generic [ref=e1495]: EXAMFORGE AI
+      - generic [ref=e1496]: ///
+  - generic [ref=e1498]:
+    - generic [ref=e1499]:
+      - generic [ref=e1500]:
+        - generic [ref=e1501]:
+          - generic [ref=e1502]: SECTION 06
+          - generic [ref=e1503]: /
+          - generic [ref=e1504]: DIGITAL PRESENCE & COMMUNITY
+        - heading "FIND ME ACROSS THE INTERNET." [level=2] [ref=e1505]
+      - generic [ref=e1506]: VERIFIED OFFICIAL CHANNELS
+    - generic [ref=e1507]:
+      - link "Professional LinkedIn Sohit Aarya Professional updates, tech entrepreneurship, and industry networking. Visit Channel" [ref=e1508] [cursor=pointer]:
+        - /url: https://www.linkedin.com/in/sohit-aarya-81704a321?utm_source=share_via&utm_content=profile&utm_medium=member_android
+        - generic [ref=e1509]:
+          - generic [ref=e1510]: Professional
+          - generic [ref=e1517]:
+            - generic [ref=e1518]: LinkedIn
+            - heading "Sohit Aarya" [level=3] [ref=e1519]
+          - paragraph [ref=e1524]: Professional updates, tech entrepreneurship, and industry networking.
+        - generic [ref=e1525]: Visit Channel
+      - link "Official Creator Instagram @sohit__aarya Behind the scenes, developer lifestyle, and tech project reels. Visit Channel" [ref=e1532] [cursor=pointer]:
+        - /url: https://www.instagram.com/sohit__aarya?dlrf=NWZsYjNsZnZ3ZWdm
+        - generic [ref=e1533]:
+          - generic [ref=e1534]: Official Creator
+          - generic [ref=e1540]:
+            - generic [ref=e1541]: Instagram
+            - heading "@sohit__aarya" [level=3] [ref=e1542]
+          - paragraph [ref=e1547]: Behind the scenes, developer lifestyle, and tech project reels.
+        - generic [ref=e1548]: Visit Channel
+      - link "Video Content YouTube @thynkova Tech tutorials, digital product development, and software tools showcases. Visit Channel" [ref=e1555] [cursor=pointer]:
+        - /url: https://youtube.com/@thynkova?si=9diIjidVgHqqTixg
+        - generic [ref=e1556]:
+          - generic [ref=e1557]: Video Content
+          - generic [ref=e1563]:
+            - generic [ref=e1564]: YouTube
+            - heading "@thynkova" [level=3] [ref=e1565]
+          - paragraph [ref=e1570]: Tech tutorials, digital product development, and software tools showcases.
+        - generic [ref=e1571]: Visit Channel
+      - link "Visual Pins Pinterest Sohit Aarya Design inspirations, UI mockups, aesthetics, and digital moodboards. Visit Channel" [ref=e1578] [cursor=pointer]:
+        - /url: https://pin.it/1yvzB0klX
+        - generic [ref=e1579]:
+          - generic [ref=e1580]: Visual Pins
+          - generic [ref=e1585]:
+            - generic [ref=e1586]: Pinterest
+            - heading "Sohit Aarya" [level=3] [ref=e1587]
+          - paragraph [ref=e1592]: Design inspirations, UI mockups, aesthetics, and digital moodboards.
+        - generic [ref=e1593]: Visit Channel
+      - link "Community Facebook Sohit Aarya Personal community, updates, and direct peer connections. Visit Channel" [ref=e1600] [cursor=pointer]:
+        - /url: https://www.facebook.com/share/1A1CNnw6VY/
+        - generic [ref=e1601]:
+          - generic [ref=e1602]: Community
+          - generic [ref=e1607]:
+            - generic [ref=e1608]: Facebook
+            - heading "Sohit Aarya" [level=3] [ref=e1609]
+          - paragraph [ref=e1614]: Personal community, updates, and direct peer connections.
+        - generic [ref=e1615]: Visit Channel
+      - link "Open Source GitHub Sohitaarya Open source tools, algorithms, repositories, and experimental code. Visit Channel" [ref=e1622] [cursor=pointer]:
+        - /url: https://github.com/Sohitaarya
+        - generic [ref=e1623]:
+          - generic [ref=e1624]: Open Source
+          - generic [ref=e1630]:
+            - generic [ref=e1631]: GitHub
+            - heading "Sohitaarya" [level=3] [ref=e1632]
+          - paragraph [ref=e1637]: Open source tools, algorithms, repositories, and experimental code.
+        - generic [ref=e1638]: Visit Channel
+      - link "Channel Telegram @sohitaarya Direct community broadcasts, tech news alerts, and tool updates. Visit Channel" [ref=e1645] [cursor=pointer]:
+        - /url: https://t.me
+        - generic [ref=e1646]:
+          - generic [ref=e1647]: Channel
+          - generic [ref=e1653]:
+            - generic [ref=e1654]: Telegram
+            - heading "@sohitaarya" [level=3] [ref=e1655]
+          - paragraph [ref=e1660]: Direct community broadcasts, tech news alerts, and tool updates.
+        - generic [ref=e1661]: Visit Channel
+  - generic [ref=e1669]:
+    - generic [ref=e1670]:
+      - generic [ref=e1671]:
+        - generic [ref=e1672]:
+          - generic [ref=e1673]: SECTION 07
+          - generic [ref=e1674]: /
+          - generic [ref=e1675]: EVOLUTION & MILESTONES
+        - heading "MY JOURNEY" [level=2] [ref=e1676]
+      - generic [ref=e1677]: 2023 — 2026 ROADMAP
+    - generic [ref=e1678]:
+      - generic [ref=e1681]:
+        - generic [ref=e1682]:
+          - generic [ref=e1683]:
+            - generic [ref=e1684]: "2023"
+            - generic [ref=e1685]: Q2–Q4
+          - generic [ref=e1686]: MILESTONE
+        - generic [ref=e1687]:
+          - heading "The Foundation & Vision" [level=3] [ref=e1688]
+          - generic [ref=e1689]: Coding First Principles & Exploring Digital Publishing
+        - paragraph [ref=e1690]: Started deep exploration of modern web development, TypeScript systems, and digital journalism. Founded the concept of MultipleDarkNews as an independent digital news and tech platform.
+        - generic [ref=e1691]:
+          - generic [ref=e1692]: "Key Highlights:"
+          - generic [ref=e1693]:
+            - generic [ref=e1694]: Mastered modern JavaScript/TypeScript, React architecture, and web systems
+            - generic [ref=e1699]: Launched MultipleDarkNews digital platform foundation
+            - generic [ref=e1704]: Began researching privacy-first client-side web tools
+      - generic [ref=e1711]:
+        - generic [ref=e1712]:
+          - generic [ref=e1713]:
+            - generic [ref=e1714]: "2024"
+            - generic [ref=e1715]: Q1–Q4
+          - generic [ref=e1716]: MILESTONE
+        - generic [ref=e1717]:
+          - heading "MultipleDarkNews Expansion" [level=3] [ref=e1718]
+          - generic [ref=e1719]: Scaling Digital Publishing & Tool Architecture
+        - paragraph [ref=e1720]: "Expanded the publishing platform and identified the severe flaw in existing online tool sites: heavy watermarks, intrusive ads, and file uploads to unknown servers. Conceived the idea of a 100% in-browser tools ecosystem."
+        - generic [ref=e1721]:
+          - generic [ref=e1722]: "Key Highlights:"
+          - generic [ref=e1723]:
+            - generic [ref=e1724]: Scaled digital publishing reach across international audiences
+            - generic [ref=e1729]: Built initial prototypes for client-side PDF and image manipulators
+            - generic [ref=e1734]: Formulated the strict ₹0 hosting and zero-API-key architecture
+      - generic [ref=e1741]:
+        - generic [ref=e1742]:
+          - generic [ref=e1743]:
+            - generic [ref=e1744]: "2025"
+            - generic [ref=e1745]: Q1–Q4
+          - generic [ref=e1746]: PROJECT LAUNCH
+        - generic [ref=e1747]:
+          - heading "Architecting 331 Tools" [level=3] [ref=e1748]
+          - generic [ref=e1749]: Engineering the Massive Browser-Based Utility Suite
+        - paragraph [ref=e1750]: Authored and verified 331 online tools across 12 categories—PDF, Image, Video, Audio, Developer, Text, Calculators, Converters, SEO, Security, Social Media, and Education—all running in client memory.
+        - generic [ref=e1751]:
+          - generic [ref=e1752]: "Key Highlights:"
+          - generic [ref=e1753]:
+            - generic [ref=e1754]: Achieved 100% PRODUCTION_READY status across 331 registered tools
+            - generic [ref=e1759]: Engineered procedural Canvas art and Web Speech dictation engines
+            - generic [ref=e1764]: Implemented automated Google and Bing Sitemaps API ping dispatcher
+      - generic [ref=e1771]:
+        - generic [ref=e1772]:
+          - generic [ref=e1773]:
+            - generic [ref=e1774]: "2026"
+            - generic [ref=e1775]: Current & Future
+          - generic [ref=e1776]: ROADMAP
+        - generic [ref=e1777]:
+          - heading "Next-Gen Ecosystem & AI Frontiers" [level=3] [ref=e1778]
+          - generic [ref=e1779]: Unified Digital Identity, ExamForge AI, and Ecosystem Scaling
+        - paragraph [ref=e1780]: Launching Sohit Aarya’s premier cinematic digital portfolio, integrating ExamForge AI for students, and establishing full Subdomain/Cloud Run deployment for global scale.
+        - generic [ref=e1781]:
+          - generic [ref=e1782]: "Key Highlights:"
+          - generic [ref=e1783]:
+            - generic [ref=e1784]: Built flagship cinematic black-and-red personal portfolio website
+            - generic [ref=e1789]: Protected governance with SHA-256 administrative lock screen
+            - generic [ref=e1794]: Expanding ExamForge AI student study suite and PWA offline mode
+  - generic [ref=e1800]:
+    - generic [ref=e1801]:
+      - generic [ref=e1802]:
+        - generic [ref=e1803]:
+          - generic [ref=e1804]: SECTION 08
+          - generic [ref=e1805]: /
+          - generic [ref=e1806]: DIRECT INQUIRIES & COLLABORATION
+        - heading "HAVE AN IDEA? LET'S BUILD SOMETHING." [level=2] [ref=e1807]
+      - generic [ref=e1808]: DIRECT RESPONSE GUARANTEE
+    - generic [ref=e1809]:
+      - generic [ref=e1811]:
+        - generic [ref=e1812]:
+          - text: "DIRECT CONTACT:"
+          - heading "Start A Conversation" [level=3] [ref=e1813]
+          - paragraph [ref=e1814]: Whether you have an idea for a new client-side tool, need a high-performance web platform built, or want to collaborate on technology projects, feel free to reach out.
+        - generic [ref=e1815]:
+          - generic [ref=e1816]: Official Email Address
+          - generic [ref=e1817]:
+            - link "sohitaarya98@gmail.com" [ref=e1818] [cursor=pointer]:
+              - /url: mailto:sohitaarya98@gmail.com
+            - button "Copy Email Address" [ref=e1819] [cursor=pointer]
+        - generic [ref=e1823]:
+          - generic [ref=e1824]: 100% Confidential. Zero spam or shared emails.
+          - generic [ref=e1829]: Direct reply within 24-48 business hours.
+      - generic [ref=e1835]:
+        - generic [ref=e1836]:
+          - generic [ref=e1837]:
+            - generic [ref=e1838]: Your Name *
+            - textbox "John Doe" [ref=e1843]
+          - generic [ref=e1844]:
+            - generic [ref=e1845]: Email Address *
+            - textbox "john@example.com" [ref=e1850]
+        - generic [ref=e1851]:
+          - generic [ref=e1852]: Subject or Project Type
+          - textbox "Website Development / Tool Idea / Partnership" [ref=e1857]
+        - generic [ref=e1858]:
+          - generic [ref=e1859]: Message / Project Details *
+          - textbox "Describe your project, timeline, or requirements..." [ref=e1863]
+        - button "SUBMIT INQUIRY TO SOHIT AARYA" [ref=e1864] [cursor=pointer]
+  - generic [ref=e1870]:
+    - generic [ref=e1871]:
+      - generic [ref=e1872]: FREQUENTLY ASKED QUESTIONS
+      - heading "QUESTIONS & ANSWERS" [level=2] [ref=e1877]
+      - paragraph [ref=e1878]: Everything you need to know about Sohit Aarya, the 331-tool suite, and project architecture.
+    - generic [ref=e1879]:
+      - generic [ref=e1880]:
+        - button "Who is Sohit Aarya?" [ref=e1881] [cursor=pointer]
+        - generic [ref=e1886]: Sohit Aarya is a full-stack developer, digital creator, and founder of MultipleDarkNews. He specializes in high-performance web development, in-browser tool ecosystems, client-side algorithms, and digital publishing.
+      - button "What is the 331 Tools Ecosystem?" [ref=e1888] [cursor=pointer]
+      - button "Why do all tools run in-browser without server upload?" [ref=e1894] [cursor=pointer]
+      - button "What projects are currently in progress?" [ref=e1900] [cursor=pointer]
+      - button "How can someone get in touch or collaborate with Sohit Aarya?" [ref=e1906] [cursor=pointer]
+  - contentinfo [ref=e1911]:
+    - generic [ref=e1912]:
+      - generic [ref=e1913]:
+        - generic [ref=e1914]:
+          - generic [ref=e1915]:
+            - generic [ref=e1916]: SOHIT AARYA
+            - generic [ref=e1917]: ///
+          - generic [ref=e1918]: Innovate • Create • Grow
+          - paragraph [ref=e1919]: Personal portfolio, digital creations, and 331 client-side in-browser tools built by Sohit Aarya. Powered by zero tracking and maximum data privacy.
+        - generic [ref=e1920]:
+          - generic [ref=e1921]: “Dream Big, Build Bigger.”
+          - generic [ref=e1922]: — Sohit Aarya
+          - button "Back to Top" [ref=e1923] [cursor=pointer]
+      - generic [ref=e1927]:
+        - generic [ref=e1928]:
+          - generic [ref=e1929]: Portfolio Sections
+          - list [ref=e1930]:
+            - listitem [ref=e1931]:
+              - link "01 About Identity" [ref=e1932] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e1933]:
+              - link "02 What I Do" [ref=e1934] [cursor=pointer]:
+                - /url: "#services"
+            - listitem [ref=e1935]:
+              - link "03 331 Tools Ecosystem" [ref=e1936] [cursor=pointer]:
+                - /url: "#tools-ecosystem"
+            - listitem [ref=e1937]:
+              - link "04 Projects Showcase" [ref=e1938] [cursor=pointer]:
+                - /url: "#projects"
+        - generic [ref=e1939]:
+          - generic [ref=e1940]: Development
+          - list [ref=e1941]:
+            - listitem [ref=e1942]:
+              - link "05 Work In Progress" [ref=e1943] [cursor=pointer]:
+                - /url: "#progress"
+            - listitem [ref=e1944]:
+              - link "06 Social Connect" [ref=e1945] [cursor=pointer]:
+                - /url: "#social"
+            - listitem [ref=e1946]:
+              - link "07 My Journey Roadmap" [ref=e1947] [cursor=pointer]:
+                - /url: "#journey"
+            - listitem [ref=e1948]:
+              - link "08 Contact & Inquiries" [ref=e1949] [cursor=pointer]:
+                - /url: "#contact"
+        - generic [ref=e1950]:
+          - generic [ref=e1951]: 331 Tools Suite
+          - list [ref=e1952]:
+            - listitem [ref=e1953]:
+              - button "Open Full Tools Suite" [ref=e1954]
+            - listitem [ref=e1958]:
+              - link "PDF Tools Suite" [ref=e1959] [cursor=pointer]:
+                - /url: "#tool/pdf-compressor"
+            - listitem [ref=e1960]:
+              - link "Image Tools Suite" [ref=e1961] [cursor=pointer]:
+                - /url: "#tool/image-compressor"
+            - listitem [ref=e1962]:
+              - link "Developer Tools Suite" [ref=e1963] [cursor=pointer]:
+                - /url: "#tool/json-formatter"
+        - generic [ref=e1964]:
+          - generic [ref=e1965]: Ecosystem & Links
+          - list [ref=e1966]:
+            - listitem [ref=e1967]:
+              - link "multipledarknews.com" [ref=e1968] [cursor=pointer]:
+                - /url: https://multipledarknews.com
+            - listitem [ref=e1974]:
+              - link "XML Sitemaps Directory" [ref=e1975] [cursor=pointer]:
+                - /url: "#sitemap"
+            - listitem [ref=e1976]:
+              - link "Audit & Compliance" [ref=e1977] [cursor=pointer]:
+                - /url: "#audit"
+      - generic [ref=e1978]:
+        - generic [ref=e1979]: © 2026 SOHIT AARYA. All rights reserved.
+        - generic [ref=e1980]:
+          - generic [ref=e1981]: Built with precision & zero tracking
+          - generic [ref=e1982]: •
+          - button "Staff Portal" [ref=e1983]
