@@ -3,16 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "bin": {
-    "wrangler": "./bin/wrangler-cli.js"
-  },
   "scripts": {
     "dev": "tsx server.ts",
-    "prebuild": "node -e \"const fs=require('fs'); fs.mkdirSync('node_modules/.bin', {recursive: true}); fs.copyFileSync('bin/wrangler-cli.js', 'node_modules/.bin/wrangler'); try{fs.chmodSync('node_modules/.bin/wrangler', 0o755);}catch(e){}\"",
     "build": "vite build",
-    "postinstall": "node -e \"const fs=require('fs'); fs.mkdirSync('node_modules/.bin', {recursive: true}); fs.copyFileSync('bin/wrangler-cli.js', 'node_modules/.bin/wrangler'); try{fs.chmodSync('node_modules/.bin/wrangler', 0o755);}catch(e){}\"",
     "preview": "vite preview",
-    "deploy": "wrangler pages deploy dist",
+    "deploy": "wrangler deploy",
     "start": "tsx server.ts",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
@@ -48,6 +43,7 @@
     "esbuild": "^0.25.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.21.0",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "wrangler": "^4.160.1"
   }
 }
