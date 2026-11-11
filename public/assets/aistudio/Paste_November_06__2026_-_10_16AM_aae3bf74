@@ -1,0 +1,951 @@
+PROJECT: MULTIPLEDARKNEWS ONLINE TOOLS PLATFORM
+
+Complete Production-Ready Development Master Prompt
+
+1. YOUR ROLE
+
+Act as a Principal Software Architect, Senior Full-Stack Engineer, PDF Processing Engineer, Image Processing Engineer, Security Engineer, DevOps Engineer, SEO Specialist, and QA Automation Engineer.
+
+Your task is to build a complete, independent, production-ready online tools platform for MultipleDarkNews.
+
+Project brand: MultipleDarkNews Tools
+Parent website: https://multipledarknews.com
+Target audience: Worldwide (USA, India, UK, Canada, Australia and other countries)
+Primary language: English
+Initial development: PDF Tools + Image Tools
+Long-term scope: All 325+ tools, expandable to 1,000+ tools.
+
+This is a real software engineering project, NOT a UI prototype.
+
+Do not create fake buttons, demo processing, placeholder functionality, simulated results, or non-working tools.
+
+Every tool advertised as functional must actually work.
+
+---
+
+2. FIRST TASK: AUDIT THE EXISTING PROJECT
+
+Before writing or changing code:
+
+1. Inspect the complete existing repository.
+2. Identify the actual framework, runtime, package manager and deployment infrastructure.
+3. Inspect existing authentication, database, APIs, components and design system.
+4. Identify existing Cloudflare infrastructure, R2 storage, queues and environment configuration if present.
+5. Check current website integration points.
+6. Identify existing reusable components and libraries.
+7. Review existing security controls and deployment configuration.
+8. Produce a technical architecture and implementation plan.
+
+Important restrictions:
+
+- Never assume file paths or entry points.
+- Never replace existing working infrastructure without justification.
+- Never delete existing data.
+- Never overwrite production configuration blindly.
+- Never modify the live WordPress installation during development.
+- Never expose secrets, passwords, API keys or tokens.
+- Preserve backward compatibility wherever possible.
+
+Create a baseline audit report before implementation.
+
+---
+
+3. INDEPENDENT PLATFORM ARCHITECTURE
+
+Build the Tools Platform as an independent application.
+
+The application must be independently deployable while remaining connected to MultipleDarkNews branding.
+
+Suggested architecture (adapt after repository inspection):
+
+Frontend:
+
+- Next.js / React with TypeScript.
+- Responsive component system.
+- Server-side rendering for SEO pages.
+- Accessible user interfaces.
+
+Backend:
+
+- TypeScript API services.
+- Modular processing engines.
+- Background job processing.
+- Secure upload and download services.
+
+Processing:
+
+- Browser-side processing where practical.
+- Server-side processing for resource-intensive tasks.
+- Dedicated PDF processing workers.
+- Dedicated image processing workers.
+- Isolated processing environments.
+
+Storage:
+
+- Temporary storage for uploaded files.
+- Cloudflare R2 if already available and suitable.
+- Automatic temporary-file cleanup.
+- Configurable storage limits.
+
+Database:
+
+- PostgreSQL if required.
+- Tool registry.
+- Processing job records.
+- User preferences.
+- Usage statistics.
+- Operational logs.
+
+Infrastructure:
+
+- Independent deployment.
+- Health-check endpoints.
+- Monitoring.
+- Error reporting.
+- Automated tests.
+- Backup and recovery procedures.
+
+Do not introduce unnecessary infrastructure or paid dependencies.
+
+---
+
+4. WEBSITE DESIGN AND USER EXPERIENCE
+
+Create a professional international tools website.
+
+Homepage requirements:
+
+- Modern header and navigation.
+- MultipleDarkNews logo and branding.
+- Large search bar.
+- Popular tools section.
+- Recently added tools.
+- Trending tools.
+- All categories.
+- Featured PDF tools.
+- Featured Image tools.
+- Frequently used tools.
+- Recently used tools.
+- Clear privacy and security information.
+- Footer with legal pages.
+
+Navigation categories:
+
+1. PDF Tools
+2. Image Tools
+3. Video Tools
+4. Audio Tools
+5. Text Tools
+6. Developer Tools
+7. Calculators
+8. Unit Converters
+9. SEO Tools
+10. Security Tools
+11. Education Tools
+12. Social Media Tools
+
+Individual tool page requirements:
+
+- Unique page title.
+- Description.
+- Drag-and-drop upload.
+- Browse file option.
+- Supported file formats.
+- Maximum file size information.
+- Processing options.
+- Progress indicator.
+- Cancel button.
+- Clear success/error messages.
+- Preview where appropriate.
+- Download button.
+- Process another file option.
+- Related tools.
+- Instructions.
+- FAQ section.
+- Privacy information.
+
+Design requirements:
+
+- Professional modern UI.
+- Mobile-first layout.
+- Light and dark modes.
+- Fast page rendering.
+- Accessible keyboard navigation.
+- WCAG accessibility considerations.
+- No intrusive advertisements.
+- No deceptive download buttons.
+
+---
+
+5. PDF TOOLS — COMPLETE IMPLEMENTATION
+
+Implement these 35 tools:
+
+1. PDF to Word
+2. Word to PDF
+3. PDF to Excel
+4. Excel to PDF
+5. PDF to PowerPoint
+6. PowerPoint to PDF
+7. PDF to JPG
+8. JPG to PDF
+9. PDF to PNG
+10. PNG to PDF
+11. PDF Compressor
+12. Merge PDF
+13. Split PDF
+14. Rotate PDF
+15. Delete PDF Pages
+16. Extract PDF Pages
+17. Rearrange PDF Pages
+18. Unlock PDF
+19. Protect PDF
+20. Sign PDF
+21. Watermark PDF
+22. Edit PDF
+23. Crop PDF
+24. PDF Page Number
+25. PDF Metadata Editor
+26. PDF to Text
+27. Text to PDF
+28. Scan to PDF
+29. Compare PDF
+30. Repair PDF
+31. HTML to PDF
+32. PDF OCR
+33. PDF Grayscale
+34. PDF Booklet Maker
+35. PDF Form Filler
+
+PDF engine requirements
+
+Evaluate suitable libraries based on licensing, security, maintenance and functionality.
+
+Possible technologies:
+
+- PDF.js for viewing and rendering.
+- qpdf for PDF structural operations.
+- Ghostscript for conversion and optimization where licensing permits.
+- LibreOffice headless for Office document conversion.
+- OCRmyPDF and Tesseract for OCR.
+- PyMuPDF for supported PDF operations.
+- PDF-lib for browser-compatible PDF operations.
+
+Do not assume every library supports every operation.
+
+For each tool:
+
+- Validate the input.
+- Verify supported formats.
+- Handle encrypted PDFs correctly.
+- Preserve document quality.
+- Handle large documents.
+- Report page-specific failures.
+- Provide accurate processing results.
+- Generate downloadable output.
+- Clean up temporary files.
+
+Special requirements:
+
+PDF Compressor:
+
+- Multiple compression presets.
+- Quality selection.
+- Output size reporting.
+- Compression comparison.
+
+Merge PDF:
+
+- Multiple file selection.
+- Drag-and-drop ordering.
+- Page ordering.
+- Error handling.
+
+Split PDF:
+
+- Page range selection.
+- Extract individual pages.
+- Multiple output options.
+
+PDF to Word:
+
+- Preserve text and document structure as far as technically possible.
+- Handle tables and images.
+- Explain conversion limitations.
+
+PDF OCR:
+
+- Detect scanned pages.
+- Support English and Hindi OCR where language packs are installed.
+- Provide searchable output.
+
+PDF Protect:
+
+- Password protection.
+- Encryption validation.
+- Secure password handling.
+
+PDF Sign:
+
+- Draw signature.
+- Upload signature image.
+- Position and resize signature.
+- Make clear that a visual PDF signature is not necessarily a legally validated digital certificate.
+
+---
+
+6. IMAGE TOOLS — COMPLETE IMPLEMENTATION
+
+Implement these 40 tools:
+
+1. Image Compressor
+2. Image Resizer
+3. Image Cropper
+4. Image Converter
+5. JPG to PNG
+6. PNG to JPG
+7. WebP to JPG
+8. JPG to WebP
+9. PNG to WebP
+10. WebP to PNG
+11. AVIF Converter
+12. SVG to PNG
+13. PNG to SVG
+14. Image to PDF
+15. Image Background Remover
+16. Image Background Changer
+17. Image Blur
+18. Image Sharpen
+19. Image Upscaler
+20. Image Color Picker
+21. Image Watermark
+22. Image Rotator
+23. Image Flipper
+24. Image Metadata Remover
+25. Image EXIF Viewer
+26. Image DPI Changer
+27. Image Pixel Counter
+28. Image Base64 Converter
+29. Image Collage Maker
+30. Meme Generator
+31. Passport Photo Maker
+32. Thumbnail Maker
+33. Screenshot Editor
+34. GIF Compressor
+35. GIF to PNG
+36. PNG to GIF
+37. Image Border Maker
+38. Image Color Adjuster
+39. Image Grayscale
+40. Image Transparency Maker
+
+Image processing engine
+
+Evaluate:
+
+- Sharp/libvips.
+- Browser Canvas API.
+- WebCodecs where supported.
+- ImageMagick where justified.
+- OpenCV for advanced image operations.
+- Suitable background-removal and upscaling models.
+
+Image Compressor:
+
+- JPG, PNG, WebP and AVIF support where available.
+- Quality slider.
+- Target file size where technically achievable.
+- Single and batch compression.
+- Original vs compressed size.
+- Percentage saved.
+- Download output.
+
+Image Resizer:
+
+- Width and height controls.
+- Aspect ratio lock.
+- Preset dimensions.
+- Percentage resizing.
+- Batch resizing.
+
+Image Converter:
+
+- Format selection.
+- Quality control.
+- Transparency preservation where supported.
+- Correct MIME types and file extensions.
+
+Image Editor:
+
+- Crop, rotate, flip.
+- Brightness, contrast and saturation.
+- Blur and sharpen.
+- Watermark.
+- Background editing.
+- Preview before export.
+
+Image Metadata:
+
+- EXIF viewer.
+- Metadata removal.
+- Privacy protection.
+- Preserve or remove metadata according to user selection.
+
+Important:
+PNG to SVG must not simply rename the extension. Implement actual vectorization or clearly identify unsupported cases.
+
+Background remover and AI upscaler must use real processing models or real APIs. Do not return unchanged images while claiming AI processing succeeded.
+
+---
+
+7. REMAINING 10 TOOL CATEGORIES
+
+Build the remaining categories using the following complete catalog.
+
+Video Tools — 25
+
+Video Compressor, Video Converter, MP4 to WebM, WebM to MP4, Video Trimmer, Video Cutter, Video Merger, Video Resizer, Video Cropper, Video Rotator, Video Speed Changer, Video to GIF, GIF to Video, Video Thumbnail Extractor, Video to MP3, Video to WAV, Video Mute, Video Watermark, Video Subtitle Extractor, Video Frame Extractor, Video Aspect Ratio Converter, Video Metadata Viewer, Screen Recorder, Webcam Recorder, Audio Video Synchronizer.
+
+Audio Tools — 25
+
+MP3 Compressor, Audio Converter, MP3 to WAV, WAV to MP3, MP3 to AAC, Audio Cutter, Audio Trimmer, Audio Merger, Audio Speed Changer, Audio Volume Booster, Audio Noise Remover, Audio Recorder, Audio Extractor, Audio Equalizer, Audio Reverser, Audio Fade In/Out, Audio Pitch Changer, Audio Waveform Generator, Audio Metadata Editor, Audio Silence Remover, Text to Speech, Speech to Text, Voice Recorder, Audio Joiner, Audio Channel Converter.
+
+Text Tools — 30
+
+Word Counter, Character Counter, Sentence Counter, Paragraph Counter, Case Converter, Uppercase Converter, Lowercase Converter, Title Case Converter, Remove Extra Spaces, Remove Duplicate Lines, Text Sorter, Text Reverser, Find and Replace, Text Diff Checker, Text Cleaner, Lorem Ipsum Generator, Readability Checker, Keyword Density Checker, Plagiarism Checker, Grammar Checker, Markdown Editor, Markdown to HTML, HTML to Text, Text to Slug, Unicode Converter, Fancy Text Generator, Emoji Remover, Line Break Remover, Text Encryptor, Text Decryptor.
+
+Developer Tools — 40
+
+JSON Formatter, JSON Validator, JSON Minifier, JSON to XML, XML to JSON, HTML Formatter, HTML Minifier, CSS Formatter, CSS Minifier, JavaScript Formatter, JavaScript Minifier, SQL Formatter, SQL Minifier, YAML Validator, YAML to JSON, Base64 Encoder, Base64 Decoder, URL Encoder, URL Decoder, JWT Decoder, Regex Tester, UUID Generator, Hash Generator, MD5 Generator, SHA256 Generator, QR Code Generator, QR Code Reader, Barcode Generator, HTTP Status Checker, User Agent Parser, Unix Timestamp Converter, Cron Expression Generator, Color Code Converter, CSS Gradient Generator, Box Shadow Generator, HTML Table Generator, Robots.txt Generator, Sitemap Generator, .htaccess Generator, Meta Tag Generator.
+
+Calculator Tools — 30
+
+Standard Calculator, Scientific Calculator, Percentage Calculator, Age Calculator, Date Calculator, Time Calculator, BMI Calculator, BMR Calculator, Calorie Calculator, Loan EMI Calculator, Interest Calculator, Compound Interest Calculator, GST Calculator, Income Tax Calculator, Discount Calculator, Profit and Loss Calculator, Salary Calculator, Electricity Bill Calculator, Fuel Cost Calculator, Speed Calculator, Average Calculator, Ratio Calculator, CGPA Calculator, GPA Calculator, Marks Percentage Calculator, Attendance Calculator, Probability Calculator, Square Root Calculator, Fraction Calculator, Time Zone Calculator.
+
+Unit Converter Tools — 20
+
+Length Converter, Weight Converter, Temperature Converter, Area Converter, Volume Converter, Speed Converter, Pressure Converter, Energy Converter, Power Converter, Data Storage Converter, MB to GB, KB to MB, Binary to Decimal, Decimal to Binary, Hexadecimal Converter, Currency Converter, Time Converter, Angle Converter, Fuel Economy Converter, Number System Converter.
+
+SEO Tools — 25
+
+Meta Title Checker, Meta Description Checker, SERP Snippet Preview, Keyword Density Checker, Keyword Research, Sitemap Checker, Robots.txt Tester, Website Speed Checker, Page Size Checker, HTTP Header Checker, Broken Link Checker, Redirect Checker, Domain Authority Lookup, WHOIS Lookup, DNS Lookup, IP Address Lookup, SSL Checker, Favicon Generator, Schema Markup Generator, Open Graph Generator, Twitter Card Generator, Canonical URL Checker, Hreflang Generator, URL Slug Generator, Website Screenshot Tool.
+
+Security Tools — 15
+
+Password Generator, Password Strength Checker, Random Number Generator, Random String Generator, Hash Checker, File Checksum Calculator, QR Code Scanner, URL Safety Checker, Email Validator, IP Information Checker, SSL Certificate Checker, File Metadata Remover, Secure Text Encoder, Password Entropy Calculator, Two-Factor Authentication Code Generator.
+
+Education Tools — 20
+
+Online Exam Timer, Study Timetable Maker, Notes Maker, Flashcard Maker, Quiz Generator, MCQ Practice Tool, Random Question Picker, Math Equation Solver, Scientific Notation Converter, Roman Numeral Converter, Number to Words, Words to Number, Typing Speed Test, Reading Time Calculator, Citation Generator, Bibliography Generator, GPA Calculator, Grade Calculator, Exam Marks Calculator, Online Stopwatch.
+
+Social Media Tools — 20
+
+YouTube Thumbnail Downloader, YouTube Title Generator, YouTube Description Generator, YouTube Tag Generator, YouTube Hashtag Generator, Instagram Bio Generator, Instagram Caption Generator, Hashtag Generator, Facebook Post Formatter, Social Media Image Resizer, Pinterest Pin Maker, LinkedIn Post Formatter, Twitter/X Character Counter, Social Media Calendar, Open Graph Preview, YouTube Channel ID Finder, YouTube Video Details Viewer, Video Title Analyzer, Thumbnail Preview Tool, Social Media Bio Formatter.
+
+All 12 categories must be present in the central tool registry.
+
+Do not claim that a category is production-ready until its actual tools pass the relevant tests.
+
+---
+
+8. CENTRAL TOOL REGISTRY
+
+Create a centralized, typed tool registry.
+
+Each tool must have:
+
+- Unique ID.
+- Unique slug.
+- Name.
+- Category.
+- Description.
+- Input formats.
+- Output formats.
+- Processing engine.
+- Processing location.
+- File size limits.
+- SEO title.
+- SEO description.
+- FAQ.
+- Related tools.
+- Status.
+- Version.
+- Test coverage.
+
+Supported tool states:
+
+- PLANNED
+- IN_DEVELOPMENT
+- FUNCTIONAL
+- TESTING
+- VERIFIED
+- PRODUCTION_READY
+- BLOCKED
+- DEPRECATED
+
+The registry must control:
+
+- Homepage listings.
+- Category listings.
+- Search.
+- Individual pages.
+- Related tools.
+- Sitemap.
+- Popular tools.
+- Admin management.
+
+Never expose a planned tool as a working tool.
+
+---
+
+9. PROCESSING JOB SYSTEM
+
+Build a reliable job-processing architecture.
+
+Required features:
+
+1. Secure file upload.
+2. File validation.
+3. MIME type verification.
+4. File signature verification.
+5. Job ID generation.
+6. Processing queue.
+7. Job status tracking.
+8. Progress updates.
+9. Cancellation.
+10. Retry handling.
+11. Timeout handling.
+12. Output validation.
+13. Secure download.
+14. Automatic cleanup.
+
+Job states:
+
+QUEUED
+VALIDATING
+PROCESSING
+FINALIZING
+COMPLETED
+FAILED
+CANCELLED
+EXPIRED
+
+Use WebSocket or Server-Sent Events for live progress where appropriate.
+
+Never trust file extensions alone.
+
+Protect against ZIP bombs, malformed files, decompression bombs, path traversal and resource exhaustion.
+
+---
+
+10. SECURITY AND PRIVACY
+
+Security is mandatory.
+
+Implement:
+
+- HTTPS enforcement.
+- Secure headers.
+- CSRF protection where applicable.
+- XSS prevention.
+- SQL injection prevention.
+- SSRF protection.
+- Rate limiting.
+- Upload restrictions.
+- File-type validation.
+- File size restrictions.
+- Malware scanning where available.
+- Isolated processing workers.
+- Resource and execution limits.
+- Secure temporary file storage.
+- Signed download URLs.
+- Access control.
+- Secure secrets management.
+- Dependency vulnerability scanning.
+- Audit logs.
+
+Privacy requirements:
+
+- No public access to uploaded files.
+- No predictable download URLs.
+- No unnecessary file retention.
+- Automatic cleanup after configurable expiry.
+- No sensitive content in application logs.
+- No file usage for AI training.
+- Clear privacy policy.
+- Clear deletion policy.
+
+Default policy: temporary uploads are deleted automatically after successful processing or expiry. Configure and test cleanup behavior for failed and abandoned jobs too.
+
+---
+
+11. SEO AND INTERNATIONAL SEARCH
+
+Build every individual tool page as an independent SEO landing page.
+
+Requirements:
+
+- Unique SEO title.
+- Unique meta description.
+- Canonical URL.
+- Open Graph tags.
+- Twitter/X cards.
+- Breadcrumbs.
+- Relevant structured data.
+- Internal linking.
+- FAQ content.
+- Related tools.
+- XML sitemap.
+- Robots.txt.
+- Clean URLs.
+- SSR or prerendering.
+- Fast mobile rendering.
+- Proper indexing controls.
+
+Example URLs:
+
+/tools/
+/tools/pdf/
+/tools/pdf/pdf-compressor/
+/tools/pdf/merge-pdf/
+/tools/image/
+/tools/image/image-compressor/
+/tools/image/image-resizer/
+/tools/developer/
+/tools/calculator/
+
+Avoid:
+
+- Duplicate content.
+- Thin pages.
+- Automatically generated useless SEO text.
+- Fake reviews.
+- Fake ratings.
+- Keyword stuffing.
+- Indexing empty or broken tool pages.
+
+Do not publish pages for non-functional tools until they contain useful, accurate content and working functionality.
+
+Target USA and India search intent without creating duplicate location-based pages.
+
+---
+
+12. MULTIPLEDARKNEWS INTEGRATION
+
+Keep the Tools Platform independent.
+
+Provide:
+
+- Main website navigation link.
+- Tools homepage link.
+- Shared brand identity.
+- Consistent logo and colors.
+- Cross-site internal links.
+- Analytics integration.
+- Search Console compatibility.
+- Independent sitemap.
+- Independent deployment.
+- Safe API communication.
+
+If a subdomain is selected, support a future deployment such as:
+
+tools.multipledarknews.com
+
+Do not assume DNS or Cloudflare configuration is already available.
+
+Create a safe integration plan for the existing WordPress website.
+
+Do not install a plugin on the live WordPress site without a verified backup, security review and explicit approval.
+
+---
+
+13. ADMIN DASHBOARD
+
+Build an independent admin dashboard.
+
+Admin must be able to:
+
+- View all tools.
+- Create and edit tool metadata.
+- Manage categories.
+- Enable and disable tools.
+- Change tool status.
+- View processing jobs.
+- View failed jobs.
+- Monitor storage usage.
+- View processing statistics.
+- Manage file size limits.
+- Configure retention periods.
+- Review error logs.
+- Monitor API usage.
+- View security events.
+- Manage featured tools.
+- Manage homepage sections.
+- Manage SEO metadata.
+
+Implement role-based access control.
+
+Never expose administrative controls to ordinary users.
+
+---
+
+14. ANALYTICS AND MONITORING
+
+Track privacy-conscious operational metrics:
+
+- Tool page views.
+- Tool usage counts.
+- Successful jobs.
+- Failed jobs.
+- Processing time.
+- Input/output file sizes.
+- Error categories.
+- Queue depth.
+- Storage consumption.
+- API consumption.
+
+Do not collect uploaded document content.
+
+Create operational dashboards and health checks.
+
+Required endpoints:
+
+/health
+/ready
+/api/status
+
+Health checks must report actual service states, not hardcoded success.
+
+---
+
+15. PERFORMANCE
+
+Target:
+
+- Fast initial rendering.
+- Minimal unnecessary JavaScript.
+- Lazy-loaded components.
+- Optimized images.
+- Efficient processing.
+- Queue-based heavy operations.
+- Proper caching.
+- Database indexing.
+- No unnecessary network requests.
+
+Use performance budgets and measure Core Web Vitals.
+
+Do not compromise file processing quality for artificial speed scores.
+
+---
+
+16. TESTING REQUIREMENTS
+
+Write automated tests.
+
+Unit tests:
+
+- Tool calculations.
+- Format conversion.
+- Input validation.
+- Output validation.
+- File size calculations.
+
+Integration tests:
+
+- Upload.
+- Processing.
+- Job tracking.
+- Download.
+- Cleanup.
+- Error handling.
+
+End-to-end tests:
+
+- Homepage.
+- Category pages.
+- Individual tools.
+- Mobile interface.
+- Search.
+- File uploads.
+- Downloads.
+- Admin operations.
+
+Security tests:
+
+- Invalid MIME types.
+- Malicious filenames.
+- Oversized files.
+- Unauthorized downloads.
+- Expired links.
+- Rate limits.
+- Malformed documents.
+- Path traversal.
+- SSRF attempts.
+
+PDF acceptance tests:
+
+- Merge multiple PDFs.
+- Split selected pages.
+- Compress a real PDF.
+- Convert PDF pages into images.
+- Convert images into PDF.
+- Apply watermark.
+- Add page numbers.
+- Verify encrypted output.
+- Verify OCR output.
+
+Image acceptance tests:
+
+- Compress JPEG.
+- Compress PNG.
+- Convert PNG to WebP.
+- Convert WebP to JPG.
+- Resize image.
+- Crop image.
+- Rotate image.
+- Remove metadata.
+- Verify transparency.
+- Process multiple images.
+
+For every operation, inspect the generated output. A successful HTTP response alone is not proof of successful processing.
+
+---
+
+17. BUILD AND IMPLEMENTATION STRATEGY
+
+Work through complete, independently verifiable milestones.
+
+PHASE 0 — Repository audit and architecture.
+
+PHASE 1 — Core platform:
+
+- Project structure.
+- Database.
+- Tool registry.
+- Shared UI.
+- Search.
+- Category pages.
+- Processing infrastructure.
+
+PHASE 2 — Complete PDF tools:
+
+- All 35 tools.
+- Processing engines.
+- Upload/download.
+- Tests.
+- Security.
+
+PHASE 3 — Complete Image tools:
+
+- All 40 tools.
+- Processing engines.
+- Preview/editor.
+- Batch processing.
+- Tests.
+
+PHASE 4 — Remaining 10 categories:
+
+- All 245 tools.
+- Modular processing engines.
+- Individual testing.
+
+PHASE 5 — Admin and analytics.
+
+PHASE 6 — SEO and WordPress integration.
+
+PHASE 7 — Security audit and performance optimization.
+
+PHASE 8 — Production deployment and verification.
+
+Do not stop after creating the homepage or first few tools.
+
+Do not provide a partially completed project as a finished project.
+
+When a milestone is complete, test it before moving forward.
+
+---
+
+18. PRODUCTION RELEASE CHECKLIST
+
+The platform must not be declared production-ready until:
+
+- All advertised tools work.
+- All critical tests pass.
+- No known critical security vulnerability remains.
+- Upload and download workflows work.
+- File cleanup is verified.
+- Processing limits are enforced.
+- Error handling works.
+- Monitoring works.
+- Admin permissions work.
+- SEO metadata is validated.
+- Sitemap is valid.
+- Mobile responsiveness is verified.
+- Backup and recovery are documented.
+- Deployment and rollback procedures are tested.
+
+Provide a final production audit report containing:
+
+1. Completed features.
+2. Tool-by-tool implementation status.
+3. Verified processing engines.
+4. Tests passed and failed.
+5. Security findings.
+6. Performance measurements.
+7. Deployment configuration.
+8. Remaining blockers.
+9. Known limitations.
+10. Rollback instructions.
+
+---
+
+19. STRICT DEVELOPMENT RULES
+
+1. Do not fake any functionality.
+2. Do not use placeholder success messages.
+3. Do not create non-functional buttons.
+4. Do not claim testing without executing tests.
+5. Do not claim production readiness without verification.
+6. Do not silently ignore failed tools.
+7. Do not use copyrighted or unlicensed processing software without checking its terms.
+8. Do not introduce paid APIs without explicit approval.
+9. Do not expose private files.
+10. Do not overwrite the live website.
+11. Do not remove existing working features.
+12. Do not stop after UI development.
+13. Do not generate meaningless SEO pages.
+14. Do not hide errors from users.
+15. Do not claim unsupported format conversions work.
+
+If an operation requires an unavailable API, model, dependency or paid service, document the exact blocker and provide a safe alternative.
+
+The user's budget preference is ₹0. Prefer free and open-source software, local processing, and browser-side processing. Never create unexpected paid infrastructure or API usage.
+
+---
+
+20. FINAL OBJECTIVE
+
+Build MultipleDarkNews Tools into a reliable international online tools platform.
+
+The final product must provide:
+
+- 325+ registered tools.
+- 12 organized categories.
+- 35 real PDF tools.
+- 40 real Image tools.
+- 245 additional tools.
+- Independent architecture.
+- Secure processing.
+- Professional user interface.
+- Worldwide SEO.
+- Admin management.
+- Monitoring and analytics.
+- Verified production deployment.
+
+Start with a complete repository audit, then implement the entire system through the milestones above.
+
+Continue working until the agreed scope is completed and verified.
+
+Do not confuse code generation with software completion.
+
+FINAL SUCCESS CONDITION: A real user must be able to open a tool, upload an actual file, configure the operation, process it successfully, inspect the result and download the correct output.

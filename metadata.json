@@ -1,0 +1,6 @@
+{
+  "name": "MultipleDarkNews Tools - Complete Online Tools Platform",
+  "description": "High-performance, privacy-focused online tools platform by MultipleDarkNews featuring 325+ tools for PDF, Image, Developer, SEO, Calculators, Text, and Media.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
