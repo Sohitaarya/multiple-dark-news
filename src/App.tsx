@@ -257,17 +257,16 @@ export default function App() {
       targetHash = `#${effectiveView}`;
     }
 
-    // Update HTML5 History pushState so browser address bar displays clean, readable, unique URL
+    // Update HTML5 History pushState so browser address bar displays clean, readable, unique URL without hash symbols
     try {
-      if (window.location.pathname !== cleanPath) {
+      if (window.history && window.history.pushState) {
         window.history.pushState({ view: effectiveView, param }, '', cleanPath);
+      } else {
+        window.location.hash = targetHash;
       }
     } catch (e) {
-      // Fallback to hash update
+      window.location.hash = targetHash;
     }
-
-    // Update window.location.hash for backwards compatibility and bookmarking
-    window.location.hash = targetHash;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

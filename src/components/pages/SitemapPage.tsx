@@ -179,11 +179,22 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
                   <td className="p-3 text-right">
                     <button
                       onClick={() => {
-                        const path = entry.loc.split('#')[1];
-                        if (path) {
-                          const parts = path.split('/');
-                          onNavigate(parts[0], parts[1]);
-                        } else {
+                        try {
+                          const urlObj = new URL(entry.loc);
+                          const pathStr = urlObj.pathname.replace(/^\//, '');
+                          if (!pathStr) {
+                            onNavigate('home');
+                            return;
+                          }
+                          const parts = pathStr.split('/');
+                          if (parts[0] === 'category' && parts[1]) {
+                            onNavigate('category', parts[1]);
+                          } else if (parts[0] === 'portfolio' || parts[0] === 'audit' || parts[0] === 'privacy' || parts[0] === 'terms' || parts[0] === 'integration') {
+                            onNavigate(parts[0]);
+                          } else {
+                            onNavigate('tool', parts[0]);
+                          }
+                        } catch {
                           onNavigate('home');
                         }
                       }}
