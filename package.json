@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "bin": {
+    "wrangler": "./bin/wrangler-cli.js"
+  },
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build",
