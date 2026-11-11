@@ -23,7 +23,13 @@ export default function App() {
 
   // Robust URL Route Parser supporting HTML5 Clean Paths (/pdf-compressor), Hash (#tool/pdf-compressor), and Query Params
   const parseCurrentLocation = useCallback(() => {
-    let pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '');
+    let rawPath = window.location.pathname;
+    try {
+      rawPath = decodeURIComponent(rawPath);
+    } catch {
+      // fallback
+    }
+    let pathname = rawPath.toLowerCase().replace(/\/+$/, '');
     let hashStr = window.location.hash.toLowerCase().replace(/^#\/?/, '');
 
     // Check query params fallback
@@ -33,18 +39,30 @@ export default function App() {
     const queryView = searchParams.get('view');
 
     if (queryTool) {
+      const toolMatch = getToolBySlug(queryTool);
+      const targetSlug = toolMatch ? toolMatch.slug : queryTool;
       setCurrentView('tool');
-      setCurrentParam(queryTool);
+      setCurrentParam(targetSlug);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({ view: 'tool', param: targetSlug }, '', `/${targetSlug}`);
+      }
       return;
     }
     if (queryCategory) {
       setCurrentView('category');
       setCurrentParam(queryCategory);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({ view: 'category', param: queryCategory }, '', `/category/${queryCategory}`);
+      }
       return;
     }
     if (queryView) {
-      setCurrentView(queryView === 'seo-hub' ? 'sitemap' : queryView);
+      const effective = queryView === 'seo-hub' ? 'sitemap' : queryView;
+      setCurrentView(effective);
       setCurrentParam(undefined);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({ view: effective }, '', `/${effective}`);
+      }
       return;
     }
 
@@ -52,18 +70,29 @@ export default function App() {
     if (hashStr) {
       const parts = hashStr.split('/');
       if (parts[0] === 'tool' && parts[1]) {
+        const toolMatch = getToolBySlug(parts[1]);
+        const targetSlug = toolMatch ? toolMatch.slug : parts[1];
         setCurrentView('tool');
-        setCurrentParam(parts[1]);
+        setCurrentParam(targetSlug);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: 'tool', param: targetSlug }, '', `/${targetSlug}`);
+        }
         return;
       }
       if (parts[0] === 'category' && parts[1]) {
         setCurrentView('category');
         setCurrentParam(parts[1]);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: 'category', param: parts[1] }, '', `/category/${parts[1]}`);
+        }
         return;
       }
       if (parts[0] === 'portfolio') {
         setCurrentView('portfolio');
         setCurrentParam(undefined);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: 'portfolio' }, '', `/portfolio`);
+        }
         if (parts[1]) {
           setTimeout(() => {
             const el = document.getElementById(parts[1]);
@@ -75,6 +104,9 @@ export default function App() {
       if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(parts[0])) {
         setCurrentView('portfolio');
         setCurrentParam(undefined);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: 'portfolio' }, '', `/portfolio#${parts[0]}`);
+        }
         setTimeout(() => {
           const el = document.getElementById(parts[0]);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -84,26 +116,34 @@ export default function App() {
       if (parts[0] === 'tools' || parts[0] === 'home') {
         setCurrentView('tools');
         setCurrentParam(undefined);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: 'tools' }, '', `/`);
+        }
         return;
       }
       if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(parts[0])) {
         const v = parts[0];
-        if (v === 'seo-hub') setCurrentView('sitemap');
-        else if (v === 'embed' || v === 'add-to-website') setCurrentView('integration');
-        else setCurrentView(v);
+        const effective = v === 'seo-hub' ? 'sitemap' : (v === 'embed' || v === 'add-to-website') ? 'integration' : v;
+        setCurrentView(effective);
         setCurrentParam(undefined);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: effective }, '', `/${effective}`);
+        }
         return;
       }
-      // Check if hash matches a direct tool slug (e.g. #pdf-compressor)
+      // Check if hash matches a direct tool slug (e.g. #pdf-compressor or #study-timetable-maker)
       const toolMatch = getToolBySlug(parts[0]);
       if (toolMatch) {
         setCurrentView('tool');
         setCurrentParam(toolMatch.slug);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({ view: 'tool', param: toolMatch.slug }, '', `/${toolMatch.slug}`);
+        }
         return;
       }
     }
 
-    // 2. Check Clean Path Routing (e.g. /portfolio, /pdf-compressor, /category/pdf, /tool/image-resizer)
+    // 2. Check Clean Path Routing (e.g. /portfolio, /pdf-compressor, /study-timetable-maker, /category/pdf)
     if (pathname && pathname !== '' && pathname !== '/') {
       const pathParts = pathname.split('/').filter(Boolean);
 
@@ -123,8 +163,10 @@ export default function App() {
         return;
       }
       if (pathParts[0] === 'tool' && pathParts[1]) {
+        const toolMatch = getToolBySlug(pathParts[1]);
+        const targetSlug = toolMatch ? toolMatch.slug : pathParts[1];
         setCurrentView('tool');
-        setCurrentParam(pathParts[1]);
+        setCurrentParam(targetSlug);
         return;
       }
       if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(pathParts[0])) {
@@ -136,7 +178,7 @@ export default function App() {
         return;
       }
 
-      // Root path tool matching (e.g. /pdf-compressor, /image-resizer, /word-counter)
+      // Root path tool matching (e.g. /pdf-compressor, /study-timetable-maker, /image-resizer, /word-counter)
       const directTool = getToolBySlug(pathParts[0]);
       if (directTool) {
         setCurrentView('tool');
@@ -144,7 +186,7 @@ export default function App() {
         return;
       }
 
-      // Root path category matching (e.g. /pdf, /image, /developer, /calculators)
+      // Root path category matching (e.g. /pdf, /image, /developer, /calculators, /education)
       const directCategory = getCategoryById(pathParts[0] as ToolCategory);
       if (directCategory) {
         setCurrentView('category');

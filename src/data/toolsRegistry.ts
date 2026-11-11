@@ -67,18 +67,27 @@ if (typeof window !== 'undefined') {
 }
 
 export const getToolBySlug = (slug: string): ToolDefinition | undefined => {
+  if (!slug) return undefined;
   const clean = slug.toLowerCase().trim();
+
+  // 1. Direct match by slug or id
   const direct = registryState.find((tool) => tool.slug === clean || tool.id === clean);
   if (direct) return direct;
 
-  // Fuzzy fallback: e.g. "serp-preview" -> "serp-snippet-preview"
-  return registryState.find((tool) => {
-    return (
-      tool.slug.includes(clean) ||
-      clean.includes(tool.slug) ||
-      tool.keywords.some((k) => k.toLowerCase() === clean.replace(/-/g, ' '))
-    );
-  });
+  // 2. Exact keyword match
+  const keywordMatch = registryState.find((tool) =>
+    tool.keywords.some((k) => k.toLowerCase() === clean || k.toLowerCase() === clean.replace(/-/g, ' '))
+  );
+  if (keywordMatch) return keywordMatch;
+
+  // 3. Substring match for slugs with length >= 4
+  if (clean.length >= 4) {
+    return registryState.find((tool) => {
+      return tool.slug.includes(clean) || clean.includes(tool.slug);
+    });
+  }
+
+  return undefined;
 };
 
 export const getToolsByCategory = (category: ToolCategory): ToolDefinition[] => {
