@@ -7,11 +7,16 @@
 header('Content-Type: application/xml; charset=utf-8');
 header('Cache-Control: public, max-age=1800');
 
-$url = 'https://multiple-dark-news.sohitprakash970.workers.dev/sitemap.xml';
+// 1. Immediately serve local pristine sitemap.xml if available
+if (file_exists(__DIR__ . '/sitemap.xml')) {
+    echo file_get_contents(__DIR__ . '/sitemap.xml');
+    exit;
+}
 
+$url = 'https://multiple-dark-news.sohitprakash970.workers.dev/sitemap.xml';
 $content = false;
 
-// 1. Try cURL for maximum speed and compatibility on Hostinger
+// 2. Try cURL for maximum speed and compatibility on Hostinger
 if (function_exists('curl_init')) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -22,14 +27,9 @@ if (function_exists('curl_init')) {
     curl_close($ch);
 }
 
-// 2. Fallback to file_get_contents if cURL is disabled
+// 3. Fallback to file_get_contents if cURL is disabled
 if (!$content) {
     $content = @file_get_contents($url);
-}
-
-// 3. Fallback to local sitemap.xml if remote worker fetch fails
-if (!$content && file_exists(__DIR__ . '/sitemap.xml')) {
-    $content = @file_get_contents(__DIR__ . '/sitemap.xml');
 }
 
 if ($content) {

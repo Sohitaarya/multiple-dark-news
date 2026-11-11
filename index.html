@@ -105,22 +105,12 @@
     }
     </script>
     <script>
-      // IFrame parent address bar bridge listener
+      // Clean URL Parent Bridge for embeds
       window.addEventListener('message', function(e) {
-        if (e && e.data && e.data.type === 'MDN_ROUTE_CHANGE' && e.data.hash) {
+        if (e && e.data && e.data.type === 'MDN_ROUTE_CHANGE' && e.data.path) {
           try {
-            if (window.location.hash !== e.data.hash) {
-              window.location.hash = e.data.hash;
-            }
-          } catch(err) {}
-        }
-      });
-      window.addEventListener('hashchange', function() {
-        var iframes = document.querySelectorAll('iframe');
-        for (var i = 0; i < iframes.length; i++) {
-          try {
-            if (iframes[i].contentWindow) {
-              iframes[i].contentWindow.postMessage({ type: 'MDN_HASH_SYNC', hash: window.location.hash }, '*');
+            if (window.location.pathname !== e.data.path) {
+              window.history.pushState(null, '', e.data.path);
             }
           } catch(err) {}
         }

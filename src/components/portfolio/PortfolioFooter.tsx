@@ -13,11 +13,13 @@ import { SOHIT_AARYA_DATA } from '../../data/sohitPortfolioData';
 interface PortfolioFooterProps {
   onNavigateTools: () => void;
   onNavigateAdmin: () => void;
+  onNavigateCategory?: (category: string) => void;
 }
 
 export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
   onNavigateTools,
-  onNavigateAdmin
+  onNavigateAdmin,
+  onNavigateCategory
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -99,9 +101,9 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
                   <span>Open Full Tools Suite</span>
                 </button>
               </li>
-              <li><a href="#tool/pdf-compressor" className="hover:text-white transition-colors">PDF Tools Suite</a></li>
-              <li><a href="#tool/image-compressor" className="hover:text-white transition-colors">Image Tools Suite</a></li>
-              <li><a href="#tool/json-formatter" className="hover:text-white transition-colors">Developer Tools Suite</a></li>
+              <li><a href="/pdf-compressor" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('pdf'); else onNavigateTools(); }} className="hover:text-white transition-colors">PDF Tools Suite</a></li>
+              <li><a href="/image-compressor" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('image'); else onNavigateTools(); }} className="hover:text-white transition-colors">Image Tools Suite</a></li>
+              <li><a href="/json-formatter" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('developer'); else onNavigateTools(); }} className="hover:text-white transition-colors">Developer Tools Suite</a></li>
             </ul>
           </div>
 
@@ -121,8 +123,8 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
                   <ExternalLink className="w-3 h-3 text-[#FF2638]" />
                 </a>
               </li>
-              <li><a href="#sitemap" className="hover:text-white transition-colors">XML Sitemaps Directory</a></li>
-              <li><a href="#audit" className="hover:text-white transition-colors">Audit &amp; Compliance</a></li>
+              <li><a href="/sitemap" className="hover:text-white transition-colors">XML Sitemaps Directory</a></li>
+              <li><a href="/audit" className="hover:text-white transition-colors">Audit &amp; Compliance</a></li>
             </ul>
           </div>
         </div>

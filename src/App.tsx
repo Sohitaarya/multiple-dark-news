@@ -21,7 +21,7 @@ export default function App() {
   const [currentView, setCurrentView] = useState<string>('tools');
   const [currentParam, setCurrentParam] = useState<string | undefined>(undefined);
 
-  // Robust URL Route Parser supporting HTML5 Clean Paths (/pdf-compressor), Hash (#tool/pdf-compressor), and Query Params
+  // Robust URL Route Parser supporting Clean Paths (/study-timetable-maker), Query Params, and Legacy Hash migration
   const parseCurrentLocation = useCallback(() => {
     let rawPath = window.location.pathname;
     try {
@@ -30,9 +30,74 @@ export default function App() {
       // fallback
     }
     let pathname = rawPath.toLowerCase().replace(/\/+$/, '');
-    let hashStr = window.location.hash.toLowerCase().replace(/^#\/?/, '');
+    let rawHash = window.location.hash.replace(/^#\/?/, '');
+    let hashStr = '';
+    try {
+      hashStr = decodeURIComponent(rawHash);
+    } catch {
+      hashStr = rawHash;
+    }
+    // Strip invisible Unicode characters like U+2060, U+200B, U+FEFF
+    hashStr = hashStr.replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').toLowerCase().trim();
 
-    // Check query params fallback
+    // 1. PRIMARY: Clean Path Routing (e.g. /study-timetable-maker, /pdf-compressor, /portfolio, /category/pdf)
+    if (pathname && pathname !== '' && pathname !== '/') {
+      const pathParts = pathname.split('/').filter(Boolean);
+      const firstSegment = pathParts[0].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
+
+      if (firstSegment === 'portfolio') {
+        setCurrentView('portfolio');
+        setCurrentParam(undefined);
+        return;
+      }
+      if (firstSegment === 'tools' || firstSegment === 'home') {
+        setCurrentView('tools');
+        setCurrentParam(undefined);
+        return;
+      }
+      if (firstSegment === 'category' && pathParts[1]) {
+        const catId = pathParts[1].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
+        setCurrentView('category');
+        setCurrentParam(catId);
+        return;
+      }
+      if (firstSegment === 'tool' && pathParts[1]) {
+        const toolMatch = getToolBySlug(pathParts[1]);
+        const targetSlug = toolMatch ? toolMatch.slug : pathParts[1];
+        setCurrentView('tool');
+        setCurrentParam(targetSlug);
+        return;
+      }
+      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(firstSegment)) {
+        const effective = firstSegment === 'seo-hub' ? 'sitemap' : (firstSegment === 'embed' || firstSegment === 'add-to-website') ? 'integration' : firstSegment;
+        setCurrentView(effective);
+        setCurrentParam(undefined);
+        return;
+      }
+
+      // Direct Tool Slug on root path (e.g. /study-timetable-maker, /pdf-compressor, /image-resizer)
+      const directTool = getToolBySlug(firstSegment);
+      if (directTool) {
+        setCurrentView('tool');
+        setCurrentParam(directTool.slug);
+        return;
+      }
+
+      // Direct Category ID on root path (e.g. /pdf, /image, /education, /developer)
+      const directCategory = getCategoryById(firstSegment as ToolCategory);
+      if (directCategory) {
+        setCurrentView('category');
+        setCurrentParam(directCategory.id);
+        return;
+      }
+
+      // Unrecognized Route -> 404
+      setCurrentView('404');
+      setCurrentParam(firstSegment);
+      return;
+    }
+
+    // 2. Query Params Fallback (?tool=... or ?category=...)
     const searchParams = new URLSearchParams(window.location.search);
     const queryTool = searchParams.get('tool');
     const queryCategory = searchParams.get('category');
@@ -66,10 +131,12 @@ export default function App() {
       return;
     }
 
-    // 1. Check Hash Routing (e.g. #tool/pdf-compressor, #category/pdf, #portfolio, #admin)
+    // 3. Legacy Hash Fallback Migration (#study-timetable-maker -> /study-timetable-maker)
     if (hashStr) {
       const parts = hashStr.split('/');
-      if (parts[0] === 'tool' && parts[1]) {
+      const firstHash = parts[0].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
+
+      if (firstHash === 'tool' && parts[1]) {
         const toolMatch = getToolBySlug(parts[1]);
         const targetSlug = toolMatch ? toolMatch.slug : parts[1];
         setCurrentView('tool');
@@ -79,15 +146,16 @@ export default function App() {
         }
         return;
       }
-      if (parts[0] === 'category' && parts[1]) {
+      if (firstHash === 'category' && parts[1]) {
+        const catId = parts[1].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
         setCurrentView('category');
-        setCurrentParam(parts[1]);
+        setCurrentParam(catId);
         if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'category', param: parts[1] }, '', `/category/${parts[1]}`);
+          window.history.replaceState({ view: 'category', param: catId }, '', `/category/${catId}`);
         }
         return;
       }
-      if (parts[0] === 'portfolio') {
+      if (firstHash === 'portfolio') {
         setCurrentView('portfolio');
         setCurrentParam(undefined);
         if (window.history && window.history.replaceState) {
@@ -101,19 +169,19 @@ export default function App() {
         }
         return;
       }
-      if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(parts[0])) {
+      if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(firstHash)) {
         setCurrentView('portfolio');
         setCurrentParam(undefined);
         if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'portfolio' }, '', `/portfolio#${parts[0]}`);
+          window.history.replaceState({ view: 'portfolio' }, '', `/portfolio#${firstHash}`);
         }
         setTimeout(() => {
-          const el = document.getElementById(parts[0]);
+          const el = document.getElementById(firstHash);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 100);
         return;
       }
-      if (parts[0] === 'tools' || parts[0] === 'home') {
+      if (firstHash === 'tools' || firstHash === 'home') {
         setCurrentView('tools');
         setCurrentParam(undefined);
         if (window.history && window.history.replaceState) {
@@ -121,9 +189,8 @@ export default function App() {
         }
         return;
       }
-      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(parts[0])) {
-        const v = parts[0];
-        const effective = v === 'seo-hub' ? 'sitemap' : (v === 'embed' || v === 'add-to-website') ? 'integration' : v;
+      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(firstHash)) {
+        const effective = firstHash === 'seo-hub' ? 'sitemap' : (firstHash === 'embed' || firstHash === 'add-to-website') ? 'integration' : firstHash;
         setCurrentView(effective);
         setCurrentParam(undefined);
         if (window.history && window.history.replaceState) {
@@ -131,8 +198,9 @@ export default function App() {
         }
         return;
       }
-      // Check if hash matches a direct tool slug (e.g. #pdf-compressor or #study-timetable-maker)
-      const toolMatch = getToolBySlug(parts[0]);
+
+      // Check if hash matches a direct tool slug (e.g. #study-timetable-maker or #pdf-compressor)
+      const toolMatch = getToolBySlug(firstHash);
       if (toolMatch) {
         setCurrentView('tool');
         setCurrentParam(toolMatch.slug);
@@ -141,63 +209,6 @@ export default function App() {
         }
         return;
       }
-    }
-
-    // 2. Check Clean Path Routing (e.g. /portfolio, /pdf-compressor, /study-timetable-maker, /category/pdf)
-    if (pathname && pathname !== '' && pathname !== '/') {
-      const pathParts = pathname.split('/').filter(Boolean);
-
-      if (pathParts[0] === 'portfolio') {
-        setCurrentView('portfolio');
-        setCurrentParam(undefined);
-        return;
-      }
-      if (pathParts[0] === 'tools' || pathParts[0] === 'home') {
-        setCurrentView('tools');
-        setCurrentParam(undefined);
-        return;
-      }
-      if (pathParts[0] === 'category' && pathParts[1]) {
-        setCurrentView('category');
-        setCurrentParam(pathParts[1]);
-        return;
-      }
-      if (pathParts[0] === 'tool' && pathParts[1]) {
-        const toolMatch = getToolBySlug(pathParts[1]);
-        const targetSlug = toolMatch ? toolMatch.slug : pathParts[1];
-        setCurrentView('tool');
-        setCurrentParam(targetSlug);
-        return;
-      }
-      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(pathParts[0])) {
-        const v = pathParts[0];
-        if (v === 'seo-hub') setCurrentView('sitemap');
-        else if (v === 'embed' || v === 'add-to-website') setCurrentView('integration');
-        else setCurrentView(v);
-        setCurrentParam(undefined);
-        return;
-      }
-
-      // Root path tool matching (e.g. /pdf-compressor, /study-timetable-maker, /image-resizer, /word-counter)
-      const directTool = getToolBySlug(pathParts[0]);
-      if (directTool) {
-        setCurrentView('tool');
-        setCurrentParam(directTool.slug);
-        return;
-      }
-
-      // Root path category matching (e.g. /pdf, /image, /developer, /calculators, /education)
-      const directCategory = getCategoryById(pathParts[0] as ToolCategory);
-      if (directCategory) {
-        setCurrentView('category');
-        setCurrentParam(directCategory.id);
-        return;
-      }
-
-      // Unrecognized Route -> Render 404 Page
-      setCurrentView('404');
-      setCurrentParam(pathParts[0]);
-      return;
     }
 
     // Default Root View: 331 Tools Suite
@@ -212,11 +223,8 @@ export default function App() {
     const handlePopState = () => parseCurrentLocation();
     const handleHashChange = () => parseCurrentLocation();
     const handleRouteMessage = (e: MessageEvent) => {
-      if (e.data && e.data.type === 'MDN_HASH_SYNC' && e.data.hash) {
-        if (window.location.hash !== e.data.hash) {
-          window.location.hash = e.data.hash;
-          parseCurrentLocation();
-        }
+      if (e.data && e.data.type === 'MDN_ROUTE_CHANGE' && e.data.path) {
+        parseCurrentLocation();
       }
     };
 
@@ -231,41 +239,52 @@ export default function App() {
     };
   }, [parseCurrentLocation]);
 
-  // Handle User Navigation: Updates HTML5 History PushState + Hash + Location Sync
+  // Handle User Navigation: Updates HTML5 History PushState + Parent Iframe Bridge
   const handleNavigate = (view: string, param?: string) => {
     const effectiveView = view === 'seo-hub' ? 'sitemap' : view;
     setCurrentView(effectiveView);
     setCurrentParam(param);
 
     let cleanPath = '/';
-    let targetHash = `#${effectiveView}`;
 
     if (effectiveView === 'portfolio') {
       cleanPath = '/portfolio';
-      targetHash = '#portfolio';
     } else if (effectiveView === 'tool' && param) {
-      cleanPath = `/${param}`;
-      targetHash = `#tool/${param}`;
+      const toolMatch = getToolBySlug(param);
+      const targetSlug = toolMatch ? toolMatch.slug : param;
+      cleanPath = `/${targetSlug}`;
     } else if (effectiveView === 'category' && param) {
       cleanPath = `/category/${param}`;
-      targetHash = `#category/${param}`;
     } else if (effectiveView === 'tools' || effectiveView === 'home') {
       cleanPath = '/';
-      targetHash = '#tools';
     } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'integration'].includes(effectiveView)) {
       cleanPath = `/${effectiveView}`;
-      targetHash = `#${effectiveView}`;
     }
 
-    // Update HTML5 History pushState so browser address bar displays clean, readable, unique URL without hash symbols
+    // 1. Update HTML5 History pushState so browser address bar displays clean, readable, unique URL without hash symbols
     try {
       if (window.history && window.history.pushState) {
         window.history.pushState({ view: effectiveView, param }, '', cleanPath);
-      } else {
-        window.location.hash = targetHash;
       }
     } catch (e) {
-      window.location.hash = targetHash;
+      // fallback
+    }
+
+    // 2. Synchronize parent window address bar if embedded in an iframe (e.g. Hostinger wrapper)
+    try {
+      if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
+        window.parent.postMessage({
+          type: 'MDN_ROUTE_CHANGE',
+          path: cleanPath,
+          slug: param,
+          view: effectiveView
+        }, '*');
+        try {
+          window.parent.history.pushState({ view: effectiveView, param }, '', cleanPath);
+        } catch {}
+      }
+    } catch (e) {
+      // ignore cross-origin restrictions
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });

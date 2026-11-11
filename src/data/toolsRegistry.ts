@@ -66,9 +66,26 @@ if (typeof window !== 'undefined') {
   }
 }
 
+export const sanitizeToolSlug = (raw: string): string => {
+  if (!raw) return '';
+  let str = raw;
+  try {
+    str = decodeURIComponent(str);
+  } catch {
+    // ignore
+  }
+  return str
+    .toLowerCase()
+    .replace(/^#\/?/, '')
+    .replace(/[\u200B-\u200D\u2060\uFEFF]/g, '')
+    .replace(/[^a-z0-9_-]/g, '')
+    .trim();
+};
+
 export const getToolBySlug = (slug: string): ToolDefinition | undefined => {
   if (!slug) return undefined;
-  const clean = slug.toLowerCase().trim();
+  const clean = sanitizeToolSlug(slug);
+  if (!clean) return undefined;
 
   // 1. Direct match by slug or id
   const direct = registryState.find((tool) => tool.slug === clean || tool.id === clean);
@@ -76,7 +93,7 @@ export const getToolBySlug = (slug: string): ToolDefinition | undefined => {
 
   // 2. Exact keyword match
   const keywordMatch = registryState.find((tool) =>
-    tool.keywords.some((k) => k.toLowerCase() === clean || k.toLowerCase() === clean.replace(/-/g, ' '))
+    tool.keywords.some((k) => sanitizeToolSlug(k) === clean || sanitizeToolSlug(k.replace(/-/g, ' ')) === clean)
   );
   if (keywordMatch) return keywordMatch;
 

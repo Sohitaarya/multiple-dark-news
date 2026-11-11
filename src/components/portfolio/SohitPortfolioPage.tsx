@@ -159,6 +159,7 @@ export const SohitPortfolioPage: React.FC<SohitPortfolioPageProps> = ({
       <PortfolioFooter
         onNavigateTools={onNavigateToolsSuite}
         onNavigateAdmin={onNavigateAdmin}
+        onNavigateCategory={onOpenCategory}
       />
     </div>
   );
