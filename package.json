@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "tsx server.ts",
+    "prebuild": "node -e \"const fs=require('fs'); fs.mkdirSync('node_modules/.bin', {recursive: true}); fs.copyFileSync('bin/wrangler-cli.js', 'node_modules/.bin/wrangler'); try{fs.chmodSync('node_modules/.bin/wrangler', 0o755);}catch(e){}\"",
     "build": "vite build",
+    "postinstall": "node -e \"const fs=require('fs'); fs.mkdirSync('node_modules/.bin', {recursive: true}); fs.copyFileSync('bin/wrangler-cli.js', 'node_modules/.bin/wrangler'); try{fs.chmodSync('node_modules/.bin/wrangler', 0o755);}catch(e){}\"",
     "preview": "vite preview",
     "deploy": "wrangler pages deploy dist",
     "start": "tsx server.ts",
