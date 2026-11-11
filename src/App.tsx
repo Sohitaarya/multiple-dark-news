@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { HomePage } from './components/pages/HomePage';
@@ -10,6 +10,7 @@ import { LegalPage } from './components/pages/LegalPage';
 import { SitemapPage } from './components/pages/SitemapPage';
 import { IntegrationGuidePage } from './components/pages/IntegrationGuidePage';
 import { SohitPortfolioPage } from './components/portfolio/SohitPortfolioPage';
+import { NotFoundPage } from './components/pages/NotFoundPage';
 import { SEOHead } from './components/common/SEOHead';
 import { GoogleAdsenseScript } from './components/common/GoogleAdsense';
 import { getToolBySlug } from './data/toolsRegistry';
@@ -20,143 +21,220 @@ export default function App() {
   const [currentView, setCurrentView] = useState<string>('tools');
   const [currentParam, setCurrentParam] = useState<string | undefined>(undefined);
 
-  // Read URL hash on load for deep linking and iframe address bar synchronization
-  useEffect(() => {
-    const parseHash = () => {
-      let rawHash = window.location.hash;
-      
-      // If running inside Hostinger iframe, attempt reading parent address bar hash
-      try {
-        if (window.parent && window.parent !== window && window.parent.location.hash) {
-          rawHash = window.parent.location.hash;
-        }
-      } catch (e) {
-        // Cross-origin fallback check query string
-      }
+  // Robust URL Route Parser supporting HTML5 Clean Paths (/pdf-compressor), Hash (#tool/pdf-compressor), and Query Params
+  const parseCurrentLocation = useCallback(() => {
+    let pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '');
+    let hashStr = window.location.hash.toLowerCase().replace(/^#\/?/, '');
 
-      const hash = rawHash.replace(/^#\/?/, '');
-      if (hash) {
-        const parts = hash.split('/');
-        if (parts[0] === 'tool' && parts[1]) {
-          setCurrentView('tool');
-          setCurrentParam(parts[1]);
-          return;
-        } else if (parts[0] === 'category' && parts[1]) {
-          setCurrentView('category');
-          setCurrentParam(parts[1]);
-          return;
-        } else if (parts[0] === 'portfolio') {
-          setCurrentView('portfolio');
-          setCurrentParam(undefined);
-          if (parts[1]) {
-            setTimeout(() => {
-              const el = document.getElementById(parts[1]);
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-          }
-          return;
-        } else if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(parts[0])) {
-          setCurrentView('portfolio');
-          setCurrentParam(undefined);
+    // Check query params fallback
+    const searchParams = new URLSearchParams(window.location.search);
+    const queryTool = searchParams.get('tool');
+    const queryCategory = searchParams.get('category');
+    const queryView = searchParams.get('view');
+
+    if (queryTool) {
+      setCurrentView('tool');
+      setCurrentParam(queryTool);
+      return;
+    }
+    if (queryCategory) {
+      setCurrentView('category');
+      setCurrentParam(queryCategory);
+      return;
+    }
+    if (queryView) {
+      setCurrentView(queryView === 'seo-hub' ? 'sitemap' : queryView);
+      setCurrentParam(undefined);
+      return;
+    }
+
+    // 1. Check Hash Routing (e.g. #tool/pdf-compressor, #category/pdf, #portfolio, #admin)
+    if (hashStr) {
+      const parts = hashStr.split('/');
+      if (parts[0] === 'tool' && parts[1]) {
+        setCurrentView('tool');
+        setCurrentParam(parts[1]);
+        return;
+      }
+      if (parts[0] === 'category' && parts[1]) {
+        setCurrentView('category');
+        setCurrentParam(parts[1]);
+        return;
+      }
+      if (parts[0] === 'portfolio') {
+        setCurrentView('portfolio');
+        setCurrentParam(undefined);
+        if (parts[1]) {
           setTimeout(() => {
-            const el = document.getElementById(parts[0]);
+            const el = document.getElementById(parts[1]);
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }, 100);
-          return;
-        } else if (parts[0] === 'tools' || parts[0] === 'home') {
-          setCurrentView('tools');
-          setCurrentParam(undefined);
-          return;
-        } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(parts[0])) {
-          const v = parts[0];
-          if (v === 'seo-hub') setCurrentView('sitemap');
-          else if (v === 'embed' || v === 'add-to-website') setCurrentView('integration');
-          else setCurrentView(v);
-          setCurrentParam(undefined);
-          return;
         }
-      } else {
+        return;
+      }
+      if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(parts[0])) {
+        setCurrentView('portfolio');
+        setCurrentParam(undefined);
+        setTimeout(() => {
+          const el = document.getElementById(parts[0]);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+        return;
+      }
+      if (parts[0] === 'tools' || parts[0] === 'home') {
         setCurrentView('tools');
         setCurrentParam(undefined);
         return;
       }
-
-      // Check query params
-      const searchParams = new URLSearchParams(window.location.search);
-      if (searchParams.get('tool')) {
-        setCurrentView('tool');
-        setCurrentParam(searchParams.get('tool')!);
-      } else if (searchParams.get('category')) {
-        setCurrentView('category');
-        setCurrentParam(searchParams.get('category')!);
-      } else if (searchParams.get('view')) {
-        const v = searchParams.get('view')!;
-        setCurrentView(v === 'seo-hub' ? 'sitemap' : v);
+      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(parts[0])) {
+        const v = parts[0];
+        if (v === 'seo-hub') setCurrentView('sitemap');
+        else if (v === 'embed' || v === 'add-to-website') setCurrentView('integration');
+        else setCurrentView(v);
+        setCurrentParam(undefined);
+        return;
       }
-    };
+      // Check if hash matches a direct tool slug (e.g. #pdf-compressor)
+      const toolMatch = getToolBySlug(parts[0]);
+      if (toolMatch) {
+        setCurrentView('tool');
+        setCurrentParam(toolMatch.slug);
+        return;
+      }
+    }
 
-    parseHash();
+    // 2. Check Clean Path Routing (e.g. /portfolio, /pdf-compressor, /category/pdf, /tool/image-resizer)
+    if (pathname && pathname !== '' && pathname !== '/') {
+      const pathParts = pathname.split('/').filter(Boolean);
 
-    const handleMessage = (e: MessageEvent) => {
+      if (pathParts[0] === 'portfolio') {
+        setCurrentView('portfolio');
+        setCurrentParam(undefined);
+        return;
+      }
+      if (pathParts[0] === 'tools' || pathParts[0] === 'home') {
+        setCurrentView('tools');
+        setCurrentParam(undefined);
+        return;
+      }
+      if (pathParts[0] === 'category' && pathParts[1]) {
+        setCurrentView('category');
+        setCurrentParam(pathParts[1]);
+        return;
+      }
+      if (pathParts[0] === 'tool' && pathParts[1]) {
+        setCurrentView('tool');
+        setCurrentParam(pathParts[1]);
+        return;
+      }
+      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(pathParts[0])) {
+        const v = pathParts[0];
+        if (v === 'seo-hub') setCurrentView('sitemap');
+        else if (v === 'embed' || v === 'add-to-website') setCurrentView('integration');
+        else setCurrentView(v);
+        setCurrentParam(undefined);
+        return;
+      }
+
+      // Root path tool matching (e.g. /pdf-compressor, /image-resizer, /word-counter)
+      const directTool = getToolBySlug(pathParts[0]);
+      if (directTool) {
+        setCurrentView('tool');
+        setCurrentParam(directTool.slug);
+        return;
+      }
+
+      // Root path category matching (e.g. /pdf, /image, /developer, /calculators)
+      const directCategory = getCategoryById(pathParts[0] as ToolCategory);
+      if (directCategory) {
+        setCurrentView('category');
+        setCurrentParam(directCategory.id);
+        return;
+      }
+
+      // Unrecognized Route -> Render 404 Page
+      setCurrentView('404');
+      setCurrentParam(pathParts[0]);
+      return;
+    }
+
+    // Default Root View: 331 Tools Suite
+    setCurrentView('tools');
+    setCurrentParam(undefined);
+  }, []);
+
+  // Listen for browser popstate and hashchange events for Back & Forward button support
+  useEffect(() => {
+    parseCurrentLocation();
+
+    const handlePopState = () => parseCurrentLocation();
+    const handleHashChange = () => parseCurrentLocation();
+    const handleRouteMessage = (e: MessageEvent) => {
       if (e.data && e.data.type === 'MDN_HASH_SYNC' && e.data.hash) {
         if (window.location.hash !== e.data.hash) {
           window.location.hash = e.data.hash;
-          parseHash();
+          parseCurrentLocation();
         }
       }
     };
 
-    window.addEventListener('hashchange', parseHash);
-    window.addEventListener('message', handleMessage);
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('message', handleRouteMessage);
 
     return () => {
-      window.removeEventListener('hashchange', parseHash);
-      window.removeEventListener('message', handleMessage);
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('message', handleRouteMessage);
     };
-  }, []);
+  }, [parseCurrentLocation]);
 
+  // Handle User Navigation: Updates HTML5 History PushState + Hash + Location Sync
   const handleNavigate = (view: string, param?: string) => {
     const effectiveView = view === 'seo-hub' ? 'sitemap' : view;
     setCurrentView(effectiveView);
     setCurrentParam(param);
 
+    let cleanPath = '/';
     let targetHash = `#${effectiveView}`;
-    if (param) {
-      targetHash = `#${effectiveView}/${param}`;
-    } else if (effectiveView === 'portfolio') {
+
+    if (effectiveView === 'portfolio') {
+      cleanPath = '/portfolio';
       targetHash = '#portfolio';
+    } else if (effectiveView === 'tool' && param) {
+      cleanPath = `/${param}`;
+      targetHash = `#tool/${param}`;
+    } else if (effectiveView === 'category' && param) {
+      cleanPath = `/category/${param}`;
+      targetHash = `#category/${param}`;
+    } else if (effectiveView === 'tools' || effectiveView === 'home') {
+      cleanPath = '/';
+      targetHash = '#tools';
+    } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'integration'].includes(effectiveView)) {
+      cleanPath = `/${effectiveView}`;
+      targetHash = `#${effectiveView}`;
     }
 
-    // Update local location hash
-    window.location.hash = targetHash;
-
-    // Synchronize parent browser address bar if running inside Hostinger iframe
+    // Update HTML5 History pushState so browser address bar displays clean, readable, unique URL
     try {
-      if (window.parent && window.parent !== window) {
-        window.parent.location.hash = targetHash;
-        if (window.parent.history && window.parent.history.replaceState) {
-          window.parent.history.replaceState(null, '', targetHash);
-        }
+      if (window.location.pathname !== cleanPath) {
+        window.history.pushState({ view: effectiveView, param }, '', cleanPath);
       }
     } catch (e) {
-      // Cross-origin security boundary fallback
+      // Fallback to hash update
     }
 
-    // Always post message to parent container for URL address bar sync
-    try {
-      if (window.parent && window.parent !== window) {
-        window.parent.postMessage({ type: 'MDN_ROUTE_CHANGE', hash: targetHash }, '*');
-      }
-    } catch (e) {}
+    // Update window.location.hash for backwards compatibility and bookmarking
+    window.location.hash = targetHash;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Resolve current tool if in tool view
+  // Resolve current tool or category
   const currentTool = currentView === 'tool' && currentParam ? getToolBySlug(currentParam) : undefined;
   const currentCategory = currentView === 'category' && currentParam ? getCategoryById(currentParam as ToolCategory) : undefined;
 
-  // Compute dynamic SEO metadata optimized for #1 Google Ranking
+  // Compute dynamic SEO metadata and canonical URLs optimized for #1 Google Indexing
   let seoTitle = 'Sohit Aarya — Developer, Creator & Founder | 331 Online Tools Ecosystem';
   let seoDescription = 'Official personal portfolio of Sohit Aarya. Full-stack developer, digital creator, and founder of MultipleDarkNews and the 331 in-browser tools platform.';
   let canonicalUrl = 'https://tools.multipledarknews.com';
@@ -166,56 +244,60 @@ export default function App() {
   if (currentView === 'portfolio') {
     seoTitle = 'Sohit Aarya — Developer, Creator & Founder | 331 Online Tools Ecosystem';
     seoDescription = 'Official personal portfolio of Sohit Aarya. Full-stack developer, digital creator, and founder of MultipleDarkNews and the 331 in-browser tools platform.';
-    canonicalUrl = 'https://tools.multipledarknews.com/#portfolio';
+    canonicalUrl = 'https://tools.multipledarknews.com/portfolio';
     keywords = ['sohit aarya', 'sohit aarya portfolio', 'full-stack developer', 'creative technologist', '331 tools', 'multipledarknews'];
   } else if (currentView === 'tools' || currentView === 'home') {
     seoTitle = 'MultipleDarkNews Tools — 331+ Free Online PDF, Image, Developer & SEO Tools';
     seoDescription = 'Fast, 100% private online tools platform by Sohit Aarya & MultipleDarkNews. Compress PDFs, resize images, format JSON, test SEO, and convert units directly in your browser. Zero cloud uploads.';
-    canonicalUrl = 'https://tools.multipledarknews.com/#tools';
+    canonicalUrl = 'https://tools.multipledarknews.com';
     keywords = ['free online tools', 'pdf tools', 'image editor', 'developer tools', 'seo tools', 'multipledarknews', '331 tools'];
     breadcrumbs = [
-      { name: 'Portfolio', url: 'https://tools.multipledarknews.com/#portfolio' },
-      { name: '331 Tools Suite', url: 'https://tools.multipledarknews.com/#tools' }
+      { name: 'Portfolio', url: 'https://tools.multipledarknews.com/portfolio' },
+      { name: '331 Tools Suite', url: 'https://tools.multipledarknews.com' }
     ];
   } else if (currentTool) {
     seoTitle = currentTool.seoTitle || `${currentTool.name} Online - Free & Private | MultipleDarkNews Tools`;
     seoDescription = currentTool.seoDescription || currentTool.description;
-    canonicalUrl = `https://tools.multipledarknews.com/#tool/${currentTool.slug}`;
+    canonicalUrl = `https://tools.multipledarknews.com/${currentTool.slug}`;
     keywords = currentTool.keywords || [currentTool.name.toLowerCase(), 'free online tool'];
     breadcrumbs = [
       { name: 'Home', url: 'https://tools.multipledarknews.com' },
-      { name: `${currentTool.category.toUpperCase()} Tools`, url: `https://tools.multipledarknews.com/#category/${currentTool.category}` },
-      { name: currentTool.name, url: `https://tools.multipledarknews.com/#tool/${currentTool.slug}` },
+      { name: `${currentTool.category.toUpperCase()} Tools`, url: `https://tools.multipledarknews.com/category/${currentTool.category}` },
+      { name: currentTool.name, url: `https://tools.multipledarknews.com/${currentTool.slug}` },
     ];
   } else if (currentCategory) {
     seoTitle = `${currentCategory.name} Online — 100% Free Client-Side Tools Suite | MultipleDarkNews`;
     seoDescription = `${currentCategory.shortDescription} Access all ${currentCategory.toolCount} free tools with zero file uploads and instant in-browser execution.`;
-    canonicalUrl = `https://tools.multipledarknews.com/#category/${currentCategory.id}`;
+    canonicalUrl = `https://tools.multipledarknews.com/category/${currentCategory.id}`;
     keywords = [currentCategory.name.toLowerCase(), `${currentCategory.name.toLowerCase()} online`, 'free browser tools'];
     breadcrumbs = [
       { name: 'Home', url: 'https://tools.multipledarknews.com' },
-      { name: currentCategory.name, url: `https://tools.multipledarknews.com/#category/${currentCategory.id}` },
+      { name: currentCategory.name, url: `https://tools.multipledarknews.com/category/${currentCategory.id}` },
     ];
   } else if (currentView === 'admin') {
     seoTitle = 'Admin Dashboard & Central Tool Registry | MultipleDarkNews Tools';
     seoDescription = 'Platform governance and real-time monitoring dashboard for MultipleDarkNews central tool registry.';
-    canonicalUrl = 'https://tools.multipledarknews.com/#admin';
+    canonicalUrl = 'https://tools.multipledarknews.com/admin';
   } else if (currentView === 'audit') {
     seoTitle = 'Technical Audit Report & Verification | MultipleDarkNews Tools';
-    seoDescription = 'Comprehensive Phase 0 and Phase 8 engineering audit, test coverage verification, and privacy compliance report.';
-    canonicalUrl = 'https://tools.multipledarknews.com/#audit';
+    seoDescription = 'Comprehensive engineering audit, test coverage verification, and privacy compliance report.';
+    canonicalUrl = 'https://tools.multipledarknews.com/audit';
   } else if (currentView === 'sitemap') {
     seoTitle = 'XML Sitemap & Google Indexation Directory | MultipleDarkNews Tools';
     seoDescription = 'Complete XML sitemap index containing all 331+ online tools for search engine submission and verification.';
-    canonicalUrl = 'https://tools.multipledarknews.com/#sitemap';
+    canonicalUrl = 'https://tools.multipledarknews.com/sitemap';
   } else if (currentView === 'integration') {
     seoTitle = 'Website Integration Guide — Add 331+ Tools to Your Website | MultipleDarkNews';
-    seoDescription = 'Step-by-step guide to connect 331+ free tools to multipledarknews.com via Subdomain CNAME, Subfolder Nginx/Cloudflare proxy, or responsive iFrame embed.';
-    canonicalUrl = 'https://tools.multipledarknews.com/#integration';
+    seoDescription = 'Step-by-step guide to connect 331+ free tools to multipledarknews.com via Subdomain CNAME, Subfolder proxy, or embed.';
+    canonicalUrl = 'https://tools.multipledarknews.com/integration';
     breadcrumbs = [
       { name: 'Home', url: 'https://tools.multipledarknews.com' },
-      { name: 'Website Integration Guide', url: 'https://tools.multipledarknews.com/#integration' },
+      { name: 'Website Integration Guide', url: 'https://tools.multipledarknews.com/integration' },
     ];
+  } else if (currentView === '404') {
+    seoTitle = '404 Page Not Found | MultipleDarkNews Tools Ecosystem';
+    seoDescription = 'The requested tool or page route was not found in the 331-tool registry.';
+    canonicalUrl = 'https://tools.multipledarknews.com';
   }
 
   return (
@@ -230,7 +312,7 @@ export default function App() {
         canonicalUrl={canonicalUrl}
         keywords={keywords}
         breadcrumbs={breadcrumbs}
-        noIndex={currentView === 'admin'}
+        noIndex={currentView === 'admin' || currentView === '404'}
         faq={currentTool ? currentTool.faq : undefined}
         howToSteps={
           currentTool
@@ -272,30 +354,8 @@ export default function App() {
               <ToolRunner key={currentTool.id} tool={currentTool} onNavigate={handleNavigate} />
             )}
 
-            {currentView === 'tool' && !currentTool && (
-              <div className="max-w-3xl mx-auto px-4 py-20 text-center space-y-4">
-                <div className="inline-flex p-4 rounded-3xl bg-rose-500/10 text-rose-400 font-mono font-extrabold text-2xl">
-                  404
-                </div>
-                <h1 className="text-2xl font-bold text-white">Tool Not Found</h1>
-                <p className="text-slate-400 text-xs sm:text-sm max-w-md mx-auto">
-                  The tool URL you requested could not be located in the 331-tool registry.
-                </p>
-                <div className="flex justify-center gap-3 pt-2">
-                  <button
-                    onClick={() => handleNavigate('portfolio')}
-                    className="px-5 py-2.5 rounded-xl bg-[#FF2638] hover:bg-[#e0192b] text-white text-xs font-bold transition-colors"
-                  >
-                    Go to Sohit Aarya Portfolio
-                  </button>
-                  <button
-                    onClick={() => handleNavigate('tools')}
-                    className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-colors"
-                  >
-                    View All 331 Tools
-                  </button>
-                </div>
-              </div>
+            {currentView === '404' && (
+              <NotFoundPage onNavigate={handleNavigate} requestedSlug={currentParam} />
             )}
 
             {currentView === 'admin' && (

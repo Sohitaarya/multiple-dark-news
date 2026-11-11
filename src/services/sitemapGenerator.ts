@@ -33,7 +33,7 @@ export function getSitemapEntries(domain = 'https://tools.multipledarknews.com')
     },
     // 2. Sohit Aarya Official Portfolio
     {
-      loc: `${cleanDomain}/#portfolio`,
+      loc: `${cleanDomain}/portfolio`,
       lastmod: now,
       changefreq: 'daily',
       priority: '1.0',
@@ -41,28 +41,28 @@ export function getSitemapEntries(domain = 'https://tools.multipledarknews.com')
     },
     // 3. Audit & Governance
     {
-      loc: `${cleanDomain}/#audit`,
+      loc: `${cleanDomain}/audit`,
       lastmod: now,
       changefreq: 'weekly',
       priority: '0.8',
       name: 'Engineering & Security Audit Report',
     },
     {
-      loc: `${cleanDomain}/#privacy`,
+      loc: `${cleanDomain}/privacy`,
       lastmod: now,
       changefreq: 'monthly',
       priority: '0.7',
       name: 'Privacy Policy & Zero-Data Deletion',
     },
     {
-      loc: `${cleanDomain}/#terms`,
+      loc: `${cleanDomain}/terms`,
       lastmod: now,
       changefreq: 'monthly',
       priority: '0.7',
       name: 'Terms of Service',
     },
     {
-      loc: `${cleanDomain}/#integration`,
+      loc: `${cleanDomain}/integration`,
       lastmod: now,
       changefreq: 'monthly',
       priority: '0.8',
@@ -73,7 +73,7 @@ export function getSitemapEntries(domain = 'https://tools.multipledarknews.com')
   // 3. All 12 Categories
   for (const cat of CATEGORIES) {
     entries.push({
-      loc: `${cleanDomain}/#category/${cat.id}`,
+      loc: `${cleanDomain}/category/${cat.id}`,
       lastmod: now,
       changefreq: 'daily',
       priority: '0.9',
@@ -82,11 +82,11 @@ export function getSitemapEntries(domain = 'https://tools.multipledarknews.com')
     });
   }
 
-  // 4. All 325+ Tools
+  // 4. All 331+ Tools
   for (const tool of ALL_TOOLS) {
     const priority = tool.isPopular || tool.isFeatured ? '0.9' : '0.8';
     entries.push({
-      loc: `${cleanDomain}/#tool/${tool.slug}`,
+      loc: `${cleanDomain}/${tool.slug}`,
       lastmod: now,
       changefreq: 'weekly',
       priority,
