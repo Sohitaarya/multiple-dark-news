@@ -131,84 +131,68 @@ export default function App() {
       return;
     }
 
-    // 3. Legacy Hash Fallback Migration (#study-timetable-maker -> /study-timetable-maker)
+    // 3. Legacy Hash Fallback Migration (#tool/pdf-to-jpg or #study-timetable-maker -> /study-timetable-maker)
     if (hashStr) {
       const parts = hashStr.split('/');
       const firstHash = parts[0].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
 
+      let targetCleanPath = '/';
+      let matchedView = 'tools';
+      let matchedParam: string | undefined = undefined;
+
       if (firstHash === 'tool' && parts[1]) {
         const toolMatch = getToolBySlug(parts[1]);
-        const targetSlug = toolMatch ? toolMatch.slug : parts[1];
-        setCurrentView('tool');
-        setCurrentParam(targetSlug);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'tool', param: targetSlug }, '', `/${targetSlug}`);
-        }
-        return;
-      }
-      if (firstHash === 'category' && parts[1]) {
-        const catId = parts[1].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
-        setCurrentView('category');
-        setCurrentParam(catId);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'category', param: catId }, '', `/category/${catId}`);
-        }
-        return;
-      }
-      if (firstHash === 'portfolio') {
-        setCurrentView('portfolio');
-        setCurrentParam(undefined);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'portfolio' }, '', `/portfolio`);
-        }
-        if (parts[1]) {
-          setTimeout(() => {
-            const el = document.getElementById(parts[1]);
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }
-        return;
-      }
-      if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(firstHash)) {
-        setCurrentView('portfolio');
-        setCurrentParam(undefined);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'portfolio' }, '', `/portfolio#${firstHash}`);
-        }
-        setTimeout(() => {
-          const el = document.getElementById(firstHash);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-        return;
-      }
-      if (firstHash === 'tools' || firstHash === 'home') {
-        setCurrentView('tools');
-        setCurrentParam(undefined);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'tools' }, '', `/`);
-        }
-        return;
-      }
-      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(firstHash)) {
+        matchedParam = toolMatch ? toolMatch.slug : parts[1];
+        matchedView = 'tool';
+        targetCleanPath = `/${matchedParam}`;
+      } else if (firstHash === 'category' && parts[1]) {
+        matchedParam = parts[1].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
+        matchedView = 'category';
+        targetCleanPath = `/category/${matchedParam}`;
+      } else if (firstHash === 'portfolio') {
+        matchedView = 'portfolio';
+        targetCleanPath = '/portfolio';
+      } else if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(firstHash)) {
+        matchedView = 'portfolio';
+        targetCleanPath = '/portfolio';
+      } else if (firstHash === 'tools' || firstHash === 'home') {
+        matchedView = 'tools';
+        targetCleanPath = '/';
+      } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(firstHash)) {
         const effective = firstHash === 'seo-hub' ? 'sitemap' : (firstHash === 'embed' || firstHash === 'add-to-website') ? 'integration' : firstHash;
-        setCurrentView(effective);
-        setCurrentParam(undefined);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: effective }, '', `/${effective}`);
+        matchedView = effective;
+        targetCleanPath = `/${effective}`;
+      } else {
+        const toolMatch = getToolBySlug(firstHash);
+        if (toolMatch) {
+          matchedView = 'tool';
+          matchedParam = toolMatch.slug;
+          targetCleanPath = `/${toolMatch.slug}`;
         }
-        return;
       }
 
-      // Check if hash matches a direct tool slug (e.g. #study-timetable-maker or #pdf-compressor)
-      const toolMatch = getToolBySlug(firstHash);
-      if (toolMatch) {
-        setCurrentView('tool');
-        setCurrentParam(toolMatch.slug);
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({ view: 'tool', param: toolMatch.slug }, '', `/${toolMatch.slug}`);
-        }
-        return;
+      setCurrentView(matchedView);
+      setCurrentParam(matchedParam);
+
+      if (window.history && window.history.replaceState) {
+        try {
+          window.history.replaceState({ view: matchedView, param: matchedParam }, '', targetCleanPath);
+        } catch (e) {}
       }
+
+      // Notify parent iframe wrapper to strip # hash from address bar immediately
+      try {
+        if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'MDN_ROUTE_CHANGE',
+            path: targetCleanPath,
+            slug: matchedParam,
+            view: matchedView
+          }, '*');
+        }
+      } catch (e) {}
+
+      return;
     }
 
     // Default Root View: 331 Tools Suite
