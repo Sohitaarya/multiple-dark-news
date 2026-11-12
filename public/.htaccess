@@ -1,13 +1,19 @@
-# LiteSpeed / Apache 200 OK SPA Rewrite for Hostinger & MultipleDarkNews Tools
+# LiteSpeed / Apache Auto-Proxy & SPA 200 OK Rules for Hostinger
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 
-# Keep physical files intact (sitemap.xml, robots.txt, assets, images)
+# Route sitemap.xml to physical file
+RewriteRule ^sitemap\.xml$ sitemap.xml [L]
+
+# Route robots.txt to physical file
+RewriteRule ^robots\.txt$ robots.txt [L]
+
+# Keep physical files intact
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Force 200 OK for all clean tool URLs (e.g. /pdf-compressor, /study-timetable-maker, /portfolio)
-RewriteRule ^ index.html [L]
+# Route all clean tool, category, and portfolio URLs to index.php with HTTP 200 OK for Googlebot
+RewriteRule ^ index.php [L]
 </IfModule>
