@@ -1,18 +1,13 @@
-# LiteSpeed / Apache Auto-Sync Rewrite Rules for MultipleDarkNews Tools
-# Automatically routes sitemap.xml and robots.txt to dynamic fetchers and handles SPA Routing
-
+# LiteSpeed / Apache 200 OK SPA Rewrite for Hostinger & MultipleDarkNews Tools
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 
-# Route sitemap.xml to dynamic XML/PHP generator
-RewriteRule ^sitemap\.xml$ sitemap.php [L]
+# Keep physical files intact (sitemap.xml, robots.txt, assets, images)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Route robots.txt to dynamic TXT/PHP generator
-RewriteRule ^robots\.txt$ robots.php [L]
-
-# SPA Fallback: route clean tool, category, and portfolio paths to index.html if file/dir does not exist
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Force 200 OK for all clean tool URLs (e.g. /pdf-compressor, /study-timetable-maker, /portfolio)
 RewriteRule ^ index.html [L]
 </IfModule>
