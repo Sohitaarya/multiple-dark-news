@@ -239,6 +239,37 @@ export default function App() {
     };
   }, [parseCurrentLocation]);
 
+  // Synchronize parent iframe window address bar whenever currentView or currentParam updates
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
+      let cleanPath = '/';
+      if (currentView === 'portfolio') {
+        cleanPath = '/portfolio';
+      } else if (currentView === 'tool' && currentParam) {
+        const toolMatch = getToolBySlug(currentParam);
+        const targetSlug = toolMatch ? toolMatch.slug : currentParam;
+        cleanPath = `/${targetSlug}`;
+      } else if (currentView === 'category' && currentParam) {
+        cleanPath = `/category/${currentParam}`;
+      } else if (currentView === 'tools' || currentView === 'home') {
+        cleanPath = '/';
+      } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'integration'].includes(currentView)) {
+        cleanPath = `/${currentView}`;
+      }
+
+      try {
+        window.parent.postMessage({
+          type: 'MDN_ROUTE_CHANGE',
+          path: cleanPath,
+          slug: currentParam,
+          view: currentView
+        }, '*');
+      } catch (e) {
+        // ignore cross-origin restrictions
+      }
+    }
+  }, [currentView, currentParam]);
+
   // Handle User Navigation: Updates HTML5 History PushState + Parent Iframe Bridge
   const handleNavigate = (view: string, param?: string) => {
     const effectiveView = view === 'seo-hub' ? 'sitemap' : view;

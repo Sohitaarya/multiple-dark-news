@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MultipleDarkNews Tools — 331+ Free Online Tools & Sohit Aarya Portfolio</title>
+  <meta name="description" content="MultipleDarkNews offers 331+ free online tools and Sohit Aarya's portfolio. Access all tools with clean, shareable URLs.">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #080808;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+  <script>
+    // 1. Pass current browser path directly to iframe src on initial load
+    document.addEventListener('DOMContentLoaded', function() {
+      var iframe = document.getElementById('mdn-tools-frame');
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      if (iframe) {
+        iframe.src = 'https://multiple-dark-news.sohitprakash970.workers.dev' + (path && path !== '' ? path : '/');
+      }
+    });
+
+    // 2. Synchronize main browser address bar whenever user navigates to any tool inside the iframe
+    window.addEventListener('message', function(event) {
+      if (event && event.data && event.data.type === 'MDN_ROUTE_CHANGE' && event.data.path) {
+        try {
+          if (window.location.pathname !== event.data.path) {
+            window.history.pushState(null, '', event.data.path);
+          }
+        } catch(e) {}
+      }
+    });
+  </script>
+</head>
+<body>
+  <iframe
+    id="mdn-tools-frame"
+    src="https://multiple-dark-news.sohitprakash970.workers.dev"
+    allow="microphone; camera; clipboard-write; storage-access; fullscreen">
+  </iframe>
+</body>
+</html>
