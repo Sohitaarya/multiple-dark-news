@@ -13,21 +13,27 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
-const port = 3000;
+const port = Number(process.env.PORT) || 3000;
 
 // Body parser
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Shared Gemini Server Client
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
+// Lazy Gemini Server Client so missing GEMINI_API_KEY never blocks server startup
+function getGeminiClient(): GoogleGenAI {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new Error('GEMINI_API_KEY is not configured in the server environment.');
+  }
+  return new GoogleGenAI({
+    apiKey,
+    httpOptions: {
+      headers: {
+        'User-Agent': 'aistudio-build',
+      },
     },
-  },
-});
+  });
+}
 
 function formatGeminiError(err: any): string {
   const msg = err?.message || String(err);
@@ -64,6 +70,7 @@ app.post('/api/gemini/image', async (req, res) => {
 
     parts.push({ text: prompt });
 
+    const ai = getGeminiClient();
     const response = await ai.models.generateContent({
       model: 'gemini-nano-banana-2.1',
       contents: { parts },
@@ -114,6 +121,7 @@ app.post('/api/gemini/search', async (req, res) => {
     const { query } = req.body;
     if (!query) return res.status(400).json({ success: false, error: 'Search query is required.' });
 
+    const ai = getGeminiClient();
     const response = await ai.models.generateContent({
       model: 'gemini-3.8-flash',
       contents: query,
@@ -160,6 +168,7 @@ app.post('/api/gemini/maps', async (req, res) => {
       };
     }
 
+    const ai = getGeminiClient();
     const response = await ai.models.generateContent({
       model: 'gemini-3.8-flash',
       contents: query,
@@ -191,6 +200,7 @@ app.post('/api/gemini/transcribe', async (req, res) => {
 
     const cleanData = audioBase64.replace(/^data:[^;]+;base64,/, '');
 
+    const ai = getGeminiClient();
     const response = await ai.models.generateContent({
       model: 'gemini-3.5-transcribe',
       contents: {
@@ -221,6 +231,7 @@ wss.on('connection', async (clientWs) => {
     let session: any = null;
 
     try {
+      const ai = getGeminiClient();
       session = await ai.live.connect({
         model: 'gemini-3.8-live',
         config: {
@@ -352,11 +363,16 @@ app.get('/robots.txt', (_req, res) => {
 
 // Upgrade HTTP requests to WebSocket on /live
 server.on('upgrade', (request, socket, head) => {
-  const { pathname } = new URL(request.url || '', `http://${request.headers.host}`);
-  if (pathname === '/live' || pathname === '/api/live') {
-    wss.handleUpgrade(request, socket, head, (ws) => {
-      wss.emit('connection', ws, request);
-    });
+  try {
+    const host = request.headers.host || `localhost:${port}`;
+    const { pathname } = new URL(request.url || '/', `http://${host}`);
+    if (pathname === '/live' || pathname === '/api/live') {
+      wss.handleUpgrade(request, socket, head, (ws) => {
+        wss.emit('connection', ws, request);
+      });
+    }
+  } catch (err) {
+    console.error('WebSocket upgrade error:', err);
   }
 });
 
@@ -367,7 +383,10 @@ async function start() {
   if (!isProduction) {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: process.env.DISABLE_HMR === 'true' ? false : { server },
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
@@ -383,4 +402,7 @@ async function start() {
   });
 }
 
-start();
+start().catch((err) => {
+  console.error('Failed to start server:', err);
+  process.exit(1);
+});
