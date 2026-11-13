@@ -1,19 +1,18 @@
 # LiteSpeed / Apache Auto-Proxy & SPA 200 OK Rules for Hostinger
+DirectoryIndex index.php index.html
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 
-# Route sitemap.xml to physical file
+# Route sitemap.xml and robots.txt to physical files
 RewriteRule ^sitemap\.xml$ sitemap.xml [L]
-
-# Route robots.txt to physical file
 RewriteRule ^robots\.txt$ robots.txt [L]
 
-# Keep physical files intact
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
+# Keep existing physical files intact (except directory root which uses DirectoryIndex)
+RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Route all clean tool, category, and portfolio URLs to index.php with HTTP 200 OK for Googlebot
+# Route all clean tool, category, portfolio, and asset paths to index.php with HTTP 200 OK
 RewriteRule ^ index.php [L]
 </IfModule>
