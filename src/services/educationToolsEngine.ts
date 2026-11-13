@@ -381,3 +381,59 @@ export function formatCitation(data: CitationData, style: 'apa' | 'mla' | 'chica
   }
   return `${authors} (${year}) '${title}', ${source}.${url}`;
 }
+
+/**
+ * Pure English Words to Number Parser (International & Indian scales: thousand, million, billion, trillion, lakh, crore)
+ */
+export function wordsToNumber(input: string): { value: number | null; formatted: string; error?: string } {
+  const clean = input
+    .toLowerCase()
+    .replace(/[-,]/g, ' ')
+    .replace(/\band\b|\bonly\b|\bdollars\b|\brupees\b|\bpounds\b|\beuros\b/g, ' ')
+    .trim();
+
+  if (!clean) return { value: null, formatted: '', error: 'Enter English number words.' };
+
+  const SMALL: Record<string, number> = {
+    zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9,
+    ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16,
+    seventeen: 17, eighteen: 18, nineteen: 19,
+    twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90,
+  };
+  const SCALES: Record<string, number> = {
+    hundred: 100,
+    thousand: 1000,
+    lakh: 100000,
+    lac: 100000,
+    million: 1000000,
+    crore: 10000000,
+    billion: 1000000000,
+    trillion: 1000000000000,
+  };
+
+  let isNegative = false;
+  const tokens = clean.split(/\s+/).filter(Boolean);
+  if (tokens[0] === 'negative' || tokens[0] === 'minus') {
+    isNegative = true;
+    tokens.shift();
+  }
+
+  let total = 0;
+  let current = 0;
+  for (const tok of tokens) {
+    if (tok in SMALL) {
+      current += SMALL[tok];
+    } else if (tok === 'hundred') {
+      current = (current === 0 ? 1 : current) * 100;
+    } else if (tok in SCALES) {
+      total += (current === 0 ? 1 : current) * SCALES[tok];
+      current = 0;
+    } else {
+      return { value: null, formatted: '', error: `Unrecognized number word: "${tok}"` };
+    }
+  }
+
+  const finalVal = (total + current) * (isNegative ? -1 : 1);
+  return { value: finalVal, formatted: finalVal.toLocaleString('en-US') };
+}
+

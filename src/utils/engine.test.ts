@@ -211,8 +211,8 @@ test('generateXmlSitemap indexes all 325+ tools conforming to sitemaps.org', asy
   const xml = generateXmlSitemap('https://multipledarknews.com');
   assert.ok(xml.includes('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.ok(xml.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'));
-  assert.ok(xml.includes('https://multipledarknews.com/#tool/pdf-compressor'));
-  assert.ok(xml.includes('https://multipledarknews.com/#category/pdf'));
+  assert.ok(xml.includes('https://multipledarknews.com/pdf-compressor'));
+  assert.ok(xml.includes('https://multipledarknews.com/category/pdf'));
   assert.ok(xml.includes('<priority>0.9</priority>'));
 });
 

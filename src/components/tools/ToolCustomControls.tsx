@@ -772,7 +772,7 @@ export const ToolCustomControls: React.FC<ToolCustomControlsProps> = ({
           )}
 
           {/* Hash Algorithm Selector */}
-          {(tool.id === 'hash-generator' || tool.id === 'sha256-hash-generator' || tool.id === 'md5-hash-generator') && (
+          {(tool.id === 'hash-generator' || tool.id === 'sha256-generator' || tool.id === 'md5-generator') && (
             <div className="flex items-center gap-2">
               <span className="text-xs text-slate-400">Algorithm:</span>
               {(['SHA-256', 'SHA-512', 'SHA-1', 'MD5'] as const).map((algo) => (
@@ -794,8 +794,8 @@ export const ToolCustomControls: React.FC<ToolCustomControlsProps> = ({
         </div>
       )}
 
-      {/* D. CALCULATOR GLOBAL CURRENCY & ADVANCED CONTROLS */}
-      {tool.category === 'calculator' && (
+      {/* D. CALCULATOR GLOBAL CURRENCY BAR (Financial Calculators with custom currency selector) */}
+      {tool.category === 'calculator' && ['loan-emi-calculator', 'gst-calculator', 'discount-calculator', 'interest-calculator', 'compound-interest-calculator', 'salary-calculator', 'profit-and-loss-calculator', 'electricity-bill-calculator', 'fuel-cost-calculator'].includes(tool.id) && (
         <div className="p-4 bg-slate-950/70 border border-slate-800 rounded-2xl space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-bold uppercase tracking-wider text-slate-300">
             <span className="flex items-center gap-2">
@@ -805,6 +805,7 @@ export const ToolCustomControls: React.FC<ToolCustomControlsProps> = ({
             <div className="flex items-center gap-1.5">
               <span className="text-[10px] text-slate-400 font-normal">Active Currency:</span>
               <select
+                aria-label="Active Currency"
                 value={currency.code}
                 onChange={(e) => {
                   const found = GLOBAL_CURRENCIES.find((c) => c.code === e.target.value);
@@ -847,7 +848,7 @@ export const ToolCustomControls: React.FC<ToolCustomControlsProps> = ({
           </div>
 
           {/* Case Converter 1-Click Action Buttons */}
-          {(tool.id === 'case-converter' || tool.id === 'text-case-converter') && (
+          {['case-converter', 'uppercase-converter', 'lowercase-converter', 'title-case-converter'].includes(tool.id) && (
             <div className="space-y-2 pt-1">
               <span className="text-xs text-slate-400 block font-semibold">1-Click Transformation:</span>
               <div className="flex flex-wrap gap-2">

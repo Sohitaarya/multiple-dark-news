@@ -93,40 +93,40 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
   return (
     <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 text-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-16 gap-3">
           
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center shrink-0">
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center gap-2.5 text-left group focus:outline-none"
+              className="flex items-center gap-2.5 text-left group focus:outline-none whitespace-nowrap"
               aria-label="MultipleDarkNews Tools Home"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 flex items-center justify-center shadow-lg shadow-rose-950/50 group-hover:scale-105 transition-transform duration-200">
-                <span className="font-extrabold text-white text-lg tracking-wider">MD</span>
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 flex items-center justify-center shadow-lg shadow-rose-950/50 group-hover:scale-105 transition-transform duration-200 shrink-0">
+                <span className="font-extrabold text-white text-base tracking-wider">MD</span>
               </div>
               <div className="hidden sm:block">
-                <div className="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
+                <div className="font-extrabold text-sm xl:text-base tracking-tight text-white flex items-center gap-1 whitespace-nowrap">
                   MultipleDarkNews <span className="text-rose-500 font-black">TOOLS</span>
                 </div>
-                <div className="text-[10px] text-slate-400 font-medium tracking-wide">
-                  325+ FREE PRIVACY-FIRST TOOLS
+                <div className="text-[10px] text-slate-400 font-medium tracking-wide whitespace-nowrap">
+                  331 FREE PRIVACY-FIRST TOOLS
                 </div>
               </div>
             </button>
           </div>
 
           {/* Search Bar - Center */}
-          <div ref={searchRef} className="relative flex-1 max-w-md hidden md:block">
+          <div ref={searchRef} className="relative flex-1 min-w-[180px] max-w-xs xl:max-w-sm hidden md:block">
             <div className="relative">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search PDF, Image, Developer, SEO, Calculators..."
+                placeholder="Search 331 tools..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchQuery.length > 1 && setIsSearchOpen(true)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-900/90 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-all shadow-inner"
+                className="w-full pl-9 pr-4 py-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-all shadow-inner"
               />
               {searchQuery && (
                 <button
@@ -169,16 +169,16 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5 shrink-0 whitespace-nowrap">
             
             {/* Category Dropdown */}
             <div ref={catRef} className="relative">
               <button
                 onClick={() => setIsCatDropdownOpen(!isCatDropdownOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800/60 transition-colors"
+                className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800/60 transition-colors whitespace-nowrap"
                 aria-expanded={isCatDropdownOpen}
               >
-                <Grid className="w-4 h-4 text-rose-400" />
+                <Grid className="w-4 h-4 text-rose-400 shrink-0" />
                 <span>Categories</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isCatDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -209,61 +209,61 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
             {/* Quick Links */}
             <button
               onClick={() => onNavigate('category', 'pdf')}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${currentView === 'category' ? 'text-rose-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
+              className={`px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium transition-colors whitespace-nowrap ${currentView === 'category' ? 'text-rose-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
             >
               PDF Tools
             </button>
 
             <button
               onClick={() => onNavigate('category', 'image')}
-              className="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+              className="px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors whitespace-nowrap"
             >
               Image Tools
             </button>
 
             <button
               onClick={() => onNavigate('sitemap')}
-              className="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center gap-1.5"
+              className="px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center gap-1 whitespace-nowrap"
             >
-              <Sparkles className="w-3.5 h-3.5 text-rose-400" />
-              <span>Sitemap & SEO</span>
+              <Sparkles className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+              <span>Sitemap &amp; SEO</span>
             </button>
 
             <button
               onClick={() => onNavigate('audit')}
-              className="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center gap-1.5"
+              className="px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center gap-1 whitespace-nowrap"
             >
-              <Activity className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Audit Report</span>
+              <Activity className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Audit</span>
             </button>
 
             {isAdmin && (
               <button
                 onClick={() => onNavigate('admin')}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all flex items-center gap-1 shadow-sm cursor-pointer whitespace-nowrap"
                 title="Admin Mode Active (Ctrl+Shift+A)"
               >
-                <Shield className="w-3.5 h-3.5 text-amber-400" />
+                <Shield className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span>Admin</span>
               </button>
             )}
 
             <button
               onClick={() => onNavigate('integration')}
-              className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-md shadow-cyan-950/40 transition-all flex items-center gap-1.5 ml-1"
+              className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-md shadow-cyan-950/40 transition-all flex items-center gap-1.5 ml-1 whitespace-nowrap"
             >
-              <Code2 className="w-3.5 h-3.5" />
+              <Code2 className="w-3.5 h-3.5 shrink-0" />
               <span>Add to Website</span>
             </button>
           </div>
 
           {/* Right Action: Portfolio & Parent Site Links */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
             <button
               onClick={() => onNavigate('portfolio')}
-              className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 border border-rose-500/60 shadow-md shadow-rose-950/60 transition-all flex items-center gap-1.5 cursor-pointer"
+              className="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 border border-rose-500/60 shadow-md shadow-rose-950/60 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
               <span>Sohit Aarya Portfolio</span>
             </button>
 
@@ -271,10 +271,10 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               href="https://multipledarknews.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 transition-colors"
+              className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 transition-colors whitespace-nowrap"
             >
               <span>multipledarknews.com</span>
-              <ExternalLink className="w-3.5 h-3.5 text-rose-400" />
+              <ExternalLink className="w-3.5 h-3.5 text-rose-400 shrink-0" />
             </a>
 
             {/* Mobile menu button */}
