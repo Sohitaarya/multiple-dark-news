@@ -77,7 +77,7 @@ export const SOHIT_AARYA_DATA = {
   signatureText: 'Sohit Aarya',
   motto: 'Innovate • Create • Grow',
   photoUrl: '/assets/aistudio/file_000000004bac821190c12f577f201882_6ffa78a1.png',
-  email: 'sohitaarya98@gmail.com',
+  email: 'contact@multipledarknews.com',
   website: 'https://multipledarknews.com',
   location: 'India • Global Reach',
 
@@ -545,7 +545,7 @@ export const SOHIT_AARYA_DATA = {
     },
     {
       question: 'How can someone get in touch or collaborate with Sohit Aarya?',
-      answer: 'You can connect directly via the Contact Section on this portfolio, send an email to sohitaarya98@gmail.com, or reach out across his verified social channels on LinkedIn, YouTube, Instagram, and GitHub.'
+      answer: 'You can connect directly via the Contact Section on this portfolio, send an email to contact@multipledarknews.com, or reach out across his verified social channels on LinkedIn, YouTube, Instagram, and GitHub.'
     }
   ] as FaqItem[]
 };

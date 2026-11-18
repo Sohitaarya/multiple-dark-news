@@ -11,15 +11,16 @@ import { CATEGORIES } from './src/data/categories';
 import { isStaticAssetPath, resolveAppRoute, RouteMatch } from './src/utils/routing';
 import { normalizePublicDomain, validatePublicHttpUrl } from './src/utils/networkSafety';
 import { injectRouteSeoIntoHtml, resolveRouteSeoMeta } from './src/utils/seoHtml';
+import { resolveServerConfig } from './src/utils/serverConfig';
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
-const port = Number(process.env.PORT) || 3000;
+const { port, host } = resolveServerConfig();
 
 // Body parser
 app.use(express.json({ limit: '50mb' }));
@@ -561,11 +562,15 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 async function start() {
   if (!isProduction) {
+    const disableHmr = process.env.DISABLE_HMR === 'true';
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: {
         middlewareMode: true,
-        hmr: process.env.DISABLE_HMR === 'true' ? false : { server },
+        allowedHosts: true,
+        hmr: disableHmr ? false : true,
+        ws: disableHmr ? false : { server },
+        watch: disableHmr ? null : {},
       },
       appType: 'custom',
     });
@@ -624,8 +629,13 @@ async function start() {
     });
   }
 
-  server.listen(port, '0.0.0.0', () => {
-    console.log(`MultipleDarkNews Full-Stack Server running on port ${port}`);
+  server.on('error', (err: NodeJS.ErrnoException) => {
+    console.error(`Failed to bind server on ${host}:${port}:`, err.message);
+    process.exit(1);
+  });
+
+  server.listen(port, host, () => {
+    console.log(`MultipleDarkNews Full-Stack Server running on http://${host}:${port}`);
   });
 }
 

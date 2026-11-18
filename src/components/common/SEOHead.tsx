@@ -159,7 +159,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         '@id': 'https://tools.multipledarknews.com/#person',
         name: 'Sohit Aarya',
         url: 'https://tools.multipledarknews.com/sohit-aarya',
-        email: 'sohitaarya98@gmail.com',
+        email: 'contact@multipledarknews.com',
         jobTitle: 'Full-Stack Developer, AI Creator & Founder',
         areaServed: 'Worldwide',
         sameAs: [
@@ -177,7 +177,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         '@id': 'https://tools.multipledarknews.com/#organization',
         name: 'MultipleDarkNews Tools',
         url: 'https://tools.multipledarknews.com',
-        email: 'sohitaarya98@gmail.com',
+        email: 'contact@multipledarknews.com',
         founder: { '@id': 'https://tools.multipledarknews.com/#person' },
         areaServed: 'Worldwide',
         logo: {

@@ -138,7 +138,7 @@ export const SeoSecuritySocialWorkspace: React.FC<SeoSecuritySocialWorkspaceProp
     if (tool.id === 'url-safety-checker') {
       setSecInput('https://tools.multipledarknews.com');
     } else if (tool.id === 'email-validator') {
-      setSecInput('sohitaarya98@gmail.com');
+      setSecInput('contact@multipledarknews.com');
     } else if (tool.id === 'ip-information-checker') {
       setSecInput('8.8.8.8');
     } else if (tool.id === 'ssl-certificate-checker') {
