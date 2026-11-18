@@ -3,7 +3,7 @@ import { PDF_TOOLS } from './pdfTools';
 import { IMAGE_TOOLS } from './imageTools';
 import { OTHER_TOOLS } from './otherTools';
 
-// The Centralized Tool Registry combining all categories (325+ tools)
+// The Centralized Tool Registry combining all categories (331+ tools)
 export const ALL_TOOLS: ToolDefinition[] = [
   ...PDF_TOOLS,
   ...IMAGE_TOOLS,
@@ -96,13 +96,6 @@ export const getToolBySlug = (slug: string): ToolDefinition | undefined => {
     tool.keywords.some((k) => sanitizeToolSlug(k) === clean || sanitizeToolSlug(k.replace(/-/g, ' ')) === clean)
   );
   if (keywordMatch) return keywordMatch;
-
-  // 3. Substring match for slugs with length >= 4
-  if (clean.length >= 4) {
-    return registryState.find((tool) => {
-      return tool.slug.includes(clean) || clean.includes(tool.slug);
-    });
-  }
 
   return undefined;
 };

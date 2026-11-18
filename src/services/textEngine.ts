@@ -184,7 +184,13 @@ export function generateLoremIpsum(paragraphsCount = 3): string {
  * Simple CommonMark to HTML converter
  */
 export function markdownToHtml(md: string): string {
-  let html = md
+  const escaped = md
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+  const html = escaped
     // Headers
     .replace(/^### (.*$)/gim, '<h3 class="text-lg font-bold my-2 text-slate-100">$1</h3>')
     .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold my-3 text-slate-100">$1</h2>')
@@ -194,8 +200,12 @@ export function markdownToHtml(md: string): string {
     .replace(/\*(.*?)\*/gim, '<em class="italic">$1</em>')
     // Code blocks & inline
     .replace(/`([^`]+)`/gim, '<code class="bg-slate-800 text-rose-400 px-1 py-0.5 rounded text-sm">$1</code>')
-    // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" class="text-rose-400 underline hover:text-rose-300" target="_blank" rel="noopener">$1</a>')
+    // Links (only permit http, https, mailto, or relative paths starting with /)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, (_m, label: string, rawHref: string) => {
+      const href = rawHref.trim();
+      const safe = /^(https?:\/\/|mailto:|\/)/i.test(href) ? href : '#';
+      return `<a href="${safe}" class="text-rose-400 underline hover:text-rose-300" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    })
     // Line breaks
     .replace(/\n\n/gim, '</p><p class="my-2 leading-relaxed text-slate-300">');
 

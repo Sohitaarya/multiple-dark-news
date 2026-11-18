@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { CATEGORIES } from '../../data/categories';
 import { ToolCategory } from '../../types/tools';
+import { useI18n } from '../../utils/i18n';
 
 interface HomePageProps {
   onNavigate: (view: string, param?: string) => void;
@@ -45,6 +46,7 @@ const CATEGORY_ICON_MAP: Record<ToolCategory, React.ElementType> = {
 };
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  const { t } = useI18n();
   const [heroSearch, setHeroSearch] = useState('');
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -71,14 +73,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="space-y-1">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF2638]/20 text-[#FF2638] font-mono text-[11px] font-bold uppercase tracking-wider border border-[#FF2638]/30">
                   <span className="w-2 h-2 rounded-full bg-[#FF2638] animate-ping" />
-                  <span>OFFICIAL FOUNDER &amp; PORTFOLIO</span>
+                  <span>{t.founderBadge}</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight flex items-center gap-2 justify-center md:justify-start">
                   <span>Sohit Aarya — Developer &amp; Creator</span>
                   <span className="text-[#FF2638]">///</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-neutral-200 font-medium">
-                  Explore the official 3D personal portfolio website, 331 tools ecosystem, and tech creations.
+                  {t.founderSubtitle}
                 </p>
               </div>
             </div>
@@ -103,7 +105,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 }}
                 className="px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#FF2638] via-[#e61729] to-[#b30012] hover:from-[#ff3d4e] hover:to-[#cc0016] shadow-xl shadow-[#FF2638]/40 transition-all flex items-center gap-2 shrink-0 group-hover:scale-105 cursor-pointer"
               >
-                <span>OPEN PORTFOLIO</span>
+                <span>{t.founderCta}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
@@ -117,18 +119,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121212] border border-[#262626] text-xs font-mono font-bold text-[#FF2638] mb-6 shadow-xl">
           <Sparkles className="w-4 h-4 text-[#FF2638]" />
-          <span>MULTIPLEDARKNEWS ECOSYSTEM • 331 IN-BROWSER TOOLS</span>
+          <span>{t.heroBadge}</span>
         </div>
 
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-tight">
-          331 FREE &amp; PRIVATE <br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-[#FF2638]">
-            ONLINE TOOLS
-          </span> SUITE
+          {t.heroTitle}
         </h1>
 
         <p className="mt-4 sm:mt-5 text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed font-medium">
-          Compress PDFs, resize images, format JSON, test SEO, and convert units directly in your browser. Zero cloud upload. 100% private and free forever.
+          {t.heroSubtitle}
         </p>
 
         {/* Quick Search Bar */}
@@ -136,7 +135,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <form onSubmit={handleSearchSubmit} className="relative">
             <input
               type="text"
-              placeholder="Search e.g. 'Compress PDF', 'Resize Image', 'JSON Formatter'..."
+              placeholder={t.searchPlaceholder}
               value={heroSearch}
               onChange={(e) => setHeroSearch(e.target.value)}
               className="w-full pl-5 pr-32 py-4 bg-[#111111] border border-[#2a2a2a] focus:border-[#FF2638] rounded-2xl text-sm text-white placeholder-neutral-500 focus:outline-none shadow-2xl transition-colors font-medium"
@@ -148,7 +147,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               }}
               className="absolute right-2 top-2 bottom-2 px-6 rounded-xl bg-gradient-to-r from-[#FF2638] to-[#cc0016] hover:from-[#ff3d4e] hover:to-[#e6001a] text-white font-black text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-lg shadow-[#FF2638]/40 transition-all cursor-pointer"
             >
-              <span>Explore</span>
+              <span>{t.exploreTools}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </form>
@@ -187,7 +186,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span>ORGANIZED CATEGORY DIRECTORY</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
-              12 DIGITAL TOOL SUITES
+              {t.allCategoriesHeading}
             </h2>
           </div>
           <a

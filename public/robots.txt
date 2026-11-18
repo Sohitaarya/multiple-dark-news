@@ -1,11 +1,9 @@
-# Robots.txt for Sohit Aarya Portfolio & MultipleDarkNews Tools
+# Robots.txt for MultipleDarkNews Tools
 # Global Indexation for Google, Bing, Yandex, DuckDuckGo, Baidu & Worldwide Search Engines
 
 User-agent: *
 Allow: /
-Disallow: /#admin
+Disallow: /admin
 
-# Sitemap Locations
+# Canonical Sitemap Location
 Sitemap: https://tools.multipledarknews.com/sitemap.xml
-Sitemap: https://tools.multipledarknews.com/sitemap.php
-Sitemap: https://multipledarknews.com/sitemap.xml

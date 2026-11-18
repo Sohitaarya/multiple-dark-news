@@ -13,6 +13,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { ToolDefinition } from '../../types/tools';
+import { copyTextSafe } from '../../utils/clipboard';
 import { renderBarcode } from '../../services/devToolsEngine';
 import {
   runRegexTest,
@@ -58,10 +59,12 @@ export const DevTextWorkspace: React.FC<DevTextWorkspaceProps> = ({
   onReverseModeChange,
 }) => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const copyVal = (id: string, val: string) => {
-    navigator.clipboard.writeText(val);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 1500);
+  const copyVal = async (id: string, val: string) => {
+    const ok = await copyTextSafe(val);
+    if (ok) {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 1500);
+    }
   };
 
   // Barcode state

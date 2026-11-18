@@ -76,7 +76,7 @@ export const AuditReportPage: React.FC = () => {
           <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2">
             <span className="font-bold text-white block text-sm">Phase 1: Central Tool Registry & UI</span>
             <p className="text-slate-400 leading-relaxed">
-              Implemented typed central tool registry containing 325+ tools across all 12 categories with unique slugs, input/output formats, SEO metadata, FAQs, and state management.
+              Implemented typed central tool registry containing 331+ tools across all 12 categories with unique slugs, input/output formats, SEO metadata, FAQs, and state management.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export const AuditReportPage: React.FC = () => {
           </div>
 
           <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2">
-            <span className="font-bold text-white block text-sm">Phase 3: Complete 40 Image Tools</span>
+            <span className="font-bold text-white block text-sm">Phase 3: Complete 41 Image Tools</span>
             <p className="text-slate-400 leading-relaxed">
               Engineered HTML5 Canvas & WebCodecs rasterizer. Tested: Lossy/Lossless Compressor, Resizer with aspect lock, Cropper, Format Converter, Chroma Background Remover, Contour PNG-to-SVG vectorizer, Meme generator, Passport photo generator, Grayscale, and Convolution kernels.
             </p>
@@ -116,7 +116,7 @@ export const AuditReportPage: React.FC = () => {
           <div className="text-emerald-400 font-bold">✓ Subtest 11: watermarkPdf stamps watermark text onto all pages (PASS)</div>
           <div className="text-emerald-400 font-bold">✓ Subtest 12: textToPdf creates valid multi-page PDF from plain text (PASS)</div>
           <div className="text-emerald-400 font-bold">✓ Subtest 13: editPdfMetadata updates document properties (PASS)</div>
-          <div className="text-emerald-400 font-bold">✓ Subtest 14: tools registry contains all 325+ cataloged tools with valid metadata (PASS)</div>
+          <div className="text-emerald-400 font-bold">✓ Subtest 14: tools registry contains all 331+ cataloged tools with valid metadata (PASS)</div>
         </div>
       </div>
 

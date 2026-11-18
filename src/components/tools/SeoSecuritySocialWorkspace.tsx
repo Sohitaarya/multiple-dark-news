@@ -56,6 +56,7 @@ import {
   createPinterestPinCanvasBlob,
 } from '../../services/seoSecuritySocialEngine';
 import { generateXmlSitemap } from '../../services/sitemapGenerator';
+import { copyTextSafe } from '../../utils/clipboard';
 
 interface SeoSecuritySocialWorkspaceProps {
   tool: ToolDefinition;
@@ -70,7 +71,7 @@ export const SeoSecuritySocialWorkspace: React.FC<SeoSecuritySocialWorkspaceProp
 }) => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const copyVal = (id: string, val: string) => {
-    navigator.clipboard.writeText(val);
+    void copyTextSafe(val);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 1500);
   };
@@ -117,7 +118,7 @@ export const SeoSecuritySocialWorkspace: React.FC<SeoSecuritySocialWorkspaceProp
   const [socialTopic, setSocialTopic] = useState('Free Online PDF & Image Tools');
   const [socialNiche, setSocialNiche] = useState('SaaS & Productivity');
   const [socialTone, setSocialTone] = useState('Engaging');
-  const [socialPostText, setSocialPostText] = useState('Launching 325+ privacy-first browser tools! Zero uploads, instant results.');
+  const [socialPostText, setSocialPostText] = useState('Launching 331+ privacy-first browser tools! Zero uploads, instant results.');
   const [ytUrl, setYtUrl] = useState('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   const [ytTitle, setYtTitle] = useState('How to Master Online PDF Tools in 5 Minutes (2026 Guide)');
   const [socialPresetId, setSocialPresetId] = useState('ig-post');
@@ -134,6 +135,17 @@ export const SeoSecuritySocialWorkspace: React.FC<SeoSecuritySocialWorkspaceProp
     setCopiedId(null);
     setQrScanOut('');
     setFavPreview('');
+    if (tool.id === 'url-safety-checker') {
+      setSecInput('https://tools.multipledarknews.com');
+    } else if (tool.id === 'email-validator') {
+      setSecInput('sohitaarya98@gmail.com');
+    } else if (tool.id === 'ip-information-checker') {
+      setSecInput('8.8.8.8');
+    } else if (tool.id === 'ssl-certificate-checker') {
+      setSecInput('tools.multipledarknews.com');
+    } else {
+      setSecInput('P@ssw0rd!2026Global');
+    }
   }, [tool.id]);
 
   // Live 1s RFC 6238 TOTP ticker
@@ -595,14 +607,21 @@ export const SeoSecuritySocialWorkspace: React.FC<SeoSecuritySocialWorkspaceProp
                 const answers = (res.Answer || []).map((a: any) => `${a.name} (${a.TTL}s) -> ${a.data}`).join('\n') || 'No matching DNS records found.';
                 onResultGenerated(`Cloudflare DoH Query: ${dnsDomain} [${tool.id === 'ip-address-lookup' ? 'A' : dnsType}]\nStatus: ${res.Status === 0 ? 'NOERROR' : res.Status}\n\nAnswers:\n${answers}`);
               } else {
-                const clean = dnsDomain.replace(/^https?:\/\//, '').split('/')[0];
-                const r = await fetch(`https://rdap.org/domain/${encodeURIComponent(clean)}`);
-                if (!r.ok) {
-                  onResultGenerated(`RDAP lookup status ${r.status} for ${clean}. Ensure root domain (e.g. multipledarknews.com) is entered.`);
-                  return;
+                const clean = dnsDomain.replace(/^https?:\/\//i, '').split('/')[0];
+                try {
+                  const r = await fetch(`/api/seo/rdap?domain=${encodeURIComponent(clean)}`);
+                  const payload = await r.json().catch(() => null);
+                  if (!r.ok || !payload?.success) {
+                    onResultGenerated(payload?.error || `RDAP lookup returned HTTP ${r.status} for ${clean}. Enter a registered root domain (e.g. multipledarknews.com).`);
+                    return;
+                  }
+                  const j = payload.data || {};
+                  onResultGenerated(
+                    `RDAP Domain Record: ${j.ldhName || payload.domain || clean}\nStatus: ${(j.status || []).join(', ') || 'Registered'}\nHandle: ${j.handle || 'N/A'}\nEvents:\n${(j.events || []).map((e: any) => `• ${e.eventAction}: ${e.eventDate}`).join('\n') || '• Registry record active'}`
+                  );
+                } catch (err: any) {
+                  onResultGenerated(`RDAP Lookup Error for ${clean}: ${err?.message || 'Service temporarily unavailable'}`);
                 }
-                const j = await r.json();
-                onResultGenerated(`RDAP Domain Record: ${j.ldhName || clean}\nStatus: ${(j.status || []).join(', ')}\nHandle: ${j.handle || 'N/A'}\nEvents:\n${(j.events || []).map((e: any) => `• ${e.eventAction}: ${e.eventDate}`).join('\n')}`);
               }
             }}
             className="px-4 py-2 bg-rose-600 text-white rounded-xl font-bold"
@@ -649,13 +668,29 @@ export const SeoSecuritySocialWorkspace: React.FC<SeoSecuritySocialWorkspaceProp
               const kb = (new Blob([seoHtml]).size / 1024).toFixed(2);
               onResultGenerated(`Document Payload Size: ${kb} KB\nEstimated 4G Transfer Time: ~${(Number(kb) * 1.8).toFixed(0)} ms\nRecommendation: Keep HTML < 100 KB and enable Brotli/Gzip.`);
             } else if (tool.id === 'http-header-checker' || tool.id === 'redirect-checker' || tool.id === 'website-speed-checker') {
-              const t0 = performance.now();
               try {
-                const resp = await fetch(seoUrl, { mode: 'cors' });
-                const dt = Math.round(performance.now() - t0);
-                onResultGenerated(`URL: ${seoUrl}\nHTTP Status: ${resp.status} ${resp.statusText}\nResponse Time: ${dt} ms\nRedirected: ${resp.redirected ? `Yes -> ${resp.url}` : 'No'}`);
-              } catch {
-                onResultGenerated(`Direct browser CORS prevented reading remote headers for ${seoUrl}.\nTip: Verify locally or ensure Access-Control-Allow-Origin headers on target origin. Recommended security headers: Strict-Transport-Security, X-Content-Type-Options: nosniff, Content-Security-Policy.`);
+                const resp = await fetch('/api/seo/inspect', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ url: seoUrl }),
+                });
+                const payload = await resp.json().catch(() => null);
+                if (!resp.ok || !payload?.success) {
+                  onResultGenerated(`Inspection Error for ${seoUrl}: ${payload?.error || `HTTP ${resp.status}`}`);
+                  return;
+                }
+                const hopsText = (payload.hops || [])
+                  .map((h: any, idx: number) => `${idx + 1}. [${h.status}] ${h.url}${h.location ? ` -> ${h.location}` : ''}`)
+                  .join('\n');
+                const hdrText = Object.entries(payload.headers || {})
+                  .slice(0, 15)
+                  .map(([k, v]) => `${k}: ${v}`)
+                  .join('\n');
+                onResultGenerated(
+                  `Target URL: ${seoUrl}\nFinal URL: ${payload.finalUrl}\nHTTP Status: ${payload.status} ${payload.statusText}\nServer TTFB Latency: ${payload.responseTimeMs} ms\nRedirected: ${payload.redirected ? `Yes (${payload.hops.length} hops)` : 'No (Direct 200 OK)'}\n\nRedirect Chain:\n${hopsText}\n\nResponse Headers:\n${hdrText}`
+                );
+              } catch (err: any) {
+                onResultGenerated(`Failed to inspect ${seoUrl}: ${err?.message || 'Inspector service error'}`);
               }
             } else if (tool.id === 'domain-authority-lookup') {
               const host = seoUrl.replace(/^https?:\/\//, '').split('/')[0];

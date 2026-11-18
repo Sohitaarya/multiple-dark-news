@@ -14,6 +14,7 @@ import {
   FileCode,
   Smartphone
 } from 'lucide-react';
+import { copyTextSafe } from '../../utils/clipboard';
 
 interface IntegrationGuidePageProps {
   onNavigateHome: () => void;
@@ -26,10 +27,12 @@ export const IntegrationGuidePage: React.FC<IntegrationGuidePageProps> = ({
   const [activeTab, setActiveTab] = useState<'subdomain' | 'subfolder' | 'iframe' | 'wordpress'>('subdomain');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2500);
+  const copyToClipboard = async (text: string, id: string) => {
+    const ok = await copyTextSafe(text);
+    if (ok) {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2500);
+    }
   };
 
   const domain = 'multipledarknews.com';
@@ -67,7 +70,7 @@ export default {
 <div style="position: relative; width: 100%; min-height: 850px; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
   <iframe 
     src="https://${toolsSubdomain}" 
-    title="MultipleDarkNews 325+ Free Online Tools"
+    title="MultipleDarkNews 331+ Free Online Tools"
     width="100%" 
     height="850" 
     style="border: none; width: 100%; height: 850px; display: block;"
@@ -79,7 +82,7 @@ export default {
   const navHtmlSnippet = `<!-- Add to your website header / navigation menu -->
 <li class="nav-item">
   <a href="https://${toolsSubdomain}" target="_blank" rel="noopener" class="nav-link highlight-tools" style="background: linear-gradient(135deg, #0ea5e9, #38bdf8); color: #020617; font-weight: 700; padding: 8px 18px; border-radius: 9999px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-    <span>⚡ 325+ Free Tools</span>
+    <span>⚡ 331+ Free Tools</span>
   </a>
 </li>`;
 
@@ -97,7 +100,7 @@ export default {
           </h1>
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
             Aap apni main website <span className="text-cyan-400 font-bold underline">{domain}</span> par in 
-            <span className="text-emerald-400 font-bold"> 325+ Production-Ready Tools</span> ko 4 alag-alag aasan tareeqon se 
+            <span className="text-emerald-400 font-bold"> 331+ Production-Ready Tools</span> ko 4 alag-alag aasan tareeqon se 
             connect aur embed kar sakte hain. Choose your preferred method below!
           </p>
 
@@ -360,7 +363,7 @@ export default {
                   Method 4: WordPress Menu & Navigation Bar Integration
                 </h2>
                 <p className="text-sm text-slate-400">
-                  Apni website ke top menu bar me direct "325+ Free Tools" button add karein taaki har visitor tools use kar sake.
+                  Apni website ke top menu bar me direct "331+ Free Tools" button add karein taaki har visitor tools use kar sake.
                 </p>
               </div>
             </div>
@@ -376,7 +379,7 @@ export default {
                   <li>Left sidebar me <strong>Appearance → Menus</strong> par click karein.</li>
                   <li>Left column se <strong>"Custom Links"</strong> option select karein.</li>
                   <li><strong>URL</strong> me daalein: <code>https://{toolsSubdomain}</code></li>
-                  <li><strong>Link Text</strong> me daalein: <code>⚡ 325+ Free Tools</code></li>
+                  <li><strong>Link Text</strong> me daalein: <code>⚡ 331+ Free Tools</code></li>
                   <li><strong>"Add to Menu"</strong> par click karein aur right corner me <strong>"Save Menu"</strong> daba dein!</li>
                 </ol>
               </div>
@@ -413,7 +416,7 @@ export default {
           </h2>
         </div>
         <p className="text-slate-300 text-sm leading-relaxed max-w-4xl">
-          MultipleDarkNews Tools platform ke sabhi <strong>325 tools</strong> ab <strong>PRODUCTION_READY</strong> hain. Har ek tool 
+          MultipleDarkNews Tools platform ke sabhi <strong>331 tools</strong> ab <strong>PRODUCTION_READY</strong> hain. Har ek tool 
           device-level WebAssembly, Web Crypto CSPRNG, HTML5 Canvas, aur Web Audio oscillators par execute hota hai. 
           User ka koi bhi document ya data remote server par transfer nahi hota, isiliye zero bandwidth limit aur 
           zero server maintenance cost rehti hai!
@@ -424,7 +427,7 @@ export default {
             onClick={onNavigateHome}
             className="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-cyan-500/25"
           >
-            <span>Explore All 325 Tools</span>
+            <span>Explore All 331 Tools</span>
             <ArrowRight className="w-4 h-4" />
           </button>
           <a

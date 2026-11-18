@@ -127,7 +127,11 @@ import {
   describeCronExpression,
   generateHtaccessRules,
   generateHtmlTableCode,
+  runRegexTest,
+  parseAndConvertColor,
+  HTTP_STATUS_CODES,
 } from '../../services/devAdvancedEngine';
+import { copyTextSafe } from '../../utils/clipboard';
 import {
   calculateLoanEmi,
   calculateBmi,
@@ -162,6 +166,7 @@ import {
 import { generateMetaTags, generateRobotsTxt, generateSlug, analyzeKeywordDensity } from '../../services/seoToolsEngine';
 import { generateXmlSitemap } from '../../services/sitemapGenerator';
 import { getRelatedTools } from '../../data/toolsRegistry';
+import { useI18n } from '../../utils/i18n';
 
 interface ToolRunnerProps {
   tool: ToolDefinition;
@@ -171,6 +176,7 @@ interface ToolRunnerProps {
 const BASIC_CALCULATOR_IDS = ['loan-emi-calculator', 'bmi-calculator', 'age-calculator', 'gst-calculator'];
 
 export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
+  const { t } = useI18n();
   // State for files
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [filePreviews, setFilePreviews] = useState<string[]>([]);
@@ -423,7 +429,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
   };
 
   // ============================================
-  // COMPLETE ENGINE EXECUTION ROUTER (325+ TOOLS)
+  // COMPLETE ENGINE EXECUTION ROUTER (331+ TOOLS)
   // ============================================
   const handleProcess = async () => {
     setErrorMessage(null);
@@ -906,6 +912,43 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
           );
         } else if (tool.id === 'html-table-generator') {
           setOutputResultText(generateHtmlTableCode(['Column 1', 'Column 2'], [['Sample A', 'Sample B']]));
+        } else if (tool.id === 'regex-tester') {
+          const sample = inputText || 'Contact support@multipledarknews.com or admin@example.org today.';
+          const pat = '\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\\b';
+          const rx = runRegexTest(pat, 'gi', sample);
+          setOutputResultText(
+            `Pattern: /${pat}/gi\nMatches Found: ${rx.matches.length}\n\n` +
+            (rx.matches.length > 0
+              ? rx.matches.map((m, i) => `${i + 1}. "${m.fullMatch}" @ index ${m.index}`).join('\n')
+              : 'No matches found. Customize regex pattern or flags above.')
+          );
+        } else if (tool.id === 'css-gradient-generator') {
+          const css = inputText.trim().startsWith('linear-gradient') || inputText.trim().startsWith('radial-gradient')
+            ? inputText.trim()
+            : 'linear-gradient(135deg, #e11d48, #4f46e5, #0f172a)';
+          setOutputResultText(`background: ${css};\nbackground-image: ${css};`);
+        } else if (tool.id === 'box-shadow-generator') {
+          const sh = /\d+px/.test(inputText) ? inputText.trim() : '0px 16px 32px -4px rgba(225, 29, 72, 0.35)';
+          setOutputResultText(`box-shadow: ${sh};\n-webkit-box-shadow: ${sh};`);
+        } else if (tool.id === 'color-code-converter') {
+          const c = parseAndConvertColor(inputText.trim() || '#E11D48');
+          setOutputResultText(
+            `HEX: ${c.hex}\nRGB: ${c.rgb}\nHSL: ${c.hsl}\nHSV: ${c.hsv}\nCMYK: ${c.cmyk}\nWCAG Contrast: White ${c.contrastWhite}:1 | Black ${c.contrastBlack}:1`
+          );
+        } else if (tool.id === 'http-status-checker') {
+          const codeNum = parseInt(inputText.trim(), 10) || 404;
+          const found = HTTP_STATUS_CODES.find((s) => s.code === codeNum);
+          if (found) {
+            setOutputResultText(`HTTP ${found.code} ${found.title}\nCategory: ${found.category}\nMeaning: ${found.description}`);
+          } else {
+            const q = inputText.trim().toLowerCase();
+            const matched = HTTP_STATUS_CODES.filter((s) => String(s.code).includes(q) || s.title.toLowerCase().includes(q));
+            setOutputResultText(
+              (matched.length ? matched : HTTP_STATUS_CODES)
+                .map((s) => `${s.code} ${s.title} (${s.category}) — ${s.description}`)
+                .join('\n')
+            );
+          }
         } else if (tool.id === 'barcode-generator') {
           setOutputResultText('Barcode rendered in real time above. Use "Download PNG Barcode" to save.');
         } else if (tool.id === 'qr-code-reader') {
@@ -1059,7 +1102,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
   };
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
+    void copyTextSafe(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -1073,7 +1116,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
         url,
       }).catch(() => {});
     } else {
-      navigator.clipboard.writeText(url);
+      void copyTextSafe(url);
       setShareCopied(true);
       setTimeout(() => setShareCopied(false), 2000);
     }
@@ -1106,7 +1149,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
       {/* Breadcrumbs Navigation */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-400 font-medium">
         <button type="button" onClick={() => onNavigate('home')} className="hover:text-slate-200 transition-colors">
-          Home
+          {t.homeLabel}
         </button>
         <span>/</span>
         <button type="button" onClick={() => onNavigate('category', tool.category)} className="hover:text-slate-200 capitalize transition-colors">
@@ -1280,7 +1323,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
                   </div>
 
                   <div className="text-base font-bold text-white mb-1">
-                    Drop your file{allowMultipleUpload ? 's' : ''} here, or <span className="text-rose-400 underline underline-offset-2">browse computer</span>
+                    {t.dropzonePrompt}
                   </div>
                   <div className="text-xs text-slate-400">
                     Supports {tool.inputFormats.join(', ')} • Maximum file size {tool.maxFileSizeMB} MB
@@ -1352,6 +1395,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
                 tool={tool}
                 onResultGenerated={setOutputResultText}
                 onBlobGenerated={handleWorkspaceBlob}
+                onError={setErrorMessage}
               />
             )}
 
@@ -1515,7 +1559,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-white" />
-                      <span>Execute &amp; Generate {tool.name}</span>
+                      <span>{t.executeBtn} — {tool.name}</span>
                     </>
                   )}
                 </button>
@@ -1537,7 +1581,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
                     className="py-4 px-6 rounded-2xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-300 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                   >
                     <RotateCcw className="w-4 h-4" />
-                    <span>Reset Tool</span>
+                    <span>{t.resetTool}</span>
                   </button>
                 )}
               </div>
@@ -1564,7 +1608,7 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
                       className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-950/50 transition-all shrink-0"
                     >
                       <Download className="w-4 h-4" />
-                      <span>Download Output</span>
+                      <span>{t.downloadOutput}</span>
                     </a>
                   </div>
                 )}

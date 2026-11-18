@@ -14,7 +14,7 @@ if (function_exists('curl_init')) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
     $content = curl_exec($ch);
     curl_close($ch);
 }
@@ -26,6 +26,6 @@ if (!$content) {
 if ($content) {
     echo $content;
 } else {
-    echo "User-agent: *\nAllow: /\nDisallow: /#admin\nSitemap: https://tools.multipledarknews.com/sitemap.xml\n";
+    echo "User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: https://tools.multipledarknews.com/sitemap.xml\n";
 }
 ?>

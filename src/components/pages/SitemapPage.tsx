@@ -12,13 +12,14 @@ import {
 } from 'lucide-react';
 import { generateXmlSitemap, getSitemapEntries, SitemapEntry } from '../../services/sitemapGenerator';
 import { generateRobotsTxt } from '../../services/seoToolsEngine';
+import { copyTextSafe } from '../../utils/clipboard';
 
 interface SitemapPageProps {
   onNavigate: (view: string, param?: string) => void;
 }
 
 export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
-  const [domain, setDomain] = useState('https://multipledarknews.com');
+  const [domain] = useState('https://tools.multipledarknews.com');
   const [searchFilter, setSearchFilter] = useState('');
   const [copiedType, setCopiedType] = useState<string | null>(null);
 
@@ -33,10 +34,12 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
   const xmlContent = generateXmlSitemap(domain);
   const robotsContent = generateRobotsTxt({ siteUrl: domain });
 
-  const handleCopy = (text: string, type: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedType(type);
-    setTimeout(() => setCopiedType(null), 2500);
+  const handleCopy = async (text: string, type: string) => {
+    const ok = await copyTextSafe(text);
+    if (ok) {
+      setCopiedType(type);
+      setTimeout(() => setCopiedType(null), 2500);
+    }
   };
 
   const handleDownload = (content: string, filename: string, type = 'application/xml') => {
@@ -64,7 +67,7 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
             XML Sitemap & Google Indexation Directory
           </h1>
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            All 325+ online tools and 12 category directories are indexed with Schema.org specifications,
+            All 331+ online tools and 12 category directories are indexed with Schema.org specifications,
             high-priority sitemap entries, and robots.txt directives ready for instant Google Search Console submission.
           </p>
         </div>
@@ -109,7 +112,7 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
         </div>
         <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800">
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tool Directories</div>
-          <div className="text-2xl font-black text-rose-400 mt-1">325 Tools</div>
+          <div className="text-2xl font-black text-rose-400 mt-1">331 Tools</div>
           <div className="text-[11px] text-slate-400 mt-1">Across 12 categories</div>
         </div>
         <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800">
@@ -231,7 +234,7 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({ onNavigate }) => {
           <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
             <div className="text-rose-400 font-bold uppercase tracking-wider">Step 2: Submit Sitemap</div>
             <p>
-              In the left sidebar, click <strong className="text-white">Sitemaps</strong>. Enter <code className="text-rose-400">sitemap.xml</code> and click Submit. All 325+ URLs will be crawled by Googlebot.
+              In the left sidebar, click <strong className="text-white">Sitemaps</strong>. Enter <code className="text-rose-400">sitemap.xml</code> and click Submit. All {entries.length} URLs will be crawled by Googlebot.
             </p>
           </div>
           <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">

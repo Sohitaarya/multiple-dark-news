@@ -115,7 +115,7 @@ export const LiveVoiceStudio: React.FC = () => {
       return 'I am running at optimal performance in your browser with zero latency!';
     }
     if (q.includes('what tools') || q.includes('features') || q.includes('what can you do')) {
-      return 'MultipleDarkNews platform has over 325 free tools for PDF, image manipulation, audio, video, calculators, SEO, and developer workflows!';
+      return 'MultipleDarkNews platform has over 331 free tools for PDF, image manipulation, audio, video, calculators, SEO, and developer workflows!';
     }
     if (q.includes('time') || q.includes('date')) {
       const now = new Date();
@@ -134,7 +134,7 @@ export const LiveVoiceStudio: React.FC = () => {
       return 'You are very welcome! Let me know if you need any other calculation or tool.';
     }
 
-    return `I heard you ask: "${query}". You can use any of our 325+ tools on MultipleDarkNews platform to calculate or process files right now!`;
+    return `I heard you ask: "${query}". You can use any of our 331+ tools on MultipleDarkNews platform to calculate or process files right now!`;
   };
 
   // Speak response out loud using Web SpeechSynthesis

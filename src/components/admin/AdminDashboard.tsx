@@ -876,12 +876,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateHome }
                   <button
                     type="button"
                     onClick={async () => {
-                      if (confirm('Are you sure you want to restore the default initial setup passkey (mdn@admin2025)?')) {
-                        await adminAuthService.resetToDefault();
-                        setIsDefaultPass(true);
-                        setAuthLogs(adminAuthService.getAuthLogs());
-                        alert('Default passkey restored: ' + DEFAULT_INITIAL_PASSWORD);
-                      }
+                      await adminAuthService.resetToDefault();
+                      setIsDefaultPass(true);
+                      setAuthLogs(adminAuthService.getAuthLogs());
+                      setChangePassError(null);
+                      setChangePassSuccess(true);
                     }}
                     className="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-xl transition-colors text-[11px]"
                   >

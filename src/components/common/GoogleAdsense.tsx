@@ -10,13 +10,13 @@ export interface AdSlotProps {
   label?: string;
 }
 
-const DEFAULT_ADSENSE_CLIENT = 'ca-pub-9800000000000000'; // Default placeholder client ID
+const CONFIGURED_ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT_ID || '';
 
 export const GoogleAdsenseScript: React.FC<{ client?: string }> = ({ client }) => {
-  const pubId = client || import.meta.env.VITE_ADSENSE_CLIENT_ID || DEFAULT_ADSENSE_CLIENT;
+  const pubId = client || CONFIGURED_ADSENSE_CLIENT;
 
   useEffect(() => {
-    if (!pubId || document.querySelector(`script[src*="pagead2.googlesyndication.com"]`)) {
+    if (!pubId || pubId === 'ca-pub-9800000000000000' || document.querySelector(`script[src*="pagead2.googlesyndication.com"]`)) {
       return;
     }
 
@@ -39,9 +39,10 @@ export const AdSlot: React.FC<AdSlotProps> = ({
   style = { display: 'block' },
   label = 'Advertisement',
 }) => {
-  const pubId = client || import.meta.env.VITE_ADSENSE_CLIENT_ID || DEFAULT_ADSENSE_CLIENT;
+  const pubId = client || CONFIGURED_ADSENSE_CLIENT;
 
   useEffect(() => {
+    if (!pubId || pubId === 'ca-pub-9800000000000000') return;
     try {
       if (typeof window !== 'undefined') {
         ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
@@ -49,7 +50,11 @@ export const AdSlot: React.FC<AdSlotProps> = ({
     } catch (e) {
       // Ignore push errors during dev/preview
     }
-  }, []);
+  }, [pubId]);
+
+  if (!pubId || pubId === 'ca-pub-9800000000000000') {
+    return null;
+  }
 
   return (
     <div className={`my-6 flex flex-col items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-[#0d0d12]/80 p-3 backdrop-blur-md ${className}`}>

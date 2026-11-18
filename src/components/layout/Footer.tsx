@@ -1,12 +1,15 @@
 import React from 'react';
 import { ShieldCheck, Lock, Cpu, Globe, ExternalLink, Heart } from 'lucide-react';
 import { CATEGORIES } from '../../data/categories';
+import { useI18n } from '../../utils/i18n';
 
 interface FooterProps {
   onNavigate: (view: string, param?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const { t } = useI18n();
+
   return (
     <footer className="bg-slate-950 border-t border-slate-800/80 text-slate-400 mt-20">
       {/* Privacy & Guarantee Bar */}
@@ -17,8 +20,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <Lock className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white">100% Client-Side Privacy</div>
-              <div className="text-xs text-slate-400">Files process locally. Zero server upload.</div>
+              <div className="text-sm font-bold text-white">{t.privacyTitle}</div>
+              <div className="text-xs text-slate-400">{t.privacyDesc}</div>
             </div>
           </div>
 
@@ -27,8 +30,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white">₹0 Cost & No Watermarks</div>
-              <div className="text-xs text-slate-400">Always free forever. No sign-up required.</div>
+              <div className="text-sm font-bold text-white">{t.freeTitle}</div>
+              <div className="text-xs text-slate-400">{t.freeDesc}</div>
             </div>
           </div>
 
@@ -37,8 +40,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <Cpu className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white">Ultra Fast Processing</div>
-              <div className="text-xs text-slate-400">Hardware accelerated browser engines.</div>
+              <div className="text-sm font-bold text-white">{t.fastTitle}</div>
+              <div className="text-xs text-slate-400">{t.fastDesc}</div>
             </div>
           </div>
         </div>
@@ -59,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </span>
             </div>
             <p className="text-xs leading-relaxed text-slate-400 max-w-sm">
-              MultipleDarkNews Tools is a high-speed, privacy-first online tools platform featuring 325+ tools for PDF, Image, Developer, Calculators, SEO, and Media workflows. Built for international users across USA, India, UK, and worldwide.
+              MultipleDarkNews Tools is a high-speed, privacy-first online tools platform featuring 331+ tools for PDF, Image, Developer, Calculators, SEO, and Media workflows. Built for international users across USA, India, UK, and worldwide.
             </p>
             <div className="pt-2">
               <a
@@ -76,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Popular Categories */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">Popular Categories</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">{t.popularCategories}</h4>
             <ul className="space-y-2 text-xs">
               {CATEGORIES.slice(0, 6).map((cat) => (
                 <li key={cat.id}>
@@ -93,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* More Categories */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">More Categories</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">{t.moreCategories}</h4>
             <ul className="space-y-2 text-xs">
               {CATEGORIES.slice(6, 12).map((cat) => (
                 <li key={cat.id}>
@@ -110,8 +113,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Engineering & Platform */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">Platform & Legal</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">{t.platformLegal}</h4>
             <ul className="space-y-2 text-xs">
+              <li>
+                <button onClick={() => onNavigate('portfolio')} className="hover:text-rose-400 transition-colors font-semibold text-rose-300">
+                  {t.founderCta}
+                </button>
+              </li>
               <li>
                 <button onClick={() => onNavigate('audit')} className="hover:text-emerald-400 transition-colors">
                   Technical Audit Report
@@ -128,18 +136,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('sitemap')} className="hover:text-rose-400 transition-colors font-semibold text-rose-300">
-                  XML Sitemap & Google Index
-                </button>
-              </li>
-              <li>
                 <button onClick={() => onNavigate('integration')} className="hover:text-cyan-400 transition-colors font-semibold text-cyan-300">
-                  Add to Your Website (Integration)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('audit')} className="hover:text-emerald-400 transition-colors">
-                  System Audit & Compliance
+                  {t.addToWebsite}
                 </button>
               </li>
             </ul>

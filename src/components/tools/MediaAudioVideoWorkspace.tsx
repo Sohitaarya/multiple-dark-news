@@ -40,12 +40,14 @@ interface MediaAudioVideoWorkspaceProps {
   tool: ToolDefinition;
   onResultGenerated: (text: string) => void;
   onBlobGenerated: (blob: Blob, fileName: string) => void;
+  onError?: (msg: string | null) => void;
 }
 
 export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> = ({
   tool,
   onResultGenerated,
   onBlobGenerated,
+  onError,
 }) => {
   // Audio states
   const [audioFiles, setAudioFiles] = useState<File[]>([]);
@@ -137,21 +139,29 @@ export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> =
   // AUDIO RECORDING
   // ========================
   const startAudioRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    streamRef.current = stream;
-    const rec = new MediaRecorder(stream);
-    const chunks: Blob[] = [];
-    rec.ondataavailable = (e) => e.data.size > 0 && chunks.push(e.data);
-    rec.onstop = () => {
-      const blob = new Blob(chunks, { type: 'audio/webm' });
-      onBlobGenerated(blob, `recording-${Date.now()}.webm`);
-      onResultGenerated(`Microphone recording captured (${recSeconds}s • ${(blob.size / 1024).toFixed(1)} KB).`);
-      stream.getTracks().forEach((t) => t.stop());
-    };
-    mediaRecRef.current = rec;
-    setRecSeconds(0);
-    rec.start(250);
-    setIsRecordingAudio(true);
+    onError?.(null);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      streamRef.current = stream;
+      const rec = new MediaRecorder(stream);
+      const chunks: Blob[] = [];
+      rec.ondataavailable = (e) => e.data.size > 0 && chunks.push(e.data);
+      rec.onstop = () => {
+        const blob = new Blob(chunks, { type: 'audio/webm' });
+        onBlobGenerated(blob, `recording-${Date.now()}.webm`);
+        onResultGenerated(`Microphone recording captured (${recSeconds}s • ${(blob.size / 1024).toFixed(1)} KB).`);
+        stream.getTracks().forEach((t) => t.stop());
+      };
+      mediaRecRef.current = rec;
+      setRecSeconds(0);
+      rec.start(250);
+      setIsRecordingAudio(true);
+    } catch (err: any) {
+      const msg = `Microphone access unavailable or denied (${err?.name || 'PermissionError'}: ${err?.message || 'Grant microphone permission in browser settings'}).`;
+      onError?.(msg);
+      onResultGenerated(msg);
+      setIsRecordingAudio(false);
+    }
   };
 
   const stopAnyRecording = () => {
@@ -167,7 +177,9 @@ export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> =
   // ========================
   const executeAudioDsp = async () => {
     if (audioFiles.length === 0) return;
+    onError?.(null);
     const file = audioFiles[0];
+    try {
 
     if (tool.id === 'audio-equalizer' || tool.id === 'audio-noise-remover') {
       const blob = await renderFilteredAudioWav(file, {
@@ -253,9 +265,17 @@ export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> =
       return;
     }
 
-    const wavBytes = encodeWavFromChannels(nextCh, decoded.sampleRate);
-    onBlobGenerated(new Blob([wavBytes as unknown as BlobPart], { type: 'audio/wav' }), `processed-${file.name.replace(/\.[^/.]+$/, '')}.wav`);
-    onResultGenerated(`Audio DSP complete • Output ${(nextCh[0].length / decoded.sampleRate).toFixed(2)}s @ ${decoded.sampleRate} Hz (${nextCh.length}ch).`);
+      const wavBytes = encodeWavFromChannels(nextCh, decoded.sampleRate);
+      onBlobGenerated(new Blob([wavBytes as unknown as BlobPart], { type: 'audio/wav' }), `processed-${file.name.replace(/\.[^/.]+$/, '')}.wav`);
+      onResultGenerated(`Audio DSP complete • Output ${(nextCh[0].length / decoded.sampleRate).toFixed(2)}s @ ${decoded.sampleRate} Hz (${nextCh.length}ch).`);
+    } catch (err: any) {
+      const msg = err?.message || String(err);
+      const friendly = /decode audio/i.test(msg)
+        ? `No decodable audio stream was found in "${file.name}". Please choose an audio file or a video with an audio track.`
+        : `Audio processing failed: ${msg}`;
+      onError?.(friendly);
+      onResultGenerated(friendly);
+    }
   };
 
   // ========================
@@ -453,27 +473,36 @@ export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> =
   // =============================
   if (tool.id === 'screen-recorder' || tool.id === 'webcam-recorder') {
     const startScreenOrCam = async () => {
-      const stream = tool.id === 'screen-recorder'
-        ? await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
-        : await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-      streamRef.current = stream;
-      if (webcamPreviewRef.current && tool.id === 'webcam-recorder') {
-        webcamPreviewRef.current.srcObject = stream;
-        webcamPreviewRef.current.play().catch(() => {});
+      onError?.(null);
+      try {
+        const stream = tool.id === 'screen-recorder'
+          ? await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
+          : await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        streamRef.current = stream;
+        if (webcamPreviewRef.current && tool.id === 'webcam-recorder') {
+          webcamPreviewRef.current.srcObject = stream;
+          webcamPreviewRef.current.play().catch(() => {});
+        }
+        const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
+        const chunks: Blob[] = [];
+        rec.ondataavailable = (e) => e.data.size > 0 && chunks.push(e.data);
+        rec.onstop = () => {
+          const blob = new Blob(chunks, { type: 'video/webm' });
+          onBlobGenerated(blob, `${tool.id}-${Date.now()}.webm`);
+          onResultGenerated(`Recorded ${recSeconds}s WebM video (${(blob.size / 1024).toFixed(1)} KB).`);
+          stream.getTracks().forEach((t) => t.stop());
+        };
+        mediaRecRef.current = rec;
+        setRecSeconds(0);
+        rec.start(250);
+        setIsRecordingVideo(true);
+      } catch (err: any) {
+        const mediaName = tool.id === 'screen-recorder' ? 'Screen capture' : 'Camera';
+        const msg = `${mediaName} access unavailable or denied (${err?.name || 'PermissionError'}: ${err?.message || 'Grant capture permission in browser settings'}).`;
+        onError?.(msg);
+        onResultGenerated(msg);
+        setIsRecordingVideo(false);
       }
-      const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
-      const chunks: Blob[] = [];
-      rec.ondataavailable = (e) => e.data.size > 0 && chunks.push(e.data);
-      rec.onstop = () => {
-        const blob = new Blob(chunks, { type: 'video/webm' });
-        onBlobGenerated(blob, `${tool.id}-${Date.now()}.webm`);
-        onResultGenerated(`Recorded ${recSeconds}s WebM video (${(blob.size / 1024).toFixed(1)} KB).`);
-        stream.getTracks().forEach((t) => t.stop());
-      };
-      mediaRecRef.current = rec;
-      setRecSeconds(0);
-      rec.start(250);
-      setIsRecordingVideo(true);
     };
 
     return (
@@ -528,15 +557,26 @@ export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> =
   // Remaining all-browser Video File Processing Tools
   const runVideoAction = async () => {
     if (videoFiles.length === 0) return;
+    onError?.(null);
     const f = videoFiles[0];
 
-    if (tool.id === 'video-to-mp3' || tool.id === 'video-to-wav') {
-      const dec = await decodeAudioFile(f);
-      const wav = encodeWavFromChannels(dec.channels, dec.sampleRate);
-      onBlobGenerated(new Blob([wav as unknown as BlobPart], { type: 'audio/wav' }), `${f.name.replace(/\.[^/.]+$/, '')}-audio.wav`);
-      onResultGenerated(`Extracted audio track (${dec.duration.toFixed(2)}s @ ${dec.sampleRate} Hz PCM WAV).`);
-      return;
-    }
+    try {
+      if (tool.id === 'video-to-mp3' || tool.id === 'video-to-wav') {
+        try {
+          const dec = await decodeAudioFile(f);
+          const wav = encodeWavFromChannels(dec.channels, dec.sampleRate);
+          onBlobGenerated(new Blob([wav as unknown as BlobPart], { type: 'audio/wav' }), `${f.name.replace(/\.[^/.]+$/, '')}-audio.wav`);
+          onResultGenerated(`Extracted audio track (${dec.duration.toFixed(2)}s @ ${dec.sampleRate} Hz PCM WAV).`);
+        } catch (audioErr: any) {
+          const msg = audioErr?.message || String(audioErr);
+          const friendly = /decode audio/i.test(msg)
+            ? `No audio track detected in "${f.name}". Upload a video that contains an audio stream (AAC, Opus, MP3, or PCM) to extract audio.`
+            : `Audio extraction failed: ${msg}`;
+          onError?.(friendly);
+          onResultGenerated(friendly);
+        }
+        return;
+      }
 
     if (tool.id === 'video-metadata-viewer' && videoElRef.current) {
       const v = videoElRef.current;
@@ -611,9 +651,14 @@ export const MediaAudioVideoWorkspace: React.FC<MediaAudioVideoWorkspaceProps> =
       cropPercent: tool.id === 'video-cropper' ? { x: (100 - vCropW) / 2, y: (100 - vCropH) / 2, w: vCropW, h: vCropH } : undefined,
       replacementAudioFile: tool.id === 'audio-video-synchronizer' ? extraAudioFile : null,
     });
-    const outExt = tool.id === 'webm-to-mp4' && MediaRecorder.isTypeSupported('video/mp4') ? 'mp4' : 'webm';
-    onBlobGenerated(outBlob, `processed-${f.name.replace(/\.[^/.]+$/, '')}.${outExt}`);
-    onResultGenerated(`Video rendered via Canvas + MediaRecorder pipeline (${(outBlob.size / 1024).toFixed(1)} KB ${outExt.toUpperCase()}).`);
+      const outExt = tool.id === 'webm-to-mp4' && MediaRecorder.isTypeSupported('video/mp4') ? 'mp4' : 'webm';
+      onBlobGenerated(outBlob, `processed-${f.name.replace(/\.[^/.]+$/, '')}.${outExt}`);
+      onResultGenerated(`Video rendered via Canvas + MediaRecorder pipeline (${(outBlob.size / 1024).toFixed(1)} KB ${outExt.toUpperCase()}).`);
+    } catch (err: any) {
+      const msg = `Video processing failed: ${err?.message || String(err)}`;
+      onError?.(msg);
+      onResultGenerated(msg);
+    }
   };
 
   return (

@@ -1,6 +1,7 @@
 import { CategoryInfo, ToolCategory } from '../types/tools';
+import { ALL_TOOLS } from './toolsRegistry';
 
-export const CATEGORIES: CategoryInfo[] = [
+const CATEGORY_TEMPLATES: Omit<CategoryInfo, 'toolCount'>[] = [
   {
     id: 'pdf',
     name: 'PDF Tools',
@@ -8,7 +9,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Compress, merge, split, rotate, convert, protect, sign, and edit PDF documents right in your browser.',
     iconName: 'FileText',
     badgeColor: 'from-rose-500 to-red-600',
-    toolCount: 35,
   },
   {
     id: 'image',
@@ -17,7 +17,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Compress, resize, crop, convert, remove background, watermark, and manipulate images with zero quality loss.',
     iconName: 'Image',
     badgeColor: 'from-amber-500 to-orange-600',
-    toolCount: 40,
   },
   {
     id: 'developer',
@@ -26,7 +25,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Format, validate, minify JSON/HTML/CSS/SQL, encode/decode Base64/JWT, generate QR codes, regex tester.',
     iconName: 'Code',
     badgeColor: 'from-blue-500 to-cyan-600',
-    toolCount: 40,
   },
   {
     id: 'text',
@@ -35,7 +33,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Word counter, text diff, case converter, remove duplicates, lorem ipsum generator, markdown to HTML.',
     iconName: 'Type',
     badgeColor: 'from-emerald-500 to-teal-600',
-    toolCount: 30,
   },
   {
     id: 'calculator',
@@ -44,7 +41,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Financial, health, age, loan EMI, GST, percentage, scientific and daily mathematical calculators.',
     iconName: 'Calculator',
     badgeColor: 'from-purple-500 to-indigo-600',
-    toolCount: 30,
   },
   {
     id: 'unit-converter',
@@ -53,7 +49,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Convert length, weight, area, volume, temperature, digital storage, speed, and numerical systems instantly.',
     iconName: 'ArrowRightLeft',
     badgeColor: 'from-pink-500 to-rose-600',
-    toolCount: 20,
   },
   {
     id: 'seo',
@@ -62,7 +57,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'SERP preview, meta tag analyzer, OpenGraph generator, robots.txt tester, keyword density calculator.',
     iconName: 'Search',
     badgeColor: 'from-sky-500 to-blue-600',
-    toolCount: 25,
   },
   {
     id: 'security',
@@ -71,7 +65,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Cryptographic hash generators, strong password creator, password entropy checker, 2FA validator.',
     iconName: 'ShieldCheck',
     badgeColor: 'from-green-500 to-emerald-600',
-    toolCount: 15,
   },
   {
     id: 'education',
@@ -80,7 +73,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Exam countdown timer, GPA calculator, study timetable maker, flashcards, reading time calculator.',
     iconName: 'GraduationCap',
     badgeColor: 'from-violet-500 to-purple-600',
-    toolCount: 20,
   },
   {
     id: 'social-media',
@@ -89,7 +81,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'YouTube thumbnail downloader, tag generator, social image resizer, post formatter, character counters.',
     iconName: 'Share2',
     badgeColor: 'from-orange-500 to-red-500',
-    toolCount: 20,
   },
   {
     id: 'video',
@@ -98,7 +89,6 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Client-side and worker-based video trimming, frame extraction, aspect ratio conversion, and converters.',
     iconName: 'Video',
     badgeColor: 'from-red-500 to-amber-600',
-    toolCount: 25,
   },
   {
     id: 'audio',
@@ -107,9 +97,18 @@ export const CATEGORIES: CategoryInfo[] = [
     shortDescription: 'Audio trimming, speed changer, volume booster, waveform generator, silence remover, and format converters.',
     iconName: 'Headphones',
     badgeColor: 'from-cyan-500 to-teal-500',
-    toolCount: 25,
   },
 ];
+
+const COUNTS_BY_CATEGORY = ALL_TOOLS.reduce<Record<string, number>>((acc, tool) => {
+  acc[tool.category] = (acc[tool.category] || 0) + 1;
+  return acc;
+}, {});
+
+export const CATEGORIES: CategoryInfo[] = CATEGORY_TEMPLATES.map((cat) => ({
+  ...cat,
+  toolCount: COUNTS_BY_CATEGORY[cat.id] || 0,
+}));
 
 export const getCategoryById = (id: ToolCategory): CategoryInfo | undefined => {
   return CATEGORIES.find((cat) => cat.id === id);

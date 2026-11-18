@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, Home, AlertCircle, ArrowRight, Layers, FileText, Image as ImageIcon, Calculator, Code } from 'lucide-react';
 import { searchTools, getPopularTools } from '../../data/toolsRegistry';
 import { ToolDefinition } from '../../types/tools';
+import { useI18n } from '../../utils/i18n';
 
 interface NotFoundPageProps {
   onNavigate: (view: string, param?: string) => void;
@@ -9,6 +10,7 @@ interface NotFoundPageProps {
 }
 
 export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate, requestedSlug }) => {
+  const { t } = useI18n();
   const [query, setQuery] = useState(requestedSlug ? requestedSlug.replace(/-/g, ' ') : '');
   const [searchResults, setSearchResults] = useState<ToolDefinition[]>(() => {
     return requestedSlug ? searchTools(requestedSlug).slice(0, 6) : getPopularTools(6);
@@ -32,10 +34,10 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate, requeste
 
       <div className="space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-mono text-rose-400 font-bold uppercase tracking-wider">
-          404 Page Not Found
+          {t.notFoundBadge}
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Tool or Route Not Found
+          {t.notFoundTitle}
         </h1>
         <p className="text-slate-400 text-sm max-w-lg mx-auto">
           The requested page <code className="text-rose-400 bg-slate-900 px-2 py-0.5 rounded font-mono text-xs">/{requestedSlug || ''}</code> does not exist or has been moved. Explore our 331+ free tools below.
@@ -90,13 +92,13 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate, requeste
           className="px-5 py-2.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-rose-950/40"
         >
           <Home className="w-4 h-4" />
-          <span>Go to 331 Tools Suite</span>
+          <span>{t.notFoundBackHome}</span>
         </button>
         <button
           onClick={() => onNavigate('portfolio')}
           className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 rounded-xl text-xs font-bold transition flex items-center gap-2"
         >
-          <span>Sohit Aarya Portfolio</span>
+          <span>{t.founderCta}</span>
           <ArrowRight className="w-4 h-4 text-rose-400" />
         </button>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { HomePage } from './components/pages/HomePage';
@@ -7,7 +7,6 @@ import { ToolRunner } from './components/tools/ToolRunner';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { AuditReportPage } from './components/pages/AuditReportPage';
 import { LegalPage } from './components/pages/LegalPage';
-import { SitemapPage } from './components/pages/SitemapPage';
 import { IntegrationGuidePage } from './components/pages/IntegrationGuidePage';
 import { SohitPortfolioPage } from './components/portfolio/SohitPortfolioPage';
 import { NotFoundPage } from './components/pages/NotFoundPage';
@@ -16,188 +15,86 @@ import { GoogleAdsenseScript } from './components/common/GoogleAdsense';
 import { getToolBySlug } from './data/toolsRegistry';
 import { getCategoryById } from './data/categories';
 import { ToolCategory } from './types/tools';
+import { resolveAppRoute } from './utils/routing';
+import {
+  I18nContext,
+  SUPPORTED_LANGUAGES,
+  SupportedLangCode,
+  detectPreferredLanguage,
+  getTranslations,
+} from './utils/i18n';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<string>('tools');
   const [currentParam, setCurrentParam] = useState<string | undefined>(undefined);
+  const [lang, setLangState] = useState<SupportedLangCode>(() => detectPreferredLanguage());
 
-  // Robust URL Route Parser supporting Clean Paths (/study-timetable-maker), Query Params, and Legacy Hash migration
+  const setLang = useCallback((nextLang: SupportedLangCode) => {
+    setLangState(nextLang);
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('mdn_preferred_lang', nextLang);
+      }
+    } catch {
+      // ignore storage restrictions
+    }
+  }, []);
+
+  const langMeta = useMemo(
+    () => SUPPORTED_LANGUAGES.find((l) => l.code === lang) || SUPPORTED_LANGUAGES[0],
+    [lang]
+  );
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = langMeta.rtl ? 'rtl' : 'ltr';
+    }
+  }, [lang, langMeta.rtl]);
+
+  const i18nValue = useMemo(
+    () => ({
+      lang,
+      setLang,
+      t: getTranslations(lang),
+      langMeta,
+    }),
+    [lang, setLang, langMeta]
+  );
+
+  // Robust URL Route Parser supporting Clean Paths (/study-timetable-maker, /sohit-aarya), Query Params, Legacy Hash migration, and strict 404s
   const parseCurrentLocation = useCallback(() => {
-    let rawPath = window.location.pathname;
-    try {
-      rawPath = decodeURIComponent(rawPath);
-    } catch {
-      // fallback
-    }
-    let pathname = rawPath.toLowerCase().replace(/\/+$/, '');
-    let rawHash = window.location.hash.replace(/^#\/?/, '');
-    let hashStr = '';
-    try {
-      hashStr = decodeURIComponent(rawHash);
-    } catch {
-      hashStr = rawHash;
-    }
-    // Strip invisible Unicode characters like U+2060, U+200B, U+FEFF
-    hashStr = hashStr.replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').toLowerCase().trim();
+    const resolved = resolveAppRoute(
+      window.location.pathname,
+      window.location.search,
+      window.location.hash,
+      {
+        findToolBySlug: (slug) => getToolBySlug(slug),
+        hasCategory: (catId) => Boolean(getCategoryById(catId as ToolCategory)),
+      }
+    );
 
-    // 1. PRIMARY: Clean Path Routing (e.g. /study-timetable-maker, /pdf-compressor, /portfolio, /category/pdf)
-    if (pathname && pathname !== '' && pathname !== '/') {
-      const pathParts = pathname.split('/').filter(Boolean);
-      const firstSegment = pathParts[0].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
+    setCurrentView(resolved.view);
+    setCurrentParam(resolved.param);
 
-      if (firstSegment === 'portfolio') {
-        setCurrentView('portfolio');
-        setCurrentParam(undefined);
-        return;
-      }
-      if (firstSegment === 'tools' || firstSegment === 'home') {
-        setCurrentView('tools');
-        setCurrentParam(undefined);
-        return;
-      }
-      if (firstSegment === 'category' && pathParts[1]) {
-        const catId = pathParts[1].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
-        setCurrentView('category');
-        setCurrentParam(catId);
-        return;
-      }
-      if (firstSegment === 'tool' && pathParts[1]) {
-        const toolMatch = getToolBySlug(pathParts[1]);
-        const targetSlug = toolMatch ? toolMatch.slug : pathParts[1];
-        setCurrentView('tool');
-        setCurrentParam(targetSlug);
-        return;
-      }
-      if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(firstSegment)) {
-        const effective = firstSegment === 'seo-hub' ? 'sitemap' : (firstSegment === 'embed' || firstSegment === 'add-to-website') ? 'integration' : firstSegment;
-        setCurrentView(effective);
-        setCurrentParam(undefined);
-        return;
-      }
-
-      // Direct Tool Slug on root path (e.g. /study-timetable-maker, /pdf-compressor, /image-resizer)
-      const directTool = getToolBySlug(firstSegment);
-      if (directTool) {
-        setCurrentView('tool');
-        setCurrentParam(directTool.slug);
-        return;
-      }
-
-      // Direct Category ID on root path (e.g. /pdf, /image, /education, /developer)
-      const directCategory = getCategoryById(firstSegment as ToolCategory);
-      if (directCategory) {
-        setCurrentView('category');
-        setCurrentParam(directCategory.id);
-        return;
-      }
-
-      // Unrecognized Route -> 404
-      setCurrentView('404');
-      setCurrentParam(firstSegment);
-      return;
+    if (resolved.shouldReplaceUrl && window.history && window.history.replaceState) {
+      try {
+        window.history.replaceState({ view: resolved.view, param: resolved.param }, '', resolved.cleanPath);
+      } catch {}
     }
 
-    // 2. Query Params Fallback (?tool=... or ?category=...)
-    const searchParams = new URLSearchParams(window.location.search);
-    const queryTool = searchParams.get('tool');
-    const queryCategory = searchParams.get('category');
-    const queryView = searchParams.get('view');
-
-    if (queryTool) {
-      const toolMatch = getToolBySlug(queryTool);
-      const targetSlug = toolMatch ? toolMatch.slug : queryTool;
-      setCurrentView('tool');
-      setCurrentParam(targetSlug);
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({ view: 'tool', param: targetSlug }, '', `/${targetSlug}`);
-      }
-      return;
-    }
-    if (queryCategory) {
-      setCurrentView('category');
-      setCurrentParam(queryCategory);
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({ view: 'category', param: queryCategory }, '', `/category/${queryCategory}`);
-      }
-      return;
-    }
-    if (queryView) {
-      const effective = queryView === 'seo-hub' ? 'sitemap' : queryView;
-      setCurrentView(effective);
-      setCurrentParam(undefined);
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({ view: effective }, '', `/${effective}`);
-      }
-      return;
-    }
-
-    // 3. Legacy Hash Fallback Migration (#tool/pdf-to-jpg or #study-timetable-maker -> /study-timetable-maker)
-    if (hashStr) {
-      const parts = hashStr.split('/');
-      const firstHash = parts[0].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
-
-      let targetCleanPath = '/';
-      let matchedView = 'tools';
-      let matchedParam: string | undefined = undefined;
-
-      if (firstHash === 'tool' && parts[1]) {
-        const toolMatch = getToolBySlug(parts[1]);
-        matchedParam = toolMatch ? toolMatch.slug : parts[1];
-        matchedView = 'tool';
-        targetCleanPath = `/${matchedParam}`;
-      } else if (firstHash === 'category' && parts[1]) {
-        matchedParam = parts[1].replace(/[\u200B-\u200D\u2060\uFEFF]/g, '').trim();
-        matchedView = 'category';
-        targetCleanPath = `/category/${matchedParam}`;
-      } else if (firstHash === 'portfolio') {
-        matchedView = 'portfolio';
-        targetCleanPath = '/portfolio';
-      } else if (['about', 'services', 'tools-ecosystem', 'projects', 'progress', 'social', 'journey', 'contact', 'faq'].includes(firstHash)) {
-        matchedView = 'portfolio';
-        targetCleanPath = '/portfolio';
-      } else if (firstHash === 'tools' || firstHash === 'home') {
-        matchedView = 'tools';
-        targetCleanPath = '/';
-      } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'seo-hub', 'integration', 'embed', 'add-to-website'].includes(firstHash)) {
-        const effective = firstHash === 'seo-hub' ? 'sitemap' : (firstHash === 'embed' || firstHash === 'add-to-website') ? 'integration' : firstHash;
-        matchedView = effective;
-        targetCleanPath = `/${effective}`;
-      } else {
-        const toolMatch = getToolBySlug(firstHash);
-        if (toolMatch) {
-          matchedView = 'tool';
-          matchedParam = toolMatch.slug;
-          targetCleanPath = `/${toolMatch.slug}`;
-        }
-      }
-
-      setCurrentView(matchedView);
-      setCurrentParam(matchedParam);
-
-      if (window.history && window.history.replaceState) {
-        try {
-          window.history.replaceState({ view: matchedView, param: matchedParam }, '', targetCleanPath);
-        } catch (e) {}
-      }
-
-      // Notify parent iframe wrapper to strip # hash from address bar immediately
+    if (window.location.hash && !resolved.is404) {
       try {
         if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
           window.parent.postMessage({
             type: 'MDN_ROUTE_CHANGE',
-            path: targetCleanPath,
-            slug: matchedParam,
-            view: matchedView
+            path: resolved.cleanPath,
+            slug: resolved.param,
+            view: resolved.view,
           }, '*');
         }
-      } catch (e) {}
-
-      return;
+      } catch {}
     }
-
-    // Default Root View: 331 Tools Suite
-    setCurrentView('tools');
-    setCurrentParam(undefined);
   }, []);
 
   // Listen for browser popstate and hashchange events for Back & Forward button support
@@ -228,7 +125,7 @@ export default function App() {
     if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
       let cleanPath = '/';
       if (currentView === 'portfolio') {
-        cleanPath = '/portfolio';
+        cleanPath = '/sohit-aarya';
       } else if (currentView === 'tool' && currentParam) {
         const toolMatch = getToolBySlug(currentParam);
         const targetSlug = toolMatch ? toolMatch.slug : currentParam;
@@ -237,7 +134,7 @@ export default function App() {
         cleanPath = `/category/${currentParam}`;
       } else if (currentView === 'tools' || currentView === 'home') {
         cleanPath = '/';
-      } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'integration'].includes(currentView)) {
+      } else if (['admin', 'audit', 'privacy', 'terms', 'integration'].includes(currentView)) {
         cleanPath = `/${currentView}`;
       }
 
@@ -256,14 +153,14 @@ export default function App() {
 
   // Handle User Navigation: Updates HTML5 History PushState + Parent Iframe Bridge
   const handleNavigate = (view: string, param?: string) => {
-    const effectiveView = view === 'seo-hub' ? 'sitemap' : view;
+    const effectiveView = view;
     setCurrentView(effectiveView);
     setCurrentParam(param);
 
     let cleanPath = '/';
 
     if (effectiveView === 'portfolio') {
-      cleanPath = '/portfolio';
+      cleanPath = '/sohit-aarya';
     } else if (effectiveView === 'tool' && param) {
       const toolMatch = getToolBySlug(param);
       const targetSlug = toolMatch ? toolMatch.slug : param;
@@ -272,7 +169,7 @@ export default function App() {
       cleanPath = `/category/${param}`;
     } else if (effectiveView === 'tools' || effectiveView === 'home') {
       cleanPath = '/';
-    } else if (['admin', 'audit', 'privacy', 'terms', 'sitemap', 'integration'].includes(effectiveView)) {
+    } else if (['admin', 'audit', 'privacy', 'terms', 'integration'].includes(effectiveView)) {
       cleanPath = `/${effectiveView}`;
     }
 
@@ -311,23 +208,23 @@ export default function App() {
 
   // Compute dynamic SEO metadata and canonical URLs optimized for #1 Google Indexing
   let seoTitle = 'Sohit Aarya — Developer, Creator & Founder | 331 Online Tools Ecosystem';
-  let seoDescription = 'Official personal portfolio of Sohit Aarya. Full-stack developer, digital creator, and founder of MultipleDarkNews and the 331 in-browser tools platform.';
+  let seoDescription = 'Official personal profile of Sohit Aarya. Full-stack developer, digital creator, and founder of MultipleDarkNews and the 331 in-browser tools platform.';
   let canonicalUrl = 'https://tools.multipledarknews.com';
   let keywords = ['sohit aarya', 'sohit aarya portfolio', 'web developer', 'multipledarknews', '331 tools', 'digital creator'];
   let breadcrumbs = [{ name: 'Home', url: 'https://tools.multipledarknews.com' }];
 
   if (currentView === 'portfolio') {
     seoTitle = 'Sohit Aarya — Developer, Creator & Founder | 331 Online Tools Ecosystem';
-    seoDescription = 'Official personal portfolio of Sohit Aarya. Full-stack developer, digital creator, and founder of MultipleDarkNews and the 331 in-browser tools platform.';
-    canonicalUrl = 'https://tools.multipledarknews.com/portfolio';
-    keywords = ['sohit aarya', 'sohit aarya portfolio', 'full-stack developer', 'creative technologist', '331 tools', 'multipledarknews'];
+    seoDescription = 'Official profile of Sohit Aarya. Full-stack developer, digital creator, and founder of MultipleDarkNews and the 331 in-browser tools platform.';
+    canonicalUrl = 'https://tools.multipledarknews.com/sohit-aarya';
+    keywords = ['sohit aarya', 'sohit aarya developer', 'full-stack developer', 'creative technologist', '331 tools', 'multipledarknews'];
   } else if (currentView === 'tools' || currentView === 'home') {
     seoTitle = 'MultipleDarkNews Tools — 331+ Free Online PDF, Image, Developer & SEO Tools';
     seoDescription = 'Fast, 100% private online tools platform by Sohit Aarya & MultipleDarkNews. Compress PDFs, resize images, format JSON, test SEO, and convert units directly in your browser. Zero cloud uploads.';
     canonicalUrl = 'https://tools.multipledarknews.com';
     keywords = ['free online tools', 'pdf tools', 'image editor', 'developer tools', 'seo tools', 'multipledarknews', '331 tools'];
     breadcrumbs = [
-      { name: 'Portfolio', url: 'https://tools.multipledarknews.com/portfolio' },
+      { name: 'Sohit Aarya', url: 'https://tools.multipledarknews.com/sohit-aarya' },
       { name: '331 Tools Suite', url: 'https://tools.multipledarknews.com' }
     ];
   } else if (currentTool) {
@@ -357,10 +254,6 @@ export default function App() {
     seoTitle = 'Technical Audit Report & Verification | MultipleDarkNews Tools';
     seoDescription = 'Comprehensive engineering audit, test coverage verification, and privacy compliance report.';
     canonicalUrl = 'https://tools.multipledarknews.com/audit';
-  } else if (currentView === 'sitemap') {
-    seoTitle = 'XML Sitemap & Google Indexation Directory | MultipleDarkNews Tools';
-    seoDescription = 'Complete XML sitemap index containing all 331+ online tools for search engine submission and verification.';
-    canonicalUrl = 'https://tools.multipledarknews.com/sitemap';
   } else if (currentView === 'integration') {
     seoTitle = 'Website Integration Guide — Add 331+ Tools to Your Website | MultipleDarkNews';
     seoDescription = 'Step-by-step guide to connect 331+ free tools to multipledarknews.com via Subdomain CNAME, Subfolder proxy, or embed.';
@@ -376,87 +269,97 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#080808] text-slate-100 selection:bg-[#FF2638] selection:text-white">
-      {/* Global Google AdSense Auto-Ads Injector */}
-      <GoogleAdsenseScript />
+    <I18nContext.Provider value={i18nValue}>
+      <div className="min-h-screen flex flex-col bg-[#080808] text-slate-100 selection:bg-[#FF2638] selection:text-white">
+        {/* Global Google AdSense Auto-Ads Injector */}
+        <GoogleAdsenseScript />
 
-      {/* Dynamic SEO Meta Tags & Schema.org JSON-LD */}
-      <SEOHead
-        title={seoTitle}
-        description={seoDescription}
-        canonicalUrl={canonicalUrl}
-        keywords={keywords}
-        breadcrumbs={breadcrumbs}
-        noIndex={currentView === 'admin' || currentView === '404'}
-        faq={currentTool ? currentTool.faq : undefined}
-        howToSteps={
-          currentTool
-            ? [
-                { name: 'Select or Input', text: `Upload file or provide string input into the ${currentTool.name} workspace.` },
-                { name: 'Configure Options', text: 'Adjust desired transformation parameters, quality, or formatting.' },
-                { name: 'Execute & Download', text: 'Click execute to generate instant unwatermarked results in browser memory.' },
-              ]
-            : undefined
-        }
-        toolCategory={currentTool ? currentTool.category : undefined}
-        toolName={currentTool ? currentTool.name : undefined}
-      />
-
-      {/* Flagship View: Sohit Aarya Personal Portfolio */}
-      {currentView === 'portfolio' ? (
-        <SohitPortfolioPage
-          onOpenTool={(slug) => handleNavigate('tool', slug)}
-          onOpenCategory={(cat) => handleNavigate('category', cat)}
-          onNavigateToolsSuite={() => handleNavigate('tools')}
-          onNavigateAdmin={() => handleNavigate('admin')}
+        {/* Dynamic SEO Meta Tags & Schema.org JSON-LD */}
+        <SEOHead
+          title={seoTitle}
+          description={seoDescription}
+          canonicalUrl={canonicalUrl}
+          keywords={keywords}
+          breadcrumbs={breadcrumbs}
+          ogLocale={langMeta.ogLocale}
+          inLanguage={lang}
+          noIndex={currentView === 'admin' || currentView === '404'}
+          faq={currentTool ? currentTool.faq : undefined}
+          howToSteps={
+            currentTool
+              ? [
+                  { name: 'Select or Input', text: `Upload file or provide string input into the ${currentTool.name} workspace.` },
+                  { name: 'Configure Options', text: 'Adjust desired transformation parameters, quality, or formatting.' },
+                  { name: 'Execute & Download', text: 'Click execute to generate instant unwatermarked results in browser memory.' },
+                ]
+              : undefined
+          }
+          toolCategory={currentTool ? currentTool.category : undefined}
+          toolName={currentTool ? currentTool.name : undefined}
         />
-      ) : (
-        <>
-          {/* Main Top Header for Tools Suite & Sub-Pages */}
-          <Header currentView={currentView} onNavigate={handleNavigate} />
 
-          {/* Main Content Router */}
-          <main className="flex-1">
-            {(currentView === 'tools' || currentView === 'home') && (
-              <HomePage onNavigate={handleNavigate} />
-            )}
+        {/* Flagship View: Sohit Aarya Official Profile */}
+        {currentView === 'portfolio' ? (
+          <SohitPortfolioPage
+            onOpenTool={(slug) => handleNavigate('tool', slug)}
+            onOpenCategory={(cat) => handleNavigate('category', cat)}
+            onNavigateToolsSuite={() => handleNavigate('tools')}
+            onNavigateAdmin={() => handleNavigate('admin')}
+          />
+        ) : (
+          <>
+            {/* Main Top Header for Tools Suite & Sub-Pages */}
+            <Header currentView={currentView} onNavigate={handleNavigate} />
 
-            {currentView === 'category' && currentParam && (
-              <CategoryPage key={currentParam} categorySlug={currentParam} onNavigate={handleNavigate} />
-            )}
+            {/* Main Content Router */}
+            <main className="flex-1">
+              {(currentView === 'tools' || currentView === 'home') && (
+                <HomePage onNavigate={handleNavigate} />
+              )}
 
-            {currentView === 'tool' && currentTool && (
-              <ToolRunner key={currentTool.id} tool={currentTool} onNavigate={handleNavigate} />
-            )}
+              {currentView === 'category' && currentCategory && (
+                <CategoryPage key={currentCategory.id} categorySlug={currentCategory.id} onNavigate={handleNavigate} />
+              )}
 
-            {currentView === '404' && (
-              <NotFoundPage onNavigate={handleNavigate} requestedSlug={currentParam} />
-            )}
+              {currentView === 'category' && !currentCategory && (
+                <NotFoundPage onNavigate={handleNavigate} requestedSlug={currentParam ? `category/${currentParam}` : 'category'} />
+              )}
 
-            {currentView === 'admin' && (
-              <AdminDashboard onNavigateHome={() => handleNavigate('portfolio')} />
-            )}
+              {currentView === 'tool' && currentTool && (
+                <ToolRunner key={currentTool.id} tool={currentTool} onNavigate={handleNavigate} />
+              )}
 
-            {currentView === 'audit' && <AuditReportPage />}
+              {currentView === 'tool' && !currentTool && (
+                <NotFoundPage onNavigate={handleNavigate} requestedSlug={currentParam ? `tool/${currentParam}` : 'tool'} />
+              )}
 
-            {currentView === 'sitemap' && <SitemapPage onNavigate={handleNavigate} />}
+              {currentView === '404' && (
+                <NotFoundPage onNavigate={handleNavigate} requestedSlug={currentParam} />
+              )}
 
-            {currentView === 'integration' && (
-              <IntegrationGuidePage
-                onNavigateHome={() => handleNavigate('portfolio')}
-                onNavigateCategory={(cat) => handleNavigate('category', cat)}
-              />
-            )}
+              {currentView === 'admin' && (
+                <AdminDashboard onNavigateHome={() => handleNavigate('portfolio')} />
+              )}
 
-            {(currentView === 'privacy' || currentView === 'terms') && (
-              <LegalPage key={currentView} type={currentView as 'privacy' | 'terms'} />
-            )}
-          </main>
+              {currentView === 'audit' && <AuditReportPage />}
 
-          {/* Global Footer */}
-          <Footer onNavigate={handleNavigate} />
-        </>
-      )}
-    </div>
+              {currentView === 'integration' && (
+                <IntegrationGuidePage
+                  onNavigateHome={() => handleNavigate('portfolio')}
+                  onNavigateCategory={(cat) => handleNavigate('category', cat)}
+                />
+              )}
+
+              {(currentView === 'privacy' || currentView === 'terms') && (
+                <LegalPage key={currentView} type={currentView as 'privacy' | 'terms'} />
+              )}
+            </main>
+
+            {/* Global Footer */}
+            <Footer onNavigate={handleNavigate} />
+          </>
+        )}
+      </div>
+    </I18nContext.Provider>
   );
 }

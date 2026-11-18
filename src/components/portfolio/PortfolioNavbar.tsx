@@ -63,13 +63,10 @@ export const PortfolioNavbar: React.FC<PortfolioNavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo / Wordmark */}
-          <a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center gap-3 group cursor-pointer"
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-3 group cursor-pointer text-left"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF2638] to-[#990011] p-0.5 shadow-lg shadow-[#FF2638]/20 group-hover:shadow-[#FF2638]/40 transition-all">
               <div className="w-full h-full bg-[#080808] rounded-[10px] flex items-center justify-center font-black tracking-tighter text-[#FF2638] text-sm group-hover:text-white transition-colors">
@@ -86,10 +83,10 @@ export const PortfolioNavbar: React.FC<PortfolioNavbarProps> = ({
                 </span>
               </div>
               <div className="text-[9px] font-mono tracking-widest text-neutral-400 uppercase">
-                PORTFOLIO • DEVELOPER • CREATOR
+                DEVELOPER • CREATOR • ECOSYSTEM
               </div>
             </div>
-          </a>
+          </button>
 
           {/* Desktop Nav Links */}
           <div className="hidden xl:flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-neutral-400">

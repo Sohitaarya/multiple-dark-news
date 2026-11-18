@@ -25,6 +25,11 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-[#050505] border-t border-[#1a1a1a] text-neutral-400 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -43,7 +48,7 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
               {SOHIT_AARYA_DATA.motto}
             </div>
             <p className="text-xs text-neutral-500 max-w-md leading-relaxed">
-              Personal portfolio, digital creations, and 331 client-side in-browser tools built by Sohit Aarya. Powered by zero tracking and maximum data privacy.
+              Personal profile, digital creations, and 331 client-side in-browser tools built by Sohit Aarya. Powered by zero tracking and maximum data privacy.
             </p>
           </div>
 
@@ -68,13 +73,13 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs">
           <div className="space-y-2.5">
             <div className="font-mono text-white font-bold uppercase tracking-wider text-[11px]">
-              Portfolio Sections
+              Profile Sections
             </div>
             <ul className="space-y-1.5 text-neutral-400">
-              <li><a href="#about" className="hover:text-white transition-colors">01 About Identity</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">02 What I Do</a></li>
-              <li><a href="#tools-ecosystem" className="hover:text-white transition-colors">03 331 Tools Ecosystem</a></li>
-              <li><a href="#projects" className="hover:text-white transition-colors">04 Projects Showcase</a></li>
+              <li><button type="button" onClick={() => scrollToSection('about')} className="hover:text-white transition-colors text-left">01 About Identity</button></li>
+              <li><button type="button" onClick={() => scrollToSection('services')} className="hover:text-white transition-colors text-left">02 What I Do</button></li>
+              <li><button type="button" onClick={() => scrollToSection('tools-ecosystem')} className="hover:text-white transition-colors text-left">03 331 Tools Ecosystem</button></li>
+              <li><button type="button" onClick={() => scrollToSection('projects')} className="hover:text-white transition-colors text-left">04 Projects Showcase</button></li>
             </ul>
           </div>
 
@@ -83,10 +88,10 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
               Development
             </div>
             <ul className="space-y-1.5 text-neutral-400">
-              <li><a href="#progress" className="hover:text-white transition-colors">05 Work In Progress</a></li>
-              <li><a href="#social" className="hover:text-white transition-colors">06 Social Connect</a></li>
-              <li><a href="#journey" className="hover:text-white transition-colors">07 My Journey Roadmap</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">08 Contact &amp; Inquiries</a></li>
+              <li><button type="button" onClick={() => scrollToSection('progress')} className="hover:text-white transition-colors text-left">05 Work In Progress</button></li>
+              <li><button type="button" onClick={() => scrollToSection('social')} className="hover:text-white transition-colors text-left">06 Social Connect</button></li>
+              <li><button type="button" onClick={() => scrollToSection('journey')} className="hover:text-white transition-colors text-left">07 My Journey Roadmap</button></li>
+              <li><button type="button" onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors text-left">08 Contact &amp; Inquiries</button></li>
             </ul>
           </div>
 
@@ -101,9 +106,9 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
                   <span>Open Full Tools Suite</span>
                 </button>
               </li>
-              <li><a href="/pdf-compressor" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('pdf'); else onNavigateTools(); }} className="hover:text-white transition-colors">PDF Tools Suite</a></li>
-              <li><a href="/image-compressor" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('image'); else onNavigateTools(); }} className="hover:text-white transition-colors">Image Tools Suite</a></li>
-              <li><a href="/json-formatter" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('developer'); else onNavigateTools(); }} className="hover:text-white transition-colors">Developer Tools Suite</a></li>
+              <li><a href="/category/pdf" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('pdf'); else onNavigateTools(); }} className="hover:text-white transition-colors">PDF Tools Suite</a></li>
+              <li><a href="/category/image" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('image'); else onNavigateTools(); }} className="hover:text-white transition-colors">Image Tools Suite</a></li>
+              <li><a href="/category/developer" onClick={(e) => { e.preventDefault(); if (onNavigateCategory) onNavigateCategory('developer'); else onNavigateTools(); }} className="hover:text-white transition-colors">Developer Tools Suite</a></li>
             </ul>
           </div>
 
@@ -123,7 +128,6 @@ export const PortfolioFooter: React.FC<PortfolioFooterProps> = ({
                   <ExternalLink className="w-3 h-3 text-[#FF2638]" />
                 </a>
               </li>
-              <li><a href="/sitemap" className="hover:text-white transition-colors">XML Sitemaps Directory</a></li>
               <li><a href="/audit" className="hover:text-white transition-colors">Audit &amp; Compliance</a></li>
             </ul>
           </div>

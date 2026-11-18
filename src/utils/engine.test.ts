@@ -90,7 +90,7 @@ test('unit converters convert accurately across metric and imperial', () => {
 });
 
 test('analyzeText calculates words, characters, sentences, and reading time', () => {
-  const sample = 'MultipleDarkNews Tools platform is ultra fast. It provides 325+ tools for everyone!';
+  const sample = 'MultipleDarkNews Tools platform is ultra fast. It provides 331+ tools for everyone!';
   const stats = analyzeText(sample);
   assert.equal(stats.words, 12);
   assert.equal(stats.sentences, 2);
@@ -161,8 +161,8 @@ test('convertTimestamp extracts UTC and local dates', () => {
   assert.equal(conv.epochSeconds, 1600000000);
 });
 
-test('tools registry contains all 325+ cataloged tools with valid metadata', () => {
-  assert.ok(ALL_TOOLS.length >= 325, `Expected >= 325 tools, found ${ALL_TOOLS.length}`);
+test('tools registry contains all 331+ cataloged tools with valid metadata', () => {
+  assert.ok(ALL_TOOLS.length >= 331, `Expected >= 331 tools, found ${ALL_TOOLS.length}`);
 
   const pdfTools = getToolsByCategory('pdf');
   assert.equal(pdfTools.length, 35, `Expected 35 PDF tools, found ${pdfTools.length}`);
@@ -180,7 +180,7 @@ test('tools registry contains all 325+ cataloged tools with valid metadata', () 
 
   const stats = getRegistryStats();
   assert.ok(stats.productionReady >= 60);
-  assert.ok(stats.total >= 325);
+  assert.ok(stats.total >= 331);
 });
 
 test('simulateSerp and generateMetaTags create optimal Google search tags', async () => {
@@ -203,7 +203,7 @@ test('simulateSerp and generateMetaTags create optimal Google search tags', asyn
   assert.equal(slug, 'free-online-pdf-compressor-2026');
 });
 
-test('generateXmlSitemap indexes all 325+ tools conforming to sitemaps.org', async () => {
+test('generateXmlSitemap indexes all 331+ tools conforming to sitemaps.org', async () => {
   const { generateXmlSitemap, getSitemapEntries } = await import('../services/sitemapGenerator');
   const entries = getSitemapEntries();
   assert.ok(entries.length >= 340, `Expected >= 340 entries, found ${entries.length}`);

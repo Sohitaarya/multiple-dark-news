@@ -12,6 +12,7 @@ import {
   BookOpen,
   ShieldCheck
 } from 'lucide-react';
+import { copyTextSafe } from '../../utils/clipboard';
 
 export const AiSearchStudio: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -91,11 +92,13 @@ export const AiSearchStudio: React.FC = () => {
     }
   };
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (!answer) return;
-    navigator.clipboard.writeText(answer);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const ok = await copyTextSafe(answer);
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const handleDownloadMd = () => {

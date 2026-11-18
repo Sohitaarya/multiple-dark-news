@@ -171,7 +171,7 @@ export const SOHIT_AARYA_DATA = {
       number: '05',
       title: 'SEO & Digital Publishing',
       category: 'Growth & Visibility',
-      description: 'Architecting programmatic SEO engines, dynamic Schema.org JSON-LD structured data, XML sitemaps containing 325+ indexed URLs, and SERP simulation tools.',
+      description: 'Architecting programmatic SEO engines, dynamic Schema.org JSON-LD structured data, XML sitemaps containing 331+ indexed URLs, and SERP simulation tools.',
       features: ['Programmatic sitemap engines', 'Automated crawler notifications', 'OpenGraph & Twitter cards', 'SERP snippet optimizers'],
       techStack: ['SEO Protocols', 'JSON-LD', 'XML Sitemaps', 'Meta Engine'],
       isVerifiedOffering: true

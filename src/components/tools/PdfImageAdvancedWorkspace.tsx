@@ -15,6 +15,7 @@ import { ToolDefinition } from '../../types/tools';
 import { readAndFillPdfForm } from '../../services/pdfAdvancedEngine';
 import { analyzePixelsAndPalette, parseImageExifBinary } from '../../services/imageAdvancedEngine';
 import { loadImage } from '../../services/imageEngine';
+import { copyTextSafe } from '../../utils/clipboard';
 
 export interface PdfAdvancedParams {
   rearrangeOrder: string;
@@ -271,10 +272,12 @@ export const PdfImageAdvancedWorkspace: React.FC<PdfImageAdvancedWorkspaceProps>
     onPdfParamsChange({ signatureDataUrl: null });
   };
 
-  const copyHex = (hex: string) => {
-    navigator.clipboard.writeText(hex);
-    setCopiedHex(hex);
-    setTimeout(() => setCopiedHex(null), 1500);
+  const copyHex = async (hex: string) => {
+    const ok = await copyTextSafe(hex);
+    if (ok) {
+      setCopiedHex(hex);
+      setTimeout(() => setCopiedHex(null), 1500);
+    }
   };
 
   return (

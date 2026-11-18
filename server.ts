@@ -1,10 +1,16 @@
 import express from 'express';
 import http from 'http';
 import { WebSocketServer } from 'ws';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI, Modality } from '@google/genai';
+import { ALL_TOOLS } from './src/data/toolsRegistry';
+import { CATEGORIES } from './src/data/categories';
+import { isStaticAssetPath, resolveAppRoute, RouteMatch } from './src/utils/routing';
+import { normalizePublicDomain, validatePublicHttpUrl } from './src/utils/networkSafety';
+import { injectRouteSeoIntoHtml, resolveRouteSeoMeta } from './src/utils/seoHtml';
 
 dotenv.config();
 
@@ -280,12 +286,180 @@ wss.on('connection', async (clientWs) => {
   }
 });
 
+const TOOL_SLUG_SET = new Set(ALL_TOOLS.map((t) => t.slug.toLowerCase()));
+const CATEGORY_ID_SET = new Set(CATEGORIES.map((c) => c.id.toLowerCase()));
+
+function isKnownAppRoute(reqUrl: string): { valid: boolean; view: string; match: RouteMatch } {
+  const parsed = new URL(reqUrl || '/', 'http://localhost');
+  const match = resolveAppRoute(parsed.pathname, parsed.search, '', {
+    findToolBySlug: (slug) => (TOOL_SLUG_SET.has(slug.toLowerCase()) ? { slug } : undefined),
+    hasCategory: (catId) => CATEGORY_ID_SET.has(catId.toLowerCase()),
+  });
+  return { valid: !match.is404, view: match.view, match };
+}
+
+// 6. Server-side SEO HTTP Header, Redirect & Latency Inspector (SSRF-guarded)
+app.post('/api/seo/inspect', async (req, res) => {
+  try {
+    const { url: rawUrl } = req.body || {};
+    const validated = validatePublicHttpUrl(rawUrl || '');
+    if (!validated.valid) {
+      return res.status(400).json({ success: false, error: validated.error });
+    }
+
+    let currentUrl = validated.url.toString();
+    const hops: Array<{ url: string; status: number; location?: string }> = [];
+    const started = Date.now();
+    let finalRes: globalThis.Response | null = null;
+
+    for (let i = 0; i < 6; i++) {
+      const hopCheck = validatePublicHttpUrl(currentUrl);
+      if (!hopCheck.valid) {
+        return res.status(400).json({ success: false, error: `Redirect blocked: ${hopCheck.error}` });
+      }
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+      try {
+        const upstream = await fetch(hopCheck.url.toString(), {
+          method: 'GET',
+          redirect: 'manual',
+          signal: controller.signal,
+          headers: { 'User-Agent': 'MultipleDarkNews-SEO-Inspector/1.0' },
+        });
+        const loc = upstream.headers.get('location') || undefined;
+        hops.push({ url: hopCheck.url.toString(), status: upstream.status, location: loc });
+        if (upstream.status >= 300 && upstream.status < 400 && loc) {
+          currentUrl = new URL(loc, hopCheck.url.toString()).toString();
+          continue;
+        }
+        finalRes = upstream;
+        break;
+      } finally {
+        clearTimeout(timeout);
+      }
+    }
+
+    if (!finalRes) {
+      return res.status(502).json({ success: false, error: 'Too many redirects (> 5).' });
+    }
+
+    const headers: Record<string, string> = {};
+    finalRes.headers.forEach((v, k) => {
+      headers[k.toLowerCase()] = v;
+    });
+
+    return res.json({
+      success: true,
+      finalUrl: currentUrl,
+      status: finalRes.status,
+      statusText: finalRes.statusText || '',
+      responseTimeMs: Date.now() - started,
+      redirected: hops.length > 1,
+      hops,
+      headers,
+    });
+  } catch (err: any) {
+    return res.status(502).json({ success: false, error: err?.message || 'Upstream request failed' });
+  }
+});
+
+// 7. Server-side RDAP / WHOIS Proxy (uses IANA bootstrap + authoritative TLD RDAP servers)
+let cachedIanaDnsServices: Array<[string[], string[]]> | null = null;
+let cachedIanaTimestamp = 0;
+
+async function resolveAuthoritativeRdapUrls(domain: string): Promise<string[]> {
+  const parts = domain.toLowerCase().split('.');
+  const tld = parts[parts.length - 1] || '';
+  const urls: string[] = [];
+
+  if (tld === 'com') urls.push(`https://rdap.verisign.com/com/v1/domain/${encodeURIComponent(domain)}`);
+  else if (tld === 'net') urls.push(`https://rdap.verisign.com/net/v1/domain/${encodeURIComponent(domain)}`);
+  else if (tld === 'org') urls.push(`https://rdap.publicinterestregistry.org/rdap/domain/${encodeURIComponent(domain)}`);
+
+  try {
+    if (!cachedIanaDnsServices || Date.now() - cachedIanaTimestamp > 3600_000) {
+      const ianaRes = await fetch('https://data.iana.org/rdap/dns.json', {
+        headers: { 'User-Agent': 'MultipleDarkNews-RDAP/1.0' },
+      });
+      if (ianaRes.ok) {
+        const ianaJson = (await ianaRes.json()) as { services?: Array<[string[], string[]]> };
+        if (Array.isArray(ianaJson.services)) {
+          cachedIanaDnsServices = ianaJson.services;
+          cachedIanaTimestamp = Date.now();
+        }
+      }
+    }
+    if (cachedIanaDnsServices) {
+      for (const [tlds, servers] of cachedIanaDnsServices) {
+        if (tlds.includes(tld) && servers[0]) {
+          const base = servers[0].replace(/\/+$/, '');
+          const candidate = `${base}/domain/${encodeURIComponent(domain)}`;
+          if (!urls.includes(candidate)) urls.push(candidate);
+          break;
+        }
+      }
+    }
+  } catch {
+    // Fallback below
+  }
+
+  urls.push(`https://rdap.org/domain/${encodeURIComponent(domain)}`);
+  return urls;
+}
+
+app.get('/api/seo/rdap', async (req, res) => {
+  const domainParam = String(req.query.domain || '');
+  const parsed = normalizePublicDomain(domainParam);
+  if (!parsed.valid) {
+    return res.status(400).json({ success: false, error: parsed.error });
+  }
+
+  try {
+    const queriedDomain = parsed.rootDomain || parsed.domain;
+    const candidates = await resolveAuthoritativeRdapUrls(queriedDomain);
+    let lastStatus = 502;
+
+    for (const targetUrl of candidates) {
+      try {
+        const rdapRes = await fetch(targetUrl, {
+          headers: {
+            Accept: 'application/rdap+json, application/json',
+            'User-Agent': 'MultipleDarkNews-RDAP/1.0',
+          },
+        });
+        lastStatus = rdapRes.status;
+        if (rdapRes.ok) {
+          const data = await rdapRes.json();
+          return res.json({ success: true, domain: queriedDomain, registry: new URL(targetUrl).hostname, data });
+        }
+      } catch {
+        // Try next candidate
+      }
+    }
+
+    return res.status(lastStatus === 404 ? 404 : 502).json({
+      success: false,
+      status: lastStatus,
+      domain: queriedDomain,
+      error: `RDAP registry returned HTTP ${lastStatus} for ${queriedDomain}.`,
+    });
+  } catch (err: any) {
+    return res.status(502).json({ success: false, error: err?.message || 'RDAP query failed' });
+  }
+});
+
 // Search Engine Sitemap Ping Endpoint (Google & Bing Sitemaps API)
 app.post('/api/sitemap/ping', async (req, res) => {
   try {
-    const { domain = 'https://multipledarknews.com', sitemapUrl: customSitemap } = req.body;
-    const cleanDomain = domain.replace(/\/+$/, '');
-    const sitemapUrl = customSitemap || `${cleanDomain}/sitemap.xml`;
+    const { domain = 'https://tools.multipledarknews.com', sitemapUrl: customSitemap } = req.body || {};
+    const cleanDomain = String(domain).replace(/\/+$/, '');
+    const candidateSitemap = customSitemap || `${cleanDomain}/sitemap.xml`;
+
+    const validated = validatePublicHttpUrl(candidateSitemap);
+    if (!validated.valid) {
+      return res.status(400).json({ success: false, error: validated.error });
+    }
+    const sitemapUrl = validated.url.toString();
 
     const results: {
       google: { status: number; message: string; ok: boolean };
@@ -309,14 +483,14 @@ app.post('/api/sitemap/ping', async (req, res) => {
         status: googleRes.status,
         message: googleRes.ok
           ? 'Google notified of updated sitemap. Re-crawl queued.'
-          : `Google ping dispatched (HTTP ${googleRes.status}).`,
-        ok: googleRes.status < 400 || googleRes.status === 404,
+          : `Google ping returned HTTP ${googleRes.status}.`,
+        ok: googleRes.ok,
       };
     } catch (gErr: any) {
       results.google = {
-        status: 200,
-        message: `Google ping dispatched successfully (${gErr.message || 'Queued'}).`,
-        ok: true,
+        status: 0,
+        message: `Google ping failed: ${gErr?.message || 'Network error'}`,
+        ok: false,
       };
     }
 
@@ -330,34 +504,40 @@ app.post('/api/sitemap/ping', async (req, res) => {
         status: bingRes.status,
         message: bingRes.ok
           ? 'Bing notified of updated sitemap. Indexation accelerated.'
-          : `Bing ping dispatched (HTTP ${bingRes.status}).`,
-        ok: bingRes.status < 400 || bingRes.status === 404,
+          : `Bing ping returned HTTP ${bingRes.status}.`,
+        ok: bingRes.ok,
       };
     } catch (bErr: any) {
       results.bing = {
-        status: 200,
-        message: `Bing ping dispatched successfully (${bErr.message || 'Queued'}).`,
-        ok: true,
+        status: 0,
+        message: `Bing ping failed: ${bErr?.message || 'Network error'}`,
+        ok: false,
       };
     }
 
-    res.json({
-      success: true,
+    const anyOk = results.google.ok || results.bing.ok;
+    return res.status(anyOk ? 200 : 502).json({
+      success: anyOk,
       ...results,
     });
   } catch (err: any) {
-    res.status(500).json({ success: false, error: err.message || 'Failed to ping search engines' });
+    return res.status(500).json({ success: false, error: err.message || 'Failed to ping search engines' });
   }
+});
+
+// Legacy URL 301 Redirect: /portfolio -> /sohit-aarya
+app.get(['/portfolio', '/portfolio/'], (_req, res) => {
+  res.redirect(301, '/sohit-aarya');
 });
 
 // Explicit SEO routes: sitemap.xml and robots.txt
 app.get('/sitemap.xml', (_req, res) => {
-  res.header('Content-Type', 'application/xml');
+  res.header('Content-Type', 'application/xml; charset=UTF-8');
   res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
 });
 
 app.get('/robots.txt', (_req, res) => {
-  res.header('Content-Type', 'text/plain');
+  res.header('Content-Type', 'text/plain; charset=UTF-8');
   res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
 });
 
@@ -387,13 +567,60 @@ async function start() {
         middlewareMode: true,
         hmr: process.env.DISABLE_HMR === 'true' ? false : { server },
       },
-      appType: 'spa',
+      appType: 'custom',
     });
+
+    // Reject missing static assets cleanly with 404 instead of falling back to HTML
+    app.use((req, res, next) => {
+      const pathname = (req.path || '/').split('?')[0];
+      if (
+        isStaticAssetPath(pathname) &&
+        !pathname.startsWith('/src/') &&
+        !pathname.startsWith('/@') &&
+        !pathname.startsWith('/node_modules/')
+      ) {
+        const publicFile = path.join(__dirname, 'public', pathname.replace(/^\/+/, ''));
+        if (!fs.existsSync(publicFile) || fs.statSync(publicFile).isDirectory()) {
+          return res.status(404).type('text/plain').send('Asset Not Found');
+        }
+      }
+      return next();
+    });
+
     app.use(vite.middlewares);
+
+    app.use(async (req, res, next) => {
+      if (req.method !== 'GET' || req.originalUrl.startsWith('/api/')) {
+        return next();
+      }
+      try {
+        const template = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
+        const transformed = await vite.transformIndexHtml(req.originalUrl, template);
+        const routeCheck = isKnownAppRoute(req.originalUrl);
+        const html = injectRouteSeoIntoHtml(transformed, resolveRouteSeoMeta(routeCheck.match));
+        if (!routeCheck.valid || routeCheck.view === 'admin') {
+          res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+        }
+        return res.status(routeCheck.valid ? 200 : 404).set({ 'Content-Type': 'text/html; charset=UTF-8' }).end(html);
+      } catch (e: any) {
+        vite.ssrFixStacktrace?.(e);
+        return next(e);
+      }
+    });
   } else {
     app.use(express.static(path.join(__dirname, 'dist')));
-    app.get('*', (_req, res) => {
-      res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    app.use((req, res, next) => {
+      if (req.originalUrl.startsWith('/api/')) return next();
+      if (isStaticAssetPath(req.path)) {
+        return res.status(404).type('text/plain').send('Asset Not Found');
+      }
+      const routeCheck = isKnownAppRoute(req.originalUrl);
+      if (!routeCheck.valid || routeCheck.view === 'admin') {
+        res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+      }
+      const rawHtml = fs.readFileSync(path.join(__dirname, 'dist', 'index.html'), 'utf-8');
+      const html = injectRouteSeoIntoHtml(rawHtml, resolveRouteSeoMeta(routeCheck.match));
+      return res.status(routeCheck.valid ? 200 : 404).set({ 'Content-Type': 'text/html; charset=UTF-8' }).end(html);
     });
   }
 

@@ -14,6 +14,7 @@ import {
   FileText
 } from 'lucide-react';
 import { SOHIT_AARYA_DATA } from '../../data/sohitPortfolioData';
+import { copyTextSafe } from '../../utils/clipboard';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -29,10 +30,12 @@ export const ContactSection: React.FC = () => {
 
   const email = SOHIT_AARYA_DATA.email;
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const handleCopyEmail = async () => {
+    const ok = await copyTextSafe(email);
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {

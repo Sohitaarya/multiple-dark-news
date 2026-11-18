@@ -24,7 +24,7 @@ if (function_exists('curl_init')) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT'] ?? 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)');
     $content = curl_exec($ch);
     $infoCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -59,19 +59,17 @@ if ($content !== false) {
     ];
 
     $contentType = $mimeTypes[$ext] ?? 'text/html; charset=UTF-8';
-    http_response_code($httpCode === 404 && !$ext ? 200 : $httpCode);
+    http_response_code($httpCode);
     header('Content-Type: ' . $contentType);
-    header('Cache-Control: ' . ($ext ? 'public, max-age=86400' : 'no-cache, must-revalidate'));
+    if ($httpCode === 404 || $pathOnly === '/admin') {
+        header('X-Robots-Tag: noindex, nofollow');
+    }
+    header('Cache-Control: ' . ($ext && $httpCode === 200 ? 'public, max-age=86400' : 'no-cache, must-revalidate'));
     echo $content;
     exit;
 }
 
-// Fallback to static index.html wrapper if upstream unreachable
-http_response_code(200);
-header('Content-Type: text/html; charset=UTF-8');
-if (file_exists(__DIR__ . '/index.html')) {
-    include __DIR__ . '/index.html';
-} else {
-    echo 'MultipleDarkNews Tools Platform Ready';
-}
+http_response_code(502);
+header('Content-Type: text/plain; charset=UTF-8');
+echo 'Upstream service temporarily unavailable.';
 ?>

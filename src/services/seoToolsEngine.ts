@@ -297,9 +297,8 @@ User-agent: *
 Allow: /
 ${disallows}
 ${delay}
-# Sitemaps
-Sitemap: ${siteUrl}/sitemap.xml
-Sitemap: ${siteUrl}/sitemap-tools.xml`;
+# Sitemap
+Sitemap: ${siteUrl}/sitemap.xml`;
 }
 
 /**

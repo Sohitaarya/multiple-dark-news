@@ -30,7 +30,25 @@ interface SEOHeadProps {
   ratingValue?: number;
   ratingCount?: number;
   noIndex?: boolean;
+  ogLocale?: string;
+  inLanguage?: string;
 }
+
+const SUPPORTED_LANGUAGE_CODES = ['en', 'hi', 'es', 'fr', 'de', 'ar', 'pt', 'ru', 'ja', 'zh', 'id', 'bn'];
+const SUPPORTED_LANGUAGE_NAMES = [
+  'English',
+  'Hindi',
+  'Spanish',
+  'French',
+  'German',
+  'Arabic',
+  'Portuguese',
+  'Russian',
+  'Japanese',
+  'Chinese',
+  'Indonesian',
+  'Bengali',
+];
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
@@ -47,6 +65,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   ratingValue = 4.9,
   ratingCount = 1420,
   noIndex = false,
+  ogLocale = 'en_US',
+  inLanguage = 'en',
 }) => {
   useEffect(() => {
     // 1. Title
@@ -75,11 +95,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta('distribution', 'Global');
     setMeta('target', 'all');
     setMeta('rating', 'General');
-    setMeta('geo.region', 'US, CA, GB, DE, IN, AE, NG, AU, Global');
+    setMeta('language', inLanguage);
+    setMeta('geo.region', 'US, CA, GB, DE, IN, AE, NG, AU, JP, BR, ID, BD, Global');
     setMeta('geo.placename', 'Worldwide');
 
-    // 3. Canonical Link & Global Hreflang Tags
-    const url = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://tools.multipledarknews.com');
+    // 3. Canonical Link & Global Hreflang Tags (keep canonical clean without ?lang= duplicates)
+    const url = canonicalUrl || (typeof window !== 'undefined' ? window.location.href.split('?')[0].split('#')[0] : 'https://tools.multipledarknews.com');
     let canonicalTag = document.querySelector('link[rel="canonical"]');
     if (!canonicalTag) {
       canonicalTag = document.createElement('link');
@@ -88,29 +109,29 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     }
     canonicalTag.setAttribute('href', url);
 
-    // Dynamic Hreflang Tags for Global Search Engines
+    // Canonical & Self-Referencing Hreflang Tags
     const languages = [
       { code: 'en', href: url },
-      { code: 'en-us', href: `${url}?lang=en-us` },
-      { code: 'en-gb', href: `${url}?lang=en-gb` },
-      { code: 'en-ca', href: `${url}?lang=en-ca` },
-      { code: 'en-au', href: `${url}?lang=en-au` },
-      { code: 'hi', href: `${url}?lang=hi` },
-      { code: 'es', href: `${url}?lang=es` },
-      { code: 'fr', href: `${url}?lang=fr` },
-      { code: 'ar', href: `${url}?lang=ar` },
       { code: 'x-default', href: url },
     ];
 
-    languages.forEach((lang) => {
-      let hreflangTag = document.querySelector(`link[hreflang="${lang.code}"]`);
+    // Remove legacy ?lang= alternate tags if present from prior renders
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((existing) => {
+      const code = existing.getAttribute('hreflang');
+      if (code && code !== 'en' && code !== 'x-default') {
+        existing.remove();
+      }
+    });
+
+    languages.forEach((langItem) => {
+      let hreflangTag = document.querySelector(`link[hreflang="${langItem.code}"]`);
       if (!hreflangTag) {
         hreflangTag = document.createElement('link');
         hreflangTag.setAttribute('rel', 'alternate');
-        hreflangTag.setAttribute('hreflang', lang.code);
+        hreflangTag.setAttribute('hreflang', langItem.code);
         document.head.appendChild(hreflangTag);
       }
-      hreflangTag.setAttribute('href', lang.href);
+      hreflangTag.setAttribute('href', langItem.href);
     });
 
     // 4. OpenGraph Tags
@@ -120,7 +141,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta('og:url', url, true);
     setMeta('og:site_name', 'MultipleDarkNews Tools — 331+ Free Online Web Tools', true);
     setMeta('og:image', ogImage, true);
-    setMeta('og:locale', 'en_US', true);
+    setMeta('og:locale', ogLocale, true);
 
     // 5. Twitter Card Tags
     setMeta('twitter:card', 'summary_large_image');
@@ -137,7 +158,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         '@type': 'Person',
         '@id': 'https://tools.multipledarknews.com/#person',
         name: 'Sohit Aarya',
-        url: 'https://tools.multipledarknews.com',
+        url: 'https://tools.multipledarknews.com/sohit-aarya',
         email: 'sohitaarya98@gmail.com',
         jobTitle: 'Full-Stack Developer, AI Creator & Founder',
         areaServed: 'Worldwide',
@@ -165,22 +186,22 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         },
         sameAs: ['https://github.com/Sohitaarya'],
       },
-      // WebSite with SearchAction
+      // WebSite with SearchAction & Global Multilingual Support
       {
         '@type': 'WebSite',
         '@id': 'https://tools.multipledarknews.com/#website',
         url: 'https://tools.multipledarknews.com',
         name: 'MultipleDarkNews Tools',
-        description: 'Complete suite of 331+ free online PDF, image, developer, SEO, and calculation tools.',
+        description: 'Complete suite of 331+ free online PDF, image, developer, SEO, and calculation tools in 12 languages worldwide.',
         publisher: {
           '@id': 'https://tools.multipledarknews.com/#organization',
         },
-        inLanguage: ['en', 'hi', 'es', 'fr', 'ar'],
+        inLanguage: SUPPORTED_LANGUAGE_CODES,
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://tools.multipledarknews.com/#search?q={search_term_string}',
+            urlTemplate: 'https://tools.multipledarknews.com/?q={search_term_string}',
           },
           'query-input': 'required name=search_term_string',
         },
@@ -195,11 +216,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         name: toolName,
         url: url,
         applicationCategory: toolCategory ? `${toolCategory}Application` : 'UtilityApplication',
-        operatingSystem: 'All (Web Browser, Windows, macOS, Linux, iOS, Android across USA, Canada, UK, Europe, Asia, Africa, Worldwide)',
+        operatingSystem: 'All (Web Browser, Windows, macOS, Linux, iOS, Android Worldwide)',
         description: description,
         browserRequirements: 'Requires JavaScript. Requires HTML5.',
         areaServed: 'Worldwide',
-        availableLanguage: ['English', 'Hindi', 'Spanish', 'French', 'Arabic'],
+        availableLanguage: SUPPORTED_LANGUAGE_NAMES,
+        inLanguage: inLanguage,
         offers: {
           '@type': 'Offer',
           price: '0',
@@ -290,6 +312,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     toolName,
     ratingValue,
     ratingCount,
+    noIndex,
+    ogLocale,
+    inLanguage,
   ]);
 
   return null;

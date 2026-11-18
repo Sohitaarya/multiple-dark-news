@@ -14,12 +14,14 @@ import {
   FileCode,
   Activity,
   Layers,
-  Code2
+  Code2,
+  Globe
 } from 'lucide-react';
 import { CATEGORIES } from '../../data/categories';
 import { searchTools } from '../../data/toolsRegistry';
 import { ToolDefinition } from '../../types/tools';
 import { adminAuthService } from '../../services/adminAuthService';
+import { useI18n, SUPPORTED_LANGUAGES, SupportedLangCode } from '../../utils/i18n';
 
 interface HeaderProps {
   currentView: string;
@@ -27,6 +29,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
+  const { lang, setLang, t } = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<ToolDefinition[]>([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -110,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
                   MultipleDarkNews <span className="text-rose-500 font-black">TOOLS</span>
                 </div>
                 <div className="text-[10px] text-slate-400 font-medium tracking-wide whitespace-nowrap">
-                  331 FREE PRIVACY-FIRST TOOLS
+                  {t.brandSubtitle}
                 </div>
               </div>
             </button>
@@ -122,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search 331 tools..."
+                placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchQuery.length > 1 && setIsSearchOpen(true)}
@@ -179,7 +182,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
                 aria-expanded={isCatDropdownOpen}
               >
                 <Grid className="w-4 h-4 text-rose-400 shrink-0" />
-                <span>Categories</span>
+                <span>{t.categories}</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isCatDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -211,22 +214,14 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               onClick={() => onNavigate('category', 'pdf')}
               className={`px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium transition-colors whitespace-nowrap ${currentView === 'category' ? 'text-rose-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
             >
-              PDF Tools
+              {t.pdfTools}
             </button>
 
             <button
               onClick={() => onNavigate('category', 'image')}
               className="px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors whitespace-nowrap"
             >
-              Image Tools
-            </button>
-
-            <button
-              onClick={() => onNavigate('sitemap')}
-              className="px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center gap-1 whitespace-nowrap"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-rose-400 shrink-0" />
-              <span>Sitemap &amp; SEO</span>
+              {t.imageTools}
             </button>
 
             <button
@@ -234,7 +229,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               className="px-2.5 py-2 rounded-lg text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center gap-1 whitespace-nowrap"
             >
               <Activity className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Audit</span>
+              <span>{t.audit}</span>
             </button>
 
             {isAdmin && (
@@ -253,18 +248,34 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-md shadow-cyan-950/40 transition-all flex items-center gap-1.5 ml-1 whitespace-nowrap"
             >
               <Code2 className="w-3.5 h-3.5 shrink-0" />
-              <span>Add to Website</span>
+              <span>{t.addToWebsite}</span>
             </button>
           </div>
 
-          {/* Right Action: Portfolio & Parent Site Links */}
+          {/* Right Action: Language Selector, Sohit Aarya & Parent Site Links */}
           <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
+            <div className="hidden sm:flex items-center gap-1 bg-slate-900 border border-slate-700/80 rounded-xl px-2 py-1">
+              <Globe className="w-3.5 h-3.5 text-rose-400 shrink-0" aria-hidden="true" />
+              <select
+                aria-label="Select Language"
+                value={lang}
+                onChange={(e) => setLang(e.target.value as SupportedLangCode)}
+                className="bg-transparent text-xs font-semibold text-slate-200 focus:outline-none cursor-pointer pr-1"
+              >
+                {SUPPORTED_LANGUAGES.map((l) => (
+                  <option key={l.code} value={l.code} className="bg-slate-900 text-slate-100">
+                    {l.nativeName}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <button
               onClick={() => onNavigate('portfolio')}
               className="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 border border-rose-500/60 shadow-md shadow-rose-950/60 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-              <span>Sohit Aarya Portfolio</span>
+              <span>{t.founderCta}</span>
             </button>
 
             <a
@@ -297,11 +308,30 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search tools..."
+                placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-slate-100"
               />
+            </div>
+
+            {/* Mobile Language Selector */}
+            <div className="flex items-center justify-between gap-2 px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl">
+              <span className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                <Globe className="w-4 h-4 text-rose-400" /> Language
+              </span>
+              <select
+                aria-label="Select Language Mobile"
+                value={lang}
+                onChange={(e) => setLang(e.target.value as SupportedLangCode)}
+                className="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-xs text-white"
+              >
+                {SUPPORTED_LANGUAGES.map((l) => (
+                  <option key={l.code} value={l.code}>
+                    {l.nativeName} ({l.label})
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* Categories Grid */}
@@ -318,18 +348,12 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               ))}
             </div>
 
-            <div className={`grid ${isAdmin ? 'grid-cols-3' : 'grid-cols-2'} gap-2 pt-2 border-t border-slate-800`}>
-              <button
-                onClick={() => { onNavigate('sitemap'); setIsMobileMenuOpen(false); }}
-                className="py-2 text-xs font-semibold bg-slate-900 rounded-lg text-rose-400 border border-slate-800 text-center"
-              >
-                Sitemap & SEO
-              </button>
+            <div className={`grid ${isAdmin ? 'grid-cols-2' : 'grid-cols-1'} gap-2 pt-2 border-t border-slate-800`}>
               <button
                 onClick={() => { onNavigate('audit'); setIsMobileMenuOpen(false); }}
                 className="py-2 text-xs font-semibold bg-slate-900 rounded-lg text-slate-300 border border-slate-800 text-center"
               >
-                Audit Report
+                {t.audit}
               </button>
               {isAdmin && (
                 <button
@@ -343,13 +367,12 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
             </div>
 
             <div className="pt-1 space-y-2">
-
               <button
                 onClick={() => { onNavigate('integration'); setIsMobileMenuOpen(false); }}
                 className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 text-center flex items-center justify-center gap-2 shadow-md"
               >
                 <Code2 className="w-3.5 h-3.5" />
-                <span>Add to Your Website (Integration Guide)</span>
+                <span>{t.addToWebsite}</span>
               </button>
             </div>
           </div>

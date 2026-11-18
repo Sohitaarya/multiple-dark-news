@@ -1,6 +1,6 @@
 /**
  * MultipleDarkNews XML Sitemap & SEO Index Generator
- * Builds complete standard XML sitemaps for all 325+ tools and 12 categories
+ * Builds complete standard XML sitemaps for all 331+ tools and 12 categories
  */
 
 import { ALL_TOOLS } from '../data/toolsRegistry';
@@ -31,13 +31,13 @@ export function getSitemapEntries(domain = 'https://tools.multipledarknews.com')
       priority: '1.0',
       name: 'Home - Free Online Tools Platform',
     },
-    // 2. Sohit Aarya Official Portfolio
+    // 2. Sohit Aarya Official Profile
     {
-      loc: `${cleanDomain}/portfolio`,
+      loc: `${cleanDomain}/sohit-aarya`,
       lastmod: now,
       changefreq: 'daily',
       priority: '1.0',
-      name: 'Sohit Aarya - Official Portfolio, Developer & Founder',
+      name: 'Sohit Aarya - Developer, Creator & 331 Tools Ecosystem',
     },
     // 3. Audit & Governance
     {

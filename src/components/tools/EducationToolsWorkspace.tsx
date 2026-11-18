@@ -21,6 +21,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { ToolDefinition } from '../../types/tools';
+import { copyTextSafe } from '../../utils/clipboard';
 import {
   calculateGpa,
   calculateMarksPercentage,
@@ -47,10 +48,12 @@ export const EducationToolsWorkspace: React.FC<EducationToolsWorkspaceProps> = (
 }) => {
   const [copied, setCopied] = useState(false);
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyToClipboard = async (text: string) => {
+    const ok = await copyTextSafe(text);
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   // 1. STUDY TIMETABLE MAKER

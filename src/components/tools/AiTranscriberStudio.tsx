@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   RefreshCw
 } from 'lucide-react';
+import { copyTextSafe } from '../../utils/clipboard';
 
 export const AiTranscriberStudio: React.FC = () => {
   const [isListening, setIsListening] = useState(false);
@@ -94,11 +95,13 @@ export const AiTranscriberStudio: React.FC = () => {
     }
   };
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (!transcript) return;
-    navigator.clipboard.writeText(transcript);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const ok = await copyTextSafe(transcript);
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const handleDownloadTxt = () => {
