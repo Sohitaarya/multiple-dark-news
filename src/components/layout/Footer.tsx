@@ -54,8 +54,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 flex items-center justify-center shadow-lg shadow-rose-950/50">
-                <span className="font-extrabold text-white text-base">MD</span>
+              <div className="w-9 h-9 rounded-xl overflow-hidden border border-rose-500/40 bg-slate-950 flex items-center justify-center shadow-lg shadow-rose-950/50 shrink-0">
+                <img
+                  src="/logo.png"
+                  alt="MultipleDarkNews Tools Logo"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <span className="font-extrabold text-lg text-white">
                 MultipleDarkNews <span className="text-rose-500">TOOLS</span>

@@ -105,8 +105,13 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
               className="flex items-center gap-2.5 text-left group focus:outline-none whitespace-nowrap"
               aria-label="MultipleDarkNews Tools Home"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 flex items-center justify-center shadow-lg shadow-rose-950/50 group-hover:scale-105 transition-transform duration-200 shrink-0">
-                <span className="font-extrabold text-white text-base tracking-wider">MD</span>
+              <div className="w-9 h-9 rounded-xl overflow-hidden border border-rose-500/40 bg-slate-950 flex items-center justify-center shadow-lg shadow-rose-950/50 group-hover:scale-105 transition-transform duration-200 shrink-0">
+                <img
+                  src="/logo.png"
+                  alt="MultipleDarkNews Tools Logo"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div className="hidden sm:block">
                 <div className="font-extrabold text-sm xl:text-base tracking-tight text-white flex items-center gap-1 whitespace-nowrap">
