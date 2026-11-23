@@ -28,6 +28,7 @@ import { AiSearchStudio } from './AiSearchStudio';
 import { AiPlacesStudio } from './AiPlacesStudio';
 import { AiTranscriberStudio } from './AiTranscriberStudio';
 import { LiveVoiceStudio } from './LiveVoiceStudio';
+import { SynthIdRemoverStudio } from './SynthIdRemoverStudio';
 import { ToolCustomControls, GLOBAL_CURRENCIES, CurrencyItem } from './ToolCustomControls';
 import { EducationToolsWorkspace } from './EducationToolsWorkspace';
 import { PdfImageAdvancedWorkspace, PdfAdvancedParams, ImageAdvancedParams } from './PdfImageAdvancedWorkspace';
@@ -1225,8 +1226,9 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
         {tool.id === 'ai-places-finder' && <AiPlacesStudio />}
         {tool.id === 'ai-voice-transcriber' && <AiTranscriberStudio />}
         {tool.id === 'live-voice-chat' && <LiveVoiceStudio />}
+        {tool.id === 'synthid-remover' && <SynthIdRemoverStudio />}
 
-        {!['3d-scene-viewer', 'ai-image-generator', 'ai-search-assistant', 'ai-places-finder', 'ai-voice-transcriber', 'live-voice-chat'].includes(tool.id) && (
+        {!['3d-scene-viewer', 'ai-image-generator', 'ai-search-assistant', 'ai-places-finder', 'ai-voice-transcriber', 'live-voice-chat', 'synthid-remover'].includes(tool.id) && (
           <>
             {/* Visual 3-Step Workflow Stepper & Toolbar */}
             <ToolCustomControls

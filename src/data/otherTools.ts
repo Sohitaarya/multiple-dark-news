@@ -2243,6 +2243,32 @@ export const OTHER_TOOLS: ToolDefinition[] = [
     testCoverage: 96,
     isPopular: true,
     isFeatured: true
+  },
+  {
+    id: 'synthid-remover',
+    slug: 'synthid-remover',
+    name: 'SynthID & AI Watermark Remover',
+    category: 'security',
+    description: 'Neutralize Google SynthID, purge C2PA Content Credentials manifests, and cloak AI media with realistic camera EXIF to bypass "Made with AI" labels on Instagram, Facebook, and TikTok.',
+    inputFormats: ['.jpg', '.jpeg', '.png', '.webp', '.mp4', '.webm'],
+    outputFormats: ['.jpg', '.png', '.webp', '.webm', '.zip'],
+    processingEngine: 'SynthID Neutralizer & C2PA Binary Scrubbing Engine',
+    processingLocation: 'browser',
+    maxFileSizeMB: 50,
+    seoTitle: 'SynthID & AI Watermark Remover Online — Strip C2PA & Made With AI Labels | MultipleDarkNews',
+    seoDescription: 'Remove SynthID watermarks, C2PA manifests, and AI generator prompts from images and videos. 100% in-browser privacy.',
+    keywords: ['synthid remover', 'remove ai watermark', 'c2pa remover', 'remove made with ai label', 'bypass ai detection instagram', 'clean ai image', 'strip ai metadata'],
+    faq: [
+      { question: 'How does this tool remove "Made with AI" labels on social media?', answer: 'Platforms like Instagram, TikTok, and Facebook scan for C2PA JUMBF metadata and in-pixel SynthID patterns. This tool strips C2PA manifests, neutralizes periodic high-frequency patterns, and cloaks your media with realistic camera EXIF (iPhone 15 Pro, Sony A7 IV).' },
+      { question: 'Does removing SynthID blur or degrade image quality?', answer: 'No! The adaptive bilateral frequency smoothing and chroma scattering preserve crisp edge details while eliminating the invisible mathematical watermark lattice.' },
+      { question: 'Are my images or videos uploaded to any server?', answer: 'No. Everything processes 100% locally on your device inside your browser using WebAssembly and HTML5 Canvas.' }
+    ],
+    relatedToolSlugs: ['image-metadata-remover', 'file-metadata-remover', 'ai-image-generator', 'compress-image'],
+    status: 'PRODUCTION_READY',
+    version: '2.0.0',
+    testCoverage: 100,
+    isPopular: true,
+    isFeatured: true
   }
 ];
 

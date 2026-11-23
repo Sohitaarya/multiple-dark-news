@@ -116,7 +116,8 @@ test('Every single tool ID in ALL_TOOLS is explicitly wired across ToolRunner an
     [],
     `Unmapped tool IDs found: ${unmapped.map((t) => t.id).join(', ')}`
   );
-  assert.equal(ALL_TOOLS.length, 331);
+  assert.ok(ALL_TOOLS.length >= 331);
+  assert.equal(ALL_TOOLS.length, 332);
 });
 
 test('gifEngine encodes & inspects valid GIF89a with NETSCAPE2.0 looping', () => {
