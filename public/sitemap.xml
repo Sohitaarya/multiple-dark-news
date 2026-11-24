@@ -5,2095 +5,2107 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://tools.multipledarknews.com/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sohit-aarya</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audit</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/privacy</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/terms</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/integration</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/image</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/developer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/text</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/unit-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/seo</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/security</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/education</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/social-media</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/video</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/category/audio</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-compressor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/merge-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/split-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/rotate-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/delete-pdf-pages</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/extract-pdf-pages</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/rearrange-pdf-pages</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/watermark-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-page-number</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-metadata-editor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/protect-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/unlock-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sign-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-to-text</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/jpg-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/png-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-to-jpg</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-to-png</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/crop-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-grayscale</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-to-word</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/word-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-to-excel</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/excel-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-to-powerpoint</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/powerpoint-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/edit-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/scan-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/compare-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/repair-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/html-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-ocr</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-booklet-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pdf-form-filler</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-compressor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-resizer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-cropper</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/jpg-to-png</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/png-to-jpg</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/webp-to-jpg</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/jpg-to-webp</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/png-to-webp</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/webp-to-png</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/avif-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/svg-to-png</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/png-to-svg</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-to-pdf</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-background-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-background-changer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-blur</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-sharpen</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-upscaler</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-color-picker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-watermark</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-rotator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-flipper</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-metadata-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-exif-viewer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-dpi-changer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-pixel-counter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-base64-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-collage-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/meme-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/passport-photo-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/thumbnail-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/screenshot-editor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/gif-compressor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/gif-to-png</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/png-to-gif</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-border-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-color-adjuster</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-grayscale</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/image-transparency-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/json-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/json-validator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/json-minifier</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/base64-encoder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/base64-decoder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/url-encoder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/url-decoder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/jwt-decoder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/uuid-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/hash-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sha256-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/md5-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/qr-code-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/barcode-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/regex-tester</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/unix-timestamp-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/css-gradient-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/box-shadow-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/color-code-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/html-minifier</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/json-to-xml</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/xml-to-json</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/html-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/css-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/css-minifier</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/javascript-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/javascript-minifier</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sql-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sql-minifier</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/yaml-validator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/yaml-to-json</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/qr-code-reader</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/http-status-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/user-agent-parser</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/cron-expression-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/html-table-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/robots-txt-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sitemap-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/htaccess-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/meta-tag-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/word-counter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/character-counter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sentence-counter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/paragraph-counter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/case-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/uppercase-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/lowercase-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/title-case-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/remove-extra-spaces</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/remove-duplicate-lines</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-sorter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-reverser</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/find-and-replace</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-diff-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-cleaner</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/lorem-ipsum-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/markdown-to-html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-to-slug</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/line-break-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/emoji-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/markdown-editor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/html-to-text</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/readability-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/keyword-density-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/unicode-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/fancy-text-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-encryptor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-decryptor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/grammar-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/plagiarism-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/standard-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/scientific-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/percentage-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/age-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/bmi-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/loan-emi-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/gst-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/discount-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/date-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/time-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/bmr-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/calorie-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/interest-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/compound-interest-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/income-tax-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/salary-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/profit-and-loss-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/gpa-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/cgpa-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/marks-percentage-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/attendance-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/electricity-bill-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/fuel-cost-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/speed-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/average-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ratio-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/fraction-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/square-root-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/probability-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/time-zone-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/length-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/weight-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/temperature-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/data-storage-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/mb-to-gb</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/kb-to-mb</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/area-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/volume-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/speed-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pressure-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/energy-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/power-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/time-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/angle-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/fuel-economy-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/binary-to-decimal</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/decimal-to-binary</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/hexadecimal-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/number-system-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/currency-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/password-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/password-strength-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/password-entropy-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/random-number-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/random-string-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/hash-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/file-checksum-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/qr-code-scanner</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/url-safety-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/email-validator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ip-information-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ssl-certificate-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/file-metadata-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/secure-text-encoder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/two-factor-authentication-code-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/serp-snippet-preview</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/meta-title-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/meta-description-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/open-graph-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/twitter-card-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/schema-markup-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/canonical-url-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/hreflang-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/url-slug-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/favicon-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/robots-txt-tester</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/website-speed-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/page-size-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/http-header-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/broken-link-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/redirect-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/domain-authority-lookup</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/whois-lookup</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/dns-lookup</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ip-address-lookup</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ssl-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/website-screenshot-tool</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/sitemap-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/keyword-research</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/seo-keyword-density-checker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/online-exam-timer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/online-stopwatch</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/study-timetable-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/reading-time-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/notes-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/flashcard-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/quiz-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/mcq-practice-tool</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/random-question-picker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/math-equation-solver</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/scientific-notation-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/roman-numeral-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/number-to-words</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/words-to-number</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/typing-speed-test</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/citation-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/bibliography-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/grade-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/education-gpa-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/exam-marks-calculator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-thumbnail-downloader</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-tag-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-title-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-description-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-hashtag-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/instagram-bio-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/instagram-caption-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/hashtag-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/twitter-character-counter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/facebook-post-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/linkedin-post-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/social-media-image-resizer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/pinterest-pin-maker</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/social-media-calendar</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/open-graph-preview</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-channel-id-finder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/youtube-video-details-viewer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-title-analyzer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/thumbnail-preview-tool</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/social-media-bio-formatter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-compressor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-to-gif</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-frame-extractor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-mute</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/screen-recorder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/webcam-recorder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/mp4-to-webm</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/webm-to-mp4</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-trimmer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-cutter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-merger</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-resizer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-cropper</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-rotator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-speed-changer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/gif-to-video</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-thumbnail-extractor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-to-mp3</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-to-wav</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-watermark</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-subtitle-extractor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-aspect-ratio-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/video-metadata-viewer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-video-synchronizer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/voice-recorder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/text-to-speech</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/speech-to-text</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-cutter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-volume-booster</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/mp3-compressor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/mp3-to-wav</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/wav-to-mp3</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/mp3-to-aac</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-trimmer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-merger</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-speed-changer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-noise-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-recorder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-extractor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-equalizer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-reverser</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-fade-in-out</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-pitch-changer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-waveform-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-metadata-editor</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-silence-remover</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-joiner</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/audio-channel-converter</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/3d-scene-viewer</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ai-image-generator</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ai-search-assistant</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ai-places-finder</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/ai-voice-transcriber</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tools.multipledarknews.com/live-voice-chat</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tools.multipledarknews.com/synthid-remover</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tools.multipledarknews.com/amazon-pinterest-affiliate</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

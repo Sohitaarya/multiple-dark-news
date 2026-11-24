@@ -168,11 +168,29 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <button
                 key={tag.slug}
                 onClick={() => onNavigate('category', tag.slug)}
-                className="px-3 py-1 rounded-lg bg-[#141414] hover:bg-[#1f1f1f] text-neutral-300 hover:text-white border border-[#262626] hover:border-[#FF2638]/50 transition-colors font-bold uppercase"
+                className="px-3 py-1 rounded-lg bg-[#141414] hover:bg-[#1f1f1f] text-neutral-300 hover:text-white border border-[#262626] hover:border-[#FF2638]/50 transition-colors font-bold uppercase cursor-pointer"
               >
                 {tag.label}
               </button>
             ))}
+          </div>
+
+          {/* Highlighted New Pro Workflows */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mt-3 text-xs font-mono">
+            <button
+              onClick={() => onNavigate('tool', 'amazon-pinterest-affiliate')}
+              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#240a10] to-[#160a0d] hover:from-[#330d16] hover:to-[#1f0d12] text-rose-300 hover:text-white border border-[#FF2638]/50 transition-all font-bold flex items-center gap-1.5 cursor-pointer"
+            >
+              <Share2 className="w-3.5 h-3.5 text-[#FF2638]" />
+              <span>Amazon → Pinterest Affiliate Studio</span>
+            </button>
+            <button
+              onClick={() => onNavigate('tool', 'synthid-remover')}
+              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#161024] to-[#0e0c18] hover:from-[#201633] hover:to-[#161224] text-sky-300 hover:text-white border border-sky-500/40 transition-all font-bold flex items-center gap-1.5 cursor-pointer"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
+              <span>SynthID &amp; AI Watermark Remover</span>
+            </button>
           </div>
         </div>
       </section>

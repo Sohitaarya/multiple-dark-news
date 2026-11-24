@@ -100,7 +100,7 @@ test('CATEGORIES dynamically derives exact tool counts summing to ALL_TOOLS leng
   const sum = CATEGORIES.reduce((acc, c) => acc + c.toolCount, 0);
   assert.equal(sum, ALL_TOOLS.length);
   assert.ok(ALL_TOOLS.length >= 331);
-  assert.equal(ALL_TOOLS.length, 332);
+  assert.equal(ALL_TOOLS.length, 333);
   for (const cat of CATEGORIES) {
     assert.equal(cat.toolCount, getToolsByCategory(cat.id).length, `Mismatch on ${cat.id}`);
   }

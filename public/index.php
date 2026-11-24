@@ -39,11 +39,32 @@ if (function_exists('curl_init')) {
     if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
         $reqHeaders[] = 'Accept-Language: ' . $_SERVER['HTTP_ACCEPT_LANGUAGE'];
     }
+    $authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+    if ($authHeader === '' && function_exists('apache_request_headers')) {
+        $allHdrs = apache_request_headers();
+        foreach ($allHdrs as $k => $v) {
+            if (strtolower((string)$k) === 'authorization') {
+                $authHeader = (string)$v;
+                break;
+            }
+        }
+    }
+    if ($authHeader !== '') {
+        $reqHeaders[] = 'Authorization: ' . $authHeader;
+    }
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+        $reqHeaders[] = 'X-Requested-With: ' . $_SERVER['HTTP_X_REQUESTED_WITH'];
+    }
+    if (!empty($_SERVER['HTTP_ORIGIN'])) {
+        $reqHeaders[] = 'Origin: ' . $_SERVER['HTTP_ORIGIN'];
+    }
 
-    if ($method === 'POST' || $method === 'PUT' || $method === 'PATCH') {
+    if ($method === 'POST' || $method === 'PUT' || $method === 'PATCH' || $method === 'DELETE') {
         $rawBody = file_get_contents('php://input');
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $rawBody !== false ? $rawBody : '');
+        if ($method !== 'DELETE') {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $rawBody !== false ? $rawBody : '');
+        }
         $reqContentType = $_SERVER['CONTENT_TYPE'] ?? 'application/json';
         $reqHeaders[] = 'Content-Type: ' . $reqContentType;
     }
@@ -72,13 +93,20 @@ if (function_exists('curl_init')) {
 }
 
 if ($content === false) {
+    $fallbackHeaders = "User-Agent: " . ($_SERVER['HTTP_USER_AGENT'] ?? 'Mozilla/5.0') . "\r\n";
+    if (!empty($authHeader)) {
+        $fallbackHeaders .= "Authorization: " . $authHeader . "\r\n";
+    }
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+        $fallbackHeaders .= "X-Requested-With: " . $_SERVER['HTTP_X_REQUESTED_WITH'] . "\r\n";
+    }
     $context = stream_context_create([
         'http' => [
             'method' => $method,
             'ignore_errors' => true,
             'follow_location' => 0,
             'timeout' => 15,
-            'header' => "User-Agent: " . ($_SERVER['HTTP_USER_AGENT'] ?? 'Mozilla/5.0') . "\r\n",
+            'header' => $fallbackHeaders,
         ],
     ]);
     $content = @file_get_contents($workerUrl, false, $context);

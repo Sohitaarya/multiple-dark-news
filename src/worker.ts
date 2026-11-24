@@ -11,6 +11,19 @@ import { CATEGORIES } from './data/categories';
 import { isStaticAssetPath, resolveAppRoute, RouteMatch } from './utils/routing';
 import { normalizePublicDomain, validatePublicHttpUrl } from './utils/networkSafety';
 import { injectRouteSeoIntoHtml, resolveRouteSeoMeta } from './utils/seoHtml';
+import { generateXmlSitemap } from './services/sitemapGenerator';
+import {
+  buildPinterestAuthUrlServer,
+  extractAmazonProductServer,
+  handlePinterestBoardsListServer,
+  handlePinterestCallbackServer,
+  handlePinterestCreateBoardServer,
+  handlePinterestCreatePinServer,
+  handlePinterestMeServer,
+  PinterestRuntimeConfig,
+  proxyAmazonImageServer,
+  redeemPinterestExchangeTokenServer,
+} from './utils/pinterestServer';
 
 interface AssetsFetcher {
   fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
@@ -23,6 +36,19 @@ interface WorkerExecutionContext {
 
 interface WorkerEnv {
   ASSETS: AssetsFetcher;
+  PINTEREST_CLIENT_ID?: string;
+  PINTEREST_CLIENT_SECRET?: string;
+  SESSION_SECRET?: string;
+  APP_URL?: string;
+}
+
+function toRuntimeConfig(env: WorkerEnv): PinterestRuntimeConfig {
+  return {
+    clientId: env.PINTEREST_CLIENT_ID,
+    clientSecret: env.PINTEREST_CLIENT_SECRET,
+    sessionSecret: env.SESSION_SECRET,
+    appUrl: env.APP_URL,
+  };
 }
 
 const TOOL_SLUG_SET = new Set(ALL_TOOLS.map((t) => t.slug.toLowerCase()));
@@ -36,12 +62,27 @@ function isKnownRoute(pathname: string, search: string): { valid: boolean; view:
   return { valid: !match.is404, view: match.view, match };
 }
 
-function jsonResponse(payload: unknown, status = 200): Response {
+const ALLOWED_CORS_ORIGIN = 'https://tools.multipledarknews.com';
+
+function buildCorsHeaders(request?: Request): Record<string, string> {
+  const origin = request?.headers.get('origin') || '';
+  if (origin !== ALLOWED_CORS_ORIGIN) return {};
+  return {
+    'Access-Control-Allow-Origin': ALLOWED_CORS_ORIGIN,
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin',
+  };
+}
+
+function jsonResponse(payload: unknown, status = 200, request?: Request): Response {
   return new Response(JSON.stringify(payload), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       'Cache-Control': 'no-store',
+      ...buildCorsHeaders(request),
     },
   });
 }
@@ -223,10 +264,116 @@ export default {
     const url = new URL(request.url);
     const { pathname, search } = url;
 
-    // 1. API endpoints
+    // Handle CORS preflight strictly for first-party custom domain on /api/*
+    if (pathname.startsWith('/api/') && request.method === 'OPTIONS') {
+      const cors = buildCorsHeaders(request);
+      if (Object.keys(cors).length === 0) {
+        return new Response(null, { status: 403 });
+      }
+      return new Response(null, { status: 204, headers: cors });
+    }
+
+    // 1. API & OAuth endpoints
     if (pathname === '/api/seo/inspect') return handleSeoInspect(request);
     if (pathname === '/api/seo/rdap') return handleSeoRdap(url);
     if (pathname === '/api/sitemap/ping') return handleSitemapPing(request);
+
+    if (pathname === '/api/amazon/extract') {
+      if (request.method !== 'POST') return jsonResponse({ success: false, error: 'Method not allowed' }, 405, request);
+      const body = (await request.json().catch(() => ({}))) as { url?: string; marketplace?: any };
+      const r = await extractAmazonProductServer(String(body.url || ''), body.marketplace || 'amazon.in');
+      return jsonResponse(r.body, r.status, request);
+    }
+
+    if (pathname === '/api/image/proxy-fetch') {
+      if (request.method !== 'POST') return jsonResponse({ success: false, error: 'Method not allowed' }, 405, request);
+      const body = (await request.json().catch(() => ({}))) as { url?: string };
+      const r = await proxyAmazonImageServer(String(body.url || ''));
+      return jsonResponse(r.body, r.status, request);
+    }
+
+    if (pathname === '/api/pinterest/auth-url') {
+      const cfg = toRuntimeConfig(env);
+      const callerOrigin = url.searchParams.get('origin') || request.headers.get('origin') || undefined;
+      const r = await buildPinterestAuthUrlServer(cfg, url.origin, callerOrigin);
+      return jsonResponse(r.body, r.status, request);
+    }
+
+    if (pathname === '/auth/pinterest/callback' || pathname === '/auth/pinterest/callback/') {
+      const cfg = toRuntimeConfig(env);
+      const r = await handlePinterestCallbackServer(
+        cfg,
+        {
+          code: url.searchParams.get('code') || undefined,
+          state: url.searchParams.get('state') || undefined,
+          error: url.searchParams.get('error') || undefined,
+          errorDescription: url.searchParams.get('error_description') || undefined,
+        },
+        url.origin
+      );
+      return new Response(r.html, {
+        status: r.status,
+        headers: {
+          'Content-Type': 'text/html; charset=UTF-8',
+          'Cache-Control': 'no-store',
+          'X-Robots-Tag': 'noindex, nofollow',
+        },
+      });
+    }
+
+    if (pathname === '/api/pinterest/session') {
+      if (request.method !== 'POST') return jsonResponse({ success: false, error: 'Method not allowed' }, 405, request);
+      if (request.headers.get('x-requested-with') !== 'MDN-Tools') {
+        return jsonResponse({ success: false, error: 'Missing required X-Requested-With header.' }, 403, request);
+      }
+      const body = (await request.json().catch(() => ({}))) as { exchangeToken?: string };
+      const r = await redeemPinterestExchangeTokenServer(toRuntimeConfig(env), String(body.exchangeToken || ''));
+      return jsonResponse(r.body, r.status, request);
+    }
+
+    if (pathname === '/api/pinterest/me') {
+      const r = await handlePinterestMeServer(toRuntimeConfig(env), request.headers.get('authorization') || '');
+      return jsonResponse(r.body, r.status, request);
+    }
+
+    if (pathname === '/api/pinterest/boards') {
+      const cfg = toRuntimeConfig(env);
+      const auth = request.headers.get('authorization') || '';
+      if (request.method === 'GET') {
+        const r = await handlePinterestBoardsListServer(cfg, auth);
+        return jsonResponse(r.body, r.status, request);
+      }
+      if (request.method === 'POST') {
+        if (request.headers.get('x-requested-with') !== 'MDN-Tools') {
+          return jsonResponse({ success: false, error: 'Missing required X-Requested-With header.' }, 403, request);
+        }
+        const body = (await request.json().catch(() => ({}))) as { name?: string; description?: string; privacy?: string };
+        const r = await handlePinterestCreateBoardServer(cfg, auth, body);
+        return jsonResponse(r.body, r.status, request);
+      }
+      return jsonResponse({ success: false, error: 'Method not allowed' }, 405, request);
+    }
+
+    if (pathname === '/api/pinterest/pins') {
+      if (request.method !== 'POST') return jsonResponse({ success: false, error: 'Method not allowed' }, 405, request);
+      if (request.headers.get('x-requested-with') !== 'MDN-Tools') {
+        return jsonResponse({ success: false, error: 'Missing required X-Requested-With header.' }, 403, request);
+      }
+      const body = (await request.json().catch(() => ({}))) as Record<string, any>;
+      const r = await handlePinterestCreatePinServer(toRuntimeConfig(env), request.headers.get('authorization') || '', body);
+      return jsonResponse(r.body, r.status, request);
+    }
+
+    // 1a. Dynamic XML Sitemap synchronized across all registered tools
+    if (pathname === '/sitemap.xml') {
+      return new Response(generateXmlSitemap('https://tools.multipledarknews.com'), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8',
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+    }
 
     // 1b. Legacy /portfolio -> canonical /sohit-aarya 301 redirect
     if (pathname === '/portfolio' || pathname === '/portfolio/') {

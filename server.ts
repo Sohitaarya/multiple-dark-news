@@ -12,6 +12,19 @@ import { isStaticAssetPath, resolveAppRoute, RouteMatch } from './src/utils/rout
 import { normalizePublicDomain, validatePublicHttpUrl } from './src/utils/networkSafety';
 import { injectRouteSeoIntoHtml, resolveRouteSeoMeta } from './src/utils/seoHtml';
 import { resolveServerConfig } from './src/utils/serverConfig';
+import { generateXmlSitemap } from './src/services/sitemapGenerator';
+import {
+  buildPinterestAuthUrlServer,
+  extractAmazonProductServer,
+  handlePinterestBoardsListServer,
+  handlePinterestCallbackServer,
+  handlePinterestCreateBoardServer,
+  handlePinterestCreatePinServer,
+  handlePinterestMeServer,
+  PinterestRuntimeConfig,
+  proxyAmazonImageServer,
+  redeemPinterestExchangeTokenServer,
+} from './src/utils/pinterestServer';
 
 dotenv.config({ quiet: true });
 
@@ -526,15 +539,112 @@ app.post('/api/sitemap/ping', async (req, res) => {
   }
 });
 
+// 8. Amazon Affiliate Product Extractor & Image Proxy + Multi-User Pinterest API v5 OAuth
+function getPinterestRuntimeConfig(): PinterestRuntimeConfig {
+  return {
+    clientId: process.env.PINTEREST_CLIENT_ID,
+    clientSecret: process.env.PINTEREST_CLIENT_SECRET,
+    sessionSecret: process.env.SESSION_SECRET,
+    appUrl: process.env.APP_URL,
+  };
+}
+
+function getExpressRequestOrigin(req: express.Request): string {
+  const proto = String(req.headers['x-forwarded-proto'] || req.protocol || 'https').split(',')[0].trim();
+  const hostHdr = String(req.headers['x-forwarded-host'] || req.get('host') || `localhost:${port}`).split(',')[0].trim();
+  return `${proto}://${hostHdr}`;
+}
+
+function requireCustomCsrfHeader(req: express.Request, res: express.Response): boolean {
+  if (req.get('x-requested-with') !== 'MDN-Tools') {
+    res.status(403).json({ success: false, error: 'Missing required X-Requested-With header.' });
+    return false;
+  }
+  return true;
+}
+
+app.post('/api/amazon/extract', async (req, res) => {
+  const { url, marketplace } = req.body || {};
+  const result = await extractAmazonProductServer(String(url || ''), marketplace || 'amazon.in');
+  return res.status(result.status).json(result.body);
+});
+
+app.post('/api/image/proxy-fetch', async (req, res) => {
+  const { url } = req.body || {};
+  const result = await proxyAmazonImageServer(String(url || ''));
+  return res.status(result.status).json(result.body);
+});
+
+app.get('/api/pinterest/auth-url', async (req, res) => {
+  const origin = getExpressRequestOrigin(req);
+  const callerOrigin = typeof req.query.origin === 'string' ? req.query.origin : req.get('origin');
+  const result = await buildPinterestAuthUrlServer(getPinterestRuntimeConfig(), origin, callerOrigin);
+  return res.status(result.status).json(result.body);
+});
+
+app.get(['/auth/pinterest/callback', '/auth/pinterest/callback/'], async (req, res) => {
+  const origin = getExpressRequestOrigin(req);
+  const result = await handlePinterestCallbackServer(
+    getPinterestRuntimeConfig(),
+    {
+      code: typeof req.query.code === 'string' ? req.query.code : undefined,
+      state: typeof req.query.state === 'string' ? req.query.state : undefined,
+      error: typeof req.query.error === 'string' ? req.query.error : undefined,
+      errorDescription: typeof req.query.error_description === 'string' ? req.query.error_description : undefined,
+    },
+    origin
+  );
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  return res.status(result.status).type('text/html; charset=UTF-8').send(result.html);
+});
+
+app.post('/api/pinterest/session', async (req, res) => {
+  if (!requireCustomCsrfHeader(req, res)) return;
+  const { exchangeToken } = req.body || {};
+  const result = await redeemPinterestExchangeTokenServer(getPinterestRuntimeConfig(), String(exchangeToken || ''));
+  return res.status(result.status).json(result.body);
+});
+
+app.get('/api/pinterest/me', async (req, res) => {
+  const result = await handlePinterestMeServer(getPinterestRuntimeConfig(), String(req.get('authorization') || ''));
+  return res.status(result.status).json(result.body);
+});
+
+app.get('/api/pinterest/boards', async (req, res) => {
+  const result = await handlePinterestBoardsListServer(getPinterestRuntimeConfig(), String(req.get('authorization') || ''));
+  return res.status(result.status).json(result.body);
+});
+
+app.post('/api/pinterest/boards', async (req, res) => {
+  if (!requireCustomCsrfHeader(req, res)) return;
+  const result = await handlePinterestCreateBoardServer(
+    getPinterestRuntimeConfig(),
+    String(req.get('authorization') || ''),
+    req.body || {}
+  );
+  return res.status(result.status).json(result.body);
+});
+
+app.post('/api/pinterest/pins', async (req, res) => {
+  if (!requireCustomCsrfHeader(req, res)) return;
+  const result = await handlePinterestCreatePinServer(
+    getPinterestRuntimeConfig(),
+    String(req.get('authorization') || ''),
+    req.body || {}
+  );
+  return res.status(result.status).json(result.body);
+});
+
 // Legacy URL 301 Redirect: /portfolio -> /sohit-aarya
 app.get(['/portfolio', '/portfolio/'], (_req, res) => {
   res.redirect(301, '/sohit-aarya');
 });
 
-// Explicit SEO routes: sitemap.xml and robots.txt
+// Explicit SEO routes: dynamic sitemap.xml and robots.txt
 app.get('/sitemap.xml', (_req, res) => {
   res.header('Content-Type', 'application/xml; charset=UTF-8');
-  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+  res.send(generateXmlSitemap('https://tools.multipledarknews.com'));
 });
 
 app.get('/robots.txt', (_req, res) => {

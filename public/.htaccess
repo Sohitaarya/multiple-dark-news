@@ -5,6 +5,10 @@ DirectoryIndex index.php index.html
 RewriteEngine On
 RewriteBase /
 
+# Preserve Bearer Authorization header for PHP reverse proxy
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 # Route sitemap.xml and robots.txt to physical files
 RewriteRule ^sitemap\.xml$ sitemap.xml [L]
 RewriteRule ^robots\.txt$ robots.txt [L]

@@ -2269,6 +2269,32 @@ export const OTHER_TOOLS: ToolDefinition[] = [
     testCoverage: 100,
     isPopular: true,
     isFeatured: true
+  },
+  {
+    id: 'amazon-pinterest-affiliate',
+    slug: 'amazon-pinterest-affiliate',
+    name: 'Amazon to Pinterest Affiliate Auto-Pin Studio',
+    category: 'social-media',
+    description: 'Fetch Amazon products, attach your Amazon Associate affiliate tag, design 2:3 Pin posters, and auto-publish directly to your own Pinterest account with the clickable buy link under the Pin photo.',
+    inputFormats: ['.jpg', '.jpeg', '.png', '.webp'],
+    outputFormats: ['.jpg'],
+    processingEngine: 'Pinterest API v5 OAuth + 2:3 Canvas Pin Studio',
+    processingLocation: 'hybrid',
+    maxFileSizeMB: 10,
+    seoTitle: 'Amazon to Pinterest Affiliate Auto-Pin Maker & Uploader | MultipleDarkNews',
+    seoDescription: 'Log into your own Pinterest account, import Amazon products with your Associate tag, design high-CTR Pin posters, and upload directly with clickable product links.',
+    keywords: ['amazon pinterest affiliate', 'pinterest affiliate pin maker', 'auto post amazon to pinterest', 'amazon affiliate pin uploader', 'pinterest product link tool'],
+    faq: [
+      { question: 'How does my Amazon affiliate link appear below the Pinterest Pin photo?', answer: 'When you publish via this studio, your verified Amazon URL containing ?tag=YOUR-ASSOCIATE-ID is sent as the official Pinterest destination link field, so Pinterest shows the clickable Amazon link right underneath the Pin photo.' },
+      { question: 'Can multiple users log into their own Pinterest accounts?', answer: 'Yes. Every user connects their own Pinterest account via official Pinterest OAuth 2.0 or a personal Pinterest API v5 token, kept strictly in temporary browser memory and never stored in a shared database.' },
+      { question: 'Which Amazon marketplaces are supported?', answer: 'Supports Amazon India (amazon.in), Amazon US (amazon.com), UK, Canada, UAE, Germany, France, Italy, Spain, Japan, Australia, and amzn.to short links.' }
+    ],
+    relatedToolSlugs: ['pinterest-pin-maker', 'synthid-remover', 'thumbnail-maker', 'youtube-tag-generator'],
+    status: 'PRODUCTION_READY',
+    version: '1.0.0',
+    testCoverage: 100,
+    isPopular: true,
+    isFeatured: true
   }
 ];
 

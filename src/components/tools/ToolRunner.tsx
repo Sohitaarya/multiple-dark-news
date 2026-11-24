@@ -29,6 +29,7 @@ import { AiPlacesStudio } from './AiPlacesStudio';
 import { AiTranscriberStudio } from './AiTranscriberStudio';
 import { LiveVoiceStudio } from './LiveVoiceStudio';
 import { SynthIdRemoverStudio } from './SynthIdRemoverStudio';
+import { AmazonPinterestStudio } from './AmazonPinterestStudio';
 import { ToolCustomControls, GLOBAL_CURRENCIES, CurrencyItem } from './ToolCustomControls';
 import { EducationToolsWorkspace } from './EducationToolsWorkspace';
 import { PdfImageAdvancedWorkspace, PdfAdvancedParams, ImageAdvancedParams } from './PdfImageAdvancedWorkspace';
@@ -1204,7 +1205,9 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
           </div>
           <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/60">
             <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Privacy</span>
-            <span className="font-semibold text-emerald-400 block mt-0.5">100% In-Browser</span>
+            <span className="font-semibold text-emerald-400 block mt-0.5">
+              {tool.processingLocation === 'hybrid' ? 'Memory-Only + Direct API' : '100% In-Browser'}
+            </span>
           </div>
           <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/60">
             <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Max Size</span>
@@ -1227,8 +1230,9 @@ export const ToolRunner: React.FC<ToolRunnerProps> = ({ tool, onNavigate }) => {
         {tool.id === 'ai-voice-transcriber' && <AiTranscriberStudio />}
         {tool.id === 'live-voice-chat' && <LiveVoiceStudio />}
         {tool.id === 'synthid-remover' && <SynthIdRemoverStudio />}
+        {tool.id === 'amazon-pinterest-affiliate' && <AmazonPinterestStudio />}
 
-        {!['3d-scene-viewer', 'ai-image-generator', 'ai-search-assistant', 'ai-places-finder', 'ai-voice-transcriber', 'live-voice-chat', 'synthid-remover'].includes(tool.id) && (
+        {!['3d-scene-viewer', 'ai-image-generator', 'ai-search-assistant', 'ai-places-finder', 'ai-voice-transcriber', 'live-voice-chat', 'synthid-remover', 'amazon-pinterest-affiliate'].includes(tool.id) && (
           <>
             {/* Visual 3-Step Workflow Stepper & Toolbar */}
             <ToolCustomControls
