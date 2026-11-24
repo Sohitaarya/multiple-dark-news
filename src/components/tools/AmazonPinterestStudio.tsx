@@ -25,6 +25,8 @@ import {
 import {
   AmazonMarketplace,
   buildAmazonAffiliateLink,
+  CURATED_AMAZON_DEALS,
+  CuratedAmazonDeal,
   generatePinterestPinCopy,
   PinCopyLanguage,
   PinPosterTemplate,
@@ -458,6 +460,20 @@ export const AmazonPinterestStudio: React.FC = () => {
     setProductRating('4.5★');
     setProductImageDataUrl(createSampleProductDataUrl());
     setExtractNotice(null);
+  };
+
+  const handleSelectCuratedDeal = (deal: CuratedAmazonDeal) => {
+    setMarketplace('amazon.in');
+    setAmazonInput(deal.defaultUrl);
+    if (!associateTag.trim()) setAssociateTag('yourtag-21');
+    setProductTitle(deal.title);
+    setProductPrice(deal.price);
+    setProductMrp(deal.mrp);
+    setDiscountBadge(deal.discountBadge);
+    setProductRating(deal.rating);
+    setRemoteImageUrlInput(deal.imageUrl);
+    void proxyFetchAmazonImage(deal.imageUrl);
+    setExtractNotice(`Loaded curated deal: ${deal.title}`);
   };
 
   const handleLocalPhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1029,6 +1045,51 @@ export const AmazonPinterestStudio: React.FC = () => {
             >
               Load Image
             </button>
+          </div>
+        </div>
+
+        {/* Curated Trending Amazon Deals Catalog (Instant 1-Click Load) */}
+        <div className="pt-4 border-t border-slate-800/80 space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Instant Curated Amazon Trending Deals (1-Click Load)</span>
+            </div>
+            <span className="text-[11px] text-slate-400">High commission &amp; conversion picks</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {CURATED_AMAZON_DEALS.map((deal) => (
+              <div
+                key={deal.id}
+                className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/60 transition-all flex flex-col justify-between space-y-2"
+              >
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2 py-0.5 rounded-md bg-amber-950/60 border border-amber-800/60 text-[10px] font-bold text-amber-300">
+                      {deal.category}
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-400">{deal.discountBadge}</span>
+                  </div>
+                  <div className="text-xs font-bold text-white line-clamp-2">{deal.title}</div>
+                </div>
+
+                <div className="flex items-center justify-between pt-2 border-t border-slate-800">
+                  <div>
+                    <div className="text-xs font-extrabold text-white">{deal.price}</div>
+                    <div className="text-[10px] text-slate-400 line-through">{deal.mrp}</div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectCuratedDeal(deal)}
+                    className="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-[11px] font-extrabold flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Load Deal</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

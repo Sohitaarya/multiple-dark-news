@@ -48,7 +48,96 @@ export interface ExtractedAmazonProduct {
   error?: string;
 }
 
+export interface CuratedAmazonDeal {
+  id: string;
+  category: string;
+  title: string;
+  price: string;
+  mrp: string;
+  discountBadge: string;
+  rating: string;
+  asin: string;
+  defaultUrl: string;
+  imageUrl: string;
+}
+
+export const CURATED_AMAZON_DEALS: CuratedAmazonDeal[] = [
+  {
+    id: 'deal-1',
+    category: 'Electronics',
+    title: 'AMOLED Smart Calling Watch Pro with 14-Day Battery & Health Tracking',
+    price: '₹2,499',
+    mrp: '₹6,999',
+    discountBadge: '64% OFF',
+    rating: '4.5★',
+    asin: 'B0CX23V2ZK',
+    defaultUrl: 'https://www.amazon.in/dp/B0CX23V2ZK',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61Zjlqjt1wL._SL1500_.jpg',
+  },
+  {
+    id: 'deal-2',
+    category: 'Audio',
+    title: 'Wireless Active Noise Cancelling Earbuds with 40H Playtime & Spatial Audio',
+    price: '₹1,799',
+    mrp: '₹4,999',
+    discountBadge: '64% OFF',
+    rating: '4.6★',
+    asin: 'B0C9XYZ123',
+    defaultUrl: 'https://www.amazon.in/dp/B0C9XYZ123',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61SUjU+pkUL._SL1500_.jpg',
+  },
+  {
+    id: 'deal-3',
+    category: 'Smart Home',
+    title: 'RGB Smart LED Strip Lights with Alexa Voice Control & Music Sync',
+    price: '₹899',
+    mrp: '₹2,499',
+    discountBadge: '64% OFF',
+    rating: '4.4★',
+    asin: 'B07WXYZ890',
+    defaultUrl: 'https://www.amazon.in/dp/B07WXYZ890',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/71Xz1b-x7PL._SL1500_.jpg',
+  },
+  {
+    id: 'deal-4',
+    category: 'Workspace',
+    title: 'Ergonomic Foldable Aluminum Laptop Stand with Height Adjustment',
+    price: '₹1,299',
+    mrp: '₹2,999',
+    discountBadge: '57% OFF',
+    rating: '4.7★',
+    asin: 'B08ABCD456',
+    defaultUrl: 'https://www.amazon.in/dp/B08ABCD456',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61q3z3y2w+L._SL1500_.jpg',
+  },
+  {
+    id: 'deal-5',
+    category: 'Gadgets',
+    title: '65W GaN Ultra-Fast Charger with Dual Type-C & USB Ports',
+    price: '₹1,999',
+    mrp: '₹4,499',
+    discountBadge: '55% OFF',
+    rating: '4.8★',
+    asin: 'B09EFGH789',
+    defaultUrl: 'https://www.amazon.in/dp/B09EFGH789',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61j8s8v3z+L._SL1500_.jpg',
+  },
+  {
+    id: 'deal-6',
+    category: 'Creator Kit',
+    title: '10-inch LED Ring Light with Tripod Stand & Phone Holder for Streaming',
+    price: '₹999',
+    mrp: '₹2,999',
+    discountBadge: '67% OFF',
+    rating: '4.3★',
+    asin: 'B07MNOP345',
+    defaultUrl: 'https://www.amazon.in/dp/B07MNOP345',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/71m8v3z3w+L._SL1500_.jpg',
+  },
+];
+
 export type PinCopyLanguage = 'en' | 'hinglish' | 'hi';
+
 
 export interface GeneratedPinCopy {
   title: string;
