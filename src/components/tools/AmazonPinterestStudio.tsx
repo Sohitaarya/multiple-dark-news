@@ -59,8 +59,8 @@ interface PublishedPinEntry {
 }
 
 const MARKETPLACE_OPTIONS: Array<{ value: AmazonMarketplace; label: string; currency: string }> = [
-  { value: 'amazon.in', label: 'Amazon India (amazon.in)', currency: '₹' },
-  { value: 'amazon.com', label: 'Amazon US (amazon.com)', currency: '$' },
+  { value: 'amazon.com', label: 'Amazon US (amazon.com) [Primary]', currency: '$' },
+  { value: 'amazon.in', label: 'Amazon India (amazon.in) [Phase 2]', currency: '₹' },
   { value: 'amazon.co.uk', label: 'Amazon UK (amazon.co.uk)', currency: '£' },
   { value: 'amazon.ae', label: 'Amazon UAE (amazon.ae)', currency: 'AED ' },
   { value: 'amazon.ca', label: 'Amazon Canada (amazon.ca)', currency: 'CA$' },
@@ -150,8 +150,8 @@ export const AmazonPinterestStudio: React.FC = () => {
   // 2. Amazon Product & Affiliate Tag State
   // ---------------------------------------------------------------------------
   const [amazonInput, setAmazonInput] = useState<string>('');
-  const [marketplace, setMarketplace] = useState<AmazonMarketplace>('amazon.in');
-  const [associateTag, setAssociateTag] = useState<string>('');
+  const [marketplace, setMarketplace] = useState<AmazonMarketplace>('amazon.com');
+  const [associateTag, setAssociateTag] = useState<string>('yourtag-20');
   const [subTag, setSubTag] = useState<string>('pinterest');
   const [isExtracting, setIsExtracting] = useState<boolean>(false);
   const [extractNotice, setExtractNotice] = useState<string | null>(null);
@@ -450,22 +450,22 @@ export const AmazonPinterestStudio: React.FC = () => {
 
   // Load Instant Demo Product so users can try Pin design & Affiliate link immediately
   const handleLoadDemoProduct = () => {
-    setMarketplace('amazon.in');
-    setAmazonInput('https://www.amazon.in/dp/B0CX23V2ZK');
-    if (!associateTag.trim()) setAssociateTag('yourtag-21');
-    setProductTitle('AMOLED Smart Calling Watch Pro with 14-Day Battery & Health Tracking');
-    setProductPrice('₹2,499');
-    setProductMrp('₹6,999');
-    setDiscountBadge('64% OFF DEAL');
-    setProductRating('4.5★');
+    setMarketplace('amazon.com');
+    setAmazonInput('https://www.amazon.com/dp/B0983C3RD6');
+    if (!associateTag.trim() || associateTag === 'yourtag-21') setAssociateTag('yourtag-20');
+    setProductTitle('Wireless Noise Cancelling Over-Ear Headphones with 60H Battery & Hi-Res Audio');
+    setProductPrice('$79.99');
+    setProductMrp('$149.99');
+    setDiscountBadge('47% OFF');
+    setProductRating('4.6★');
     setProductImageDataUrl(createSampleProductDataUrl());
     setExtractNotice(null);
   };
 
   const handleSelectCuratedDeal = (deal: CuratedAmazonDeal) => {
-    setMarketplace('amazon.in');
+    setMarketplace('amazon.com');
     setAmazonInput(deal.defaultUrl);
-    if (!associateTag.trim()) setAssociateTag('yourtag-21');
+    if (!associateTag.trim() || associateTag === 'yourtag-21') setAssociateTag('yourtag-20');
     setProductTitle(deal.title);
     setProductPrice(deal.price);
     setProductMrp(deal.mrp);
@@ -473,7 +473,7 @@ export const AmazonPinterestStudio: React.FC = () => {
     setProductRating(deal.rating);
     setRemoteImageUrlInput(deal.imageUrl);
     void proxyFetchAmazonImage(deal.imageUrl);
-    setExtractNotice(`Loaded curated deal: ${deal.title}`);
+    setExtractNotice(`Loaded curated US deal: ${deal.title}`);
   };
 
   const handleLocalPhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
