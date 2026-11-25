@@ -151,7 +151,7 @@ export const AmazonPinterestStudio: React.FC = () => {
   // ---------------------------------------------------------------------------
   const [amazonInput, setAmazonInput] = useState<string>('');
   const [marketplace, setMarketplace] = useState<AmazonMarketplace>('amazon.com');
-  const [associateTag, setAssociateTag] = useState<string>('yourtag-20');
+  const [associateTag, setAssociateTag] = useState<string>('');
   const [subTag, setSubTag] = useState<string>('pinterest');
   const [isExtracting, setIsExtracting] = useState<boolean>(false);
   const [extractNotice, setExtractNotice] = useState<string | null>(null);
@@ -452,7 +452,6 @@ export const AmazonPinterestStudio: React.FC = () => {
   const handleLoadDemoProduct = () => {
     setMarketplace('amazon.com');
     setAmazonInput('https://www.amazon.com/dp/B0983C3RD6');
-    if (!associateTag.trim() || associateTag === 'yourtag-21') setAssociateTag('yourtag-20');
     setProductTitle('Wireless Noise Cancelling Over-Ear Headphones with 60H Battery & Hi-Res Audio');
     setProductPrice('$79.99');
     setProductMrp('$149.99');
@@ -465,7 +464,6 @@ export const AmazonPinterestStudio: React.FC = () => {
   const handleSelectCuratedDeal = (deal: CuratedAmazonDeal) => {
     setMarketplace('amazon.com');
     setAmazonInput(deal.defaultUrl);
-    if (!associateTag.trim() || associateTag === 'yourtag-21') setAssociateTag('yourtag-20');
     setProductTitle(deal.title);
     setProductPrice(deal.price);
     setProductMrp(deal.mrp);
