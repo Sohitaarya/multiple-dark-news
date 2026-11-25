@@ -152,6 +152,8 @@ export const AmazonPinterestStudio: React.FC = () => {
   const [amazonInput, setAmazonInput] = useState<string>('');
   const [marketplace, setMarketplace] = useState<AmazonMarketplace>('amazon.com');
   const [associateTag, setAssociateTag] = useState<string>('');
+  const [storefrontUrl, setStorefrontUrl] = useState<string>('');
+  const [showStorefrontGuide, setShowStorefrontGuide] = useState<boolean>(true);
   const [subTag, setSubTag] = useState<string>('pinterest');
   const [isExtracting, setIsExtracting] = useState<boolean>(false);
   const [extractNotice, setExtractNotice] = useState<string | null>(null);
@@ -965,6 +967,56 @@ export const AmazonPinterestStudio: React.FC = () => {
             {extractNotice}
           </div>
         )}
+
+        {/* Amazon Influencer Storefront & Native Tagging Assistant Card */}
+        <div className="p-4 rounded-xl bg-slate-900/90 border border-amber-500/40 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="text-xs font-bold text-white">
+                Amazon Influencer Storefront &amp; Native Pinterest Tagging Mode
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowStorefrontGuide((s) => !s)}
+              className="text-[11px] text-amber-300 hover:text-amber-200 font-semibold cursor-pointer self-start sm:self-auto"
+            >
+              {showStorefrontGuide ? 'Hide Setup Guide ↑' : 'Show Setup Guide ↓'}
+            </button>
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="storefront-url-input" className="block text-xs font-bold text-slate-300">
+              Your Amazon Influencer Storefront URL (Optional for Storefront Creators)
+            </label>
+            <input
+              id="storefront-url-input"
+              type="url"
+              placeholder="https://www.amazon.com/shop/yourname"
+              value={storefrontUrl}
+              onChange={(e) => setStorefrontUrl(e.target.value)}
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white font-mono focus:outline-none focus:border-amber-500"
+            />
+          </div>
+
+          {showStorefrontGuide && (
+            <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800 space-y-2 text-[11px] text-slate-300">
+              <div className="font-bold text-amber-300">How Native Pinterest Tagging Works (No Creators API Required):</div>
+              <ul className="list-disc pl-4 space-y-1 text-slate-400">
+                <li>
+                  <strong className="text-white">1. Design &amp; Publish Pin:</strong> Generate your gorgeous 2:3 vertical poster and publish it to your connected Pinterest board using this studio.
+                </li>
+                <li>
+                  <strong className="text-white">2. Pinterest Native Tagging:</strong> Open the published Pin on Pinterest, click <code className="text-slate-200">Tag Products</code>, and search for the matching Amazon product from Pinterest&apos;s verified catalog.
+                </li>
+                <li>
+                  <strong className="text-white">3. Storefront Attribution:</strong> Pinterest automatically applies official affiliate attribution and disclosures to tagged items connected to your linked Amazon Influencer Storefront.
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
 
         {/* Product Details Editor (Auto-populated from Amazon or Manually Editable Fallback) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
