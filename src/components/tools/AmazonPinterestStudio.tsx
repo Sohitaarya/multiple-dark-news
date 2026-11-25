@@ -133,7 +133,7 @@ export const AmazonPinterestStudio: React.FC = () => {
   // 1. Multi-User Pinterest Auth State (Strictly in React Memory — NEVER localStorage)
   // ---------------------------------------------------------------------------
   const [bearerToken, setBearerToken] = useState<string>('');
-  const [authMode, setAuthMode] = useState<'oauth' | 'token'>('oauth');
+  const [authMode, setAuthMode] = useState<'oauth' | 'token'>('token');
   const [manualTokenInput, setManualTokenInput] = useState<string>('');
   const [oauthConfigured, setOauthConfigured] = useState<boolean | null>(null);
   const [expectedRedirectUri, setExpectedRedirectUri] = useState<string>('');
@@ -718,7 +718,7 @@ export const AmazonPinterestStudio: React.FC = () => {
           <form onSubmit={handleConnectManualToken} className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
             <div className="text-xs text-slate-300 flex items-center gap-2 font-bold">
               <KeyRound className="w-4 h-4 text-rose-400" />
-              <span>Connect with Your Personal Pinterest API v5 Access Token</span>
+              <span>Instant Connect (No SESSION_SECRET Required) — Paste Pinterest v5 Token</span>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
               <input

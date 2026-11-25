@@ -1,0 +1,1548 @@
+ULTIMATE MASTER BUILD PROMPT
+
+MULTIPLEDARKNEWS PINTEREST AFFILIATE STUDIO
+
+Version 1.0.0 – Complete Production-Grade Multi-User SaaS Platform
+
+ROLE:
+
+Act as a Principal Full-Stack Architect, Senior Cloudflare Workers Engineer, Senior JavaScript/TypeScript Developer, Pinterest API v5 Specialist, Amazon Associates Creators API Specialist, AI Image Generation Engineer, SaaS Product Designer, Database Architect, Security Engineer, DevOps Engineer and QA Automation Engineer.
+
+Your mission is to build a complete, genuinely working, production-grade Pinterest + Amazon Affiliate Automation SaaS inside my EXISTING MultipleDarkNews Tools website.
+
+This is a real software engineering task.
+
+Do not create a demonstration, prototype, simulated application, fake API integration or static dashboard.
+
+Build the actual working product.
+
+====================================================
+PART 1 — STRICT PROJECT LOCATION AND BOUNDARIES
+
+The application MUST be developed exclusively inside:
+
+https://tools.multipledarknews.com/
+
+Project name:
+MultipleDarkNews Tools
+
+New module name:
+Pinterest Affiliate Studio
+
+Suggested public route:
+
+https://tools.multipledarknews.com/pinterest-amazon-affiliate
+
+Existing GitHub repository:
+
+https://github.com/Sohitaarya/multiple-dark-news
+
+Branch:
+main
+
+Existing Cloudflare Worker origin:
+
+https://multiple-dark-news.sohitprakash970.workers.dev
+
+IMPORTANT RESTRICTIONS:
+
+1. Do not modify https://multipledarknews.com/.
+2. Do not modify the main website.
+3. Do not integrate this feature into the existing WordPress plugin.
+4. Do not create a separate domain.
+5. Do not replace the existing Tools website.
+6. Do not delete existing tools.
+7. Do not break existing authentication or navigation.
+8. Do not assume the frontend framework or database without inspecting the repository.
+9. Reuse the existing architecture wherever appropriate.
+10. Deploy only through the existing project deployment pipeline.
+
+First inspect the actual repository and determine:
+
+- Frontend architecture
+- Backend architecture
+- Cloudflare Worker entry point
+- Existing API routes
+- Existing authentication
+- Existing user database
+- Existing storage
+- Existing AI integrations
+- Existing image generation
+- Existing deployment workflow
+- Existing environment variables
+- Existing navigation and design system
+
+Write an architecture audit before making changes.
+
+====================================================
+PART 2 — PRODUCT VISION
+
+Build a platform where ANY registered user can:
+
+1. Create an account on MultipleDarkNews Tools.
+2. Connect their own Pinterest account.
+3. Authorize Pinterest through official OAuth.
+4. Add their Amazon Associates tracking ID.
+5. Choose their Amazon marketplace.
+6. Discover relevant Amazon products.
+7. Generate attractive original product posters.
+8. Generate Pinterest SEO titles and descriptions.
+9. Attach the correct user's Amazon affiliate link.
+10. Choose Pinterest boards.
+11. Schedule Pins.
+12. Automatically publish Pins.
+13. Monitor publishing history.
+14. Track available Pinterest analytics.
+15. View Amazon affiliate reporting when authorized data is available.
+
+The system must be easy enough for non-technical users.
+
+No user should need to manually provide Pinterest API credentials.
+
+Central Pinterest application credentials must be configured by the platform administrator.
+
+Every user must authorize their own Pinterest account.
+
+Every user must own their own Amazon Associates tracking configuration.
+
+The system must never mix accounts, affiliate tags or commissions.
+
+====================================================
+PART 3 — COMPLETE USER ONBOARDING
+
+Create a beautiful guided onboarding experience.
+
+SCREEN 1: Welcome
+
+Title:
+Start Your Pinterest Affiliate Journey
+
+Description:
+Connect your accounts, discover products, create original Pins and automate your publishing workflow.
+
+SCREEN 2: Pinterest Connection
+
+Button:
+Connect Pinterest
+
+Use official Pinterest OAuth 2.0.
+
+Show:
+
+- Account username
+- Account profile
+- Connection status
+- Granted permissions
+- Token expiration information
+- Reconnect option
+- Disconnect option
+
+SCREEN 3: Amazon Associates Setup
+
+Fields:
+
+- Marketplace
+- Associates Tracking ID
+- Affiliate account status
+
+Support initially:
+
+- India: amazon.in
+- United States: amazon.com
+
+Architecture should permit additional marketplaces later.
+
+Explain how to obtain a Tracking ID.
+
+Allow users to validate its format.
+
+Do not claim that a tracking ID alone verifies ownership or eligibility.
+
+SCREEN 4: Select Pinterest Boards
+
+Retrieve the authenticated user's boards.
+
+Display:
+
+- Board name
+- Board image where available
+- Description
+- Visibility
+- Board ID
+
+Allow multiple board selection.
+
+SCREEN 5: Select Product Categories
+
+SCREEN 6: Choose Poster Design Style
+
+SCREEN 7: Configure Publishing Schedule
+
+SCREEN 8: Affiliate Disclosure and Compliance
+
+SCREEN 9: Final Review
+
+SCREEN 10: Activate Automation
+
+Provide clear setup completion indicators.
+
+Never show a fake Connected or Active status.
+
+====================================================
+PART 4 — PINTEREST API V5 INTEGRATION
+
+Implement official Pinterest API v5.
+
+Documentation:
+https://developers.pinterest.com/docs/
+
+Authentication:
+Official OAuth 2.0 Authorization Code flow.
+
+Use the minimum necessary scopes, including:
+
+- boards:read
+- pins:read
+- pins:write
+- boards:write only when required
+- user_accounts:read when required
+
+Implement:
+
+1. Pinterest developer app configuration.
+2. OAuth authorization URL.
+3. Secure state generation.
+4. State validation.
+5. CSRF protection.
+6. OAuth callback.
+7. Authorization code exchange.
+8. Secure token encryption.
+9. Access token refresh.
+10. Token expiration management.
+11. User profile retrieval.
+12. Board listing.
+13. Board selection.
+14. Board sections where supported.
+15. Image Pin creation.
+16. Pin publishing verification.
+17. Pin history retrieval.
+18. Permission error handling.
+19. Rate limit handling.
+20. Reconnection flow.
+21. Account disconnection.
+22. Token revocation when supported.
+
+Use:
+
+POST /v5/pins
+
+for authorized Pin creation.
+
+Use actual response IDs and statuses.
+
+Do not report successful publication without a successful API response.
+
+Do not bypass Pinterest application approval.
+
+Important:
+Pinterest Trial access may limit created Pins to creator-visible access. Verify Standard access and the app's permissions before enabling public production publishing.
+
+Admin settings:
+
+- Pinterest App ID
+- Pinterest App Secret
+- Redirect URI
+- App access tier
+- Granted permissions
+- Integration health
+- Last successful API request
+
+All secrets must remain server-side.
+
+====================================================
+PART 5 — AMAZON ASSOCIATES AND CREATORS API
+
+Build a dedicated Amazon integration service.
+
+Official documentation:
+
+https://affiliate-program.amazon.in/creatorsapi/docs/
+
+Support marketplace-specific configurations.
+
+Initially:
+
+- India
+- USA
+
+Each user must configure their own tracking ID.
+
+Amazon product data must be accessed using an authorized official service or another explicitly permitted data source.
+
+Use Amazon Creators API where eligible.
+
+Support:
+
+- SearchItems
+- GetItems
+- GetVariations
+- GetBrowseNodes
+
+Account configuration:
+
+- Marketplace
+- Tracking ID
+- API eligibility
+- API connection status
+- Last successful synchronization
+- Error details
+
+IMPORTANT:
+
+Amazon Creators API access has marketplace-specific eligibility and registration requirements.
+
+The platform may use centrally configured API credentials where Amazon's licensing permits it, but every user must use their own valid Associates tracking ID.
+
+Do not promise every user can access the API without eligibility.
+
+Do not pretend the Amazon account has been OAuth-connected if it has only been configured with a tracking ID.
+
+Do not scrape Amazon in violation of Amazon terms.
+
+Do not use unauthorized Amazon images.
+
+Do not fabricate:
+
+- Price
+- Discount
+- Rating
+- Reviews
+- Product specifications
+- Availability
+- Sales ranking
+
+Respect all Amazon data licensing, attribution, refresh, cache and display requirements.
+
+Implement marketplace-specific affiliate link generation.
+
+Every affiliate link must use the correct user's tracking ID.
+
+Validate the ASIN, marketplace, destination URL and tracking ID.
+
+Never use the platform owner's tracking ID for another user unless a separately authorized and compliant shared-account mode is explicitly configured.
+
+====================================================
+PART 6 — PRODUCT DISCOVERY ENGINE
+
+Build an advanced Amazon Product Finder.
+
+Categories:
+
+Electronics
+Smartphones
+Laptops
+Headphones
+Smart Watches
+Home & Kitchen
+Kitchen Appliances
+Home Decor
+Fashion
+Men's Fashion
+Women's Fashion
+Beauty
+Personal Care
+Baby Products
+Books
+Sports
+Fitness
+Gaming
+Furniture
+Office Products
+Automotive
+Pet Supplies
+Travel Accessories
+Toys
+Gifts
+Seasonal Products
+Festival Products
+
+Search options:
+
+- Keyword
+- Category
+- Marketplace
+- Price range
+- Brand
+- Product type
+- Relevance
+- New products
+- Product variations
+
+Product cards must show:
+
+- Product image, where licensed
+- Product name
+- ASIN
+- Brand
+- Marketplace
+- Price when available and authorized
+- Product page
+- Affiliate link status
+- Poster status
+- Publishing status
+
+Add:
+
+- Single product selection
+- Multiple product selection
+- Bulk selection
+- Product comparison
+- Save to favorites
+- Exclude product
+- Add to campaign
+- Generate poster
+
+Allow configurable batch sizes.
+
+Do not fabricate missing products to meet a requested quantity.
+
+Implement duplicate detection.
+
+====================================================
+PART 7 — SMART PRODUCT RESEARCH
+
+Build AI-assisted product research.
+
+Features:
+
+- Category research
+- Seasonal research
+- Keyword-based discovery
+- Relevant product suggestions
+- Price-band filtering
+- Product relevance score
+- Competition indicators where reliable data exists
+- Product freshness indicators
+- Duplicate detection
+- Campaign suitability
+
+Create campaign suggestions:
+
+- Budget Gadgets
+- Home Essentials
+- Kitchen Collection
+- Fashion Finds
+- Beauty Collection
+- Travel Essentials
+- Gift Ideas
+- Festival Shopping
+- Winter Collection
+- Summer Essentials
+- Back to School
+- Office Essentials
+
+Do not call a product Trending, Best Seller or Viral unless verified through an authorized and reliable data source.
+
+Show the source and last updated time where available.
+
+====================================================
+PART 8 — AI POSTER DESIGN STUDIO
+
+Create a professional AI-assisted visual design studio.
+
+Primary Pinterest poster size:
+
+1000 x 1500 pixels.
+
+Support:
+
+- 2:3 vertical
+- 1200 x 1800
+- Other supported formats where appropriate
+
+Design templates:
+
+1. Premium Luxury
+2. Modern Minimal
+3. Professional Advertisement
+4. Dark Premium
+5. Clean White
+6. Fashion Magazine
+7. Lifestyle
+8. Home Decor
+9. Technology Showcase
+10. Colorful Shopping
+11. Seasonal Collection
+12. Festival Special
+13. Editorial Design
+14. Product Feature Highlight
+15. Comparison Layout
+16. Gift Guide
+17. Minimal Typography
+18. Premium Product Spotlight
+
+Every product should support at least three genuinely different design variations.
+
+Poster content:
+
+- Accurate product image
+- Product title
+- Short factual benefits
+- Current price only when authorized
+- Visual hierarchy
+- Attractive background
+- CTA
+- Appropriate disclosure
+
+CTA examples:
+
+Discover This Product
+Explore Product Details
+View on Amazon
+Check Current Price
+See Product Features
+
+Image generation providers should be configurable.
+
+Use the existing project's image generation infrastructure if available.
+
+Allow multiple providers through an abstraction layer.
+
+Never expose API keys in frontend JavaScript.
+
+IMPORTANT PRODUCT IMAGE POLICY:
+
+Do not change a product into a different product.
+
+Do not alter its actual brand or identity.
+
+Do not generate misleading product features.
+
+Use Amazon product images only where permitted by the relevant license.
+
+Where image transformation is restricted, use the image unmodified and create a separate surrounding poster layout.
+
+Support independently licensed, user-provided and other permitted images.
+
+Poster controls:
+
+- Generate
+- Preview
+- Regenerate
+- Edit text
+- Change background
+- Change template
+- Change language
+- Change layout
+- Save draft
+- Approve
+- Publish
+- Delete
+
+Add an image permission validation check.
+
+====================================================
+PART 9 — AI PINTEREST SEO WRITER
+
+Generate unique:
+
+- Pin title
+- Description
+- Keywords
+- Search phrases
+- Hashtags
+- Alt text
+- CTA
+- Product summary
+- Board suggestion
+- Affiliate disclosure
+
+Languages:
+
+English
+Hindi
+Hinglish
+
+Allow future languages.
+
+Generate natural and useful descriptions.
+
+Avoid:
+
+- Keyword stuffing
+- False urgency
+- Fake scarcity
+- False discounts
+- Misleading health claims
+- Unsupported product claims
+- Repeated descriptions
+- Excessive hashtags
+
+Provide manual editing.
+
+Allow regeneration.
+
+Use a different SEO description for genuinely different creative concepts.
+
+====================================================
+PART 10 — AFFILIATE LINK MANAGER
+
+Create a dedicated affiliate link manager.
+
+For each user:
+
+- Own marketplace
+- Own tracking ID
+- Correct affiliate URL
+- ASIN mapping
+- Destination validation
+- Link status
+- Link generation date
+- Last validation date
+
+Generate links for individual and bulk-selected products.
+
+Show a copy button.
+
+Allow users to preview the destination.
+
+Do not use cloaking or misleading redirect destinations.
+
+Where redirect tracking is permitted, use transparent redirects and preserve required affiliate attribution.
+
+Never alter the destination into an unrelated website.
+
+Check for broken or invalid links.
+
+====================================================
+PART 11 — PINTEREST AUTO PUBLISHING ENGINE
+
+This is the central automation feature.
+
+Users must be able to activate automatic publishing after completing onboarding.
+
+Publishing workflow:
+
+1. Discover products.
+2. Apply product filters.
+3. Validate Amazon product information.
+4. Validate affiliate tracking configuration.
+5. Generate affiliate destination.
+6. Validate image permissions.
+7. Generate poster.
+8. Generate SEO title.
+9. Generate SEO description.
+10. Select Pinterest board.
+11. Run duplicate detection.
+12. Check user quota.
+13. Add publishing job.
+14. Wait for scheduled time.
+15. Publish using Pinterest API.
+16. Verify the API response.
+17. Save actual Pin ID.
+18. Save Pin URL where available.
+19. Update campaign.
+20. Record logs.
+
+Publishing settings:
+
+- Pins per day
+- Pins per week
+- Time interval
+- Preferred posting time
+- Time zone
+- Days of week
+- Board selection
+- Category selection
+- Poster variation
+- Approval mode
+
+Provide configurable examples:
+
+- 1 Pin daily
+- 3 Pins daily
+- 5 Pins daily
+- 10 Pins daily
+
+These are user preferences, not guaranteed Pinterest limits.
+
+Add:
+
+- Start Automation
+- Pause Automation
+- Resume Automation
+- Stop Automation
+- Emergency Stop
+- Retry Failed Job
+- Cancel Scheduled Job
+
+Do not publish repeated or substantially duplicate Pins in spam-like patterns.
+
+Follow Pinterest content and spam policies.
+
+Do not create a guarantee of traffic or earnings.
+
+====================================================
+PART 12 — SCHEDULER AND BACKGROUND PROCESSING
+
+Implement reliable background processing.
+
+Inspect the existing Cloudflare architecture.
+
+Choose appropriate infrastructure based on the actual project.
+
+Potential Cloudflare services:
+
+- Workers
+- D1
+- KV
+- R2
+- Queues
+- Cron Triggers
+- Durable Objects
+
+Do not add unnecessary services.
+
+Create durable jobs for:
+
+- Product discovery
+- Product validation
+- Poster generation
+- SEO writing
+- Affiliate link generation
+- Scheduled publishing
+- Token refresh
+- Analytics synchronization
+- Cleanup
+
+Implement:
+
+- Retry with exponential backoff
+- Idempotency keys
+- Duplicate job prevention
+- Job locking
+- Concurrency limits
+- Dead-letter handling
+- Per-user quotas
+- Structured logs
+- Job recovery
+- Timeout handling
+
+Do not depend on a visitor opening the website to execute important scheduled tasks.
+
+Do not assume a background task completed simply because it was queued.
+
+====================================================
+PART 13 — MULTI-USER ACCOUNT SYSTEM
+
+Every registered user must have isolated data.
+
+User A must never access User B's:
+
+- Pinterest tokens
+- Pinterest boards
+- Amazon tracking ID
+- Product lists
+- Posters
+- Campaigns
+- Publishing queue
+- Analytics
+- Usage history
+
+Use strict ownership validation on the server.
+
+Do not trust user IDs supplied by the frontend.
+
+Derive authenticated user identity from verified server-side sessions.
+
+Support:
+
+- Registration
+- Login
+- Logout
+- Password reset
+- Email verification if supported
+- Account profile
+- Session management
+- Account deletion
+- Disconnect integrations
+
+Use secure cookies and CSRF protections where appropriate.
+
+Preserve existing login if it is already present.
+
+====================================================
+PART 14 — USER DASHBOARD
+
+Create a professional responsive SaaS dashboard.
+
+Main navigation:
+
+1. Overview
+2. Connect Accounts
+3. Product Finder
+4. Smart Research
+5. Poster Studio
+6. Affiliate Links
+7. Pinterest Boards
+8. Campaign Manager
+9. Publishing Calendar
+10. Publishing History
+11. Analytics
+12. Earnings Reports
+13. Automation Settings
+14. Usage and Plans
+15. Help and Support
+
+Overview widgets:
+
+- Pinterest connection
+- Amazon setup
+- Selected boards
+- Automation status
+- Products discovered
+- Posters generated
+- Pins published
+- Pins scheduled
+- Failed publishing jobs
+- Available usage quota
+- Recent campaigns
+
+All statistics must come from actual stored records or authorized APIs.
+
+No fake data.
+
+====================================================
+PART 15 — CAMPAIGN MANAGER
+
+Allow users to create multiple campaigns.
+
+Examples:
+
+- Home Decor Collection
+- Best Budget Gadgets
+- Fashion Picks
+- Kitchen Essentials
+- Gift Ideas
+- Seasonal Shopping
+
+Each campaign must support:
+
+- Campaign name
+- Marketplace
+- Product category
+- Selected products
+- Poster style
+- Target boards
+- Daily posting limit
+- Start date
+- End date
+- Publishing schedule
+- Approval mode
+- Status
+
+Campaign statuses:
+
+Draft
+Active
+Paused
+Completed
+Failed
+Cancelled
+
+Allow users to edit and duplicate their own campaigns.
+
+====================================================
+PART 16 — PUBLISHING CALENDAR
+
+Build a visual publishing calendar.
+
+Views:
+
+- Daily
+- Weekly
+- Monthly
+
+Show:
+
+- Scheduled Pin
+- Product
+- Board
+- Poster preview
+- Scheduled time
+- Publishing status
+
+Allow rescheduling and cancellation before publication.
+
+Use the user's configured time zone.
+
+Prevent conflicting or duplicate jobs.
+
+====================================================
+PART 17 — ANALYTICS
+
+Build real Pinterest analytics where authorized.
+
+Metrics:
+
+- Impressions
+- Saves
+- Outbound clicks
+- Engagement
+- Pin performance
+- Board performance
+- Campaign performance
+- Top-performing products
+- Publishing success rate
+
+Clearly label data source and reporting period.
+
+Amazon reporting must be separate.
+
+Use official Amazon reporting methods where available.
+
+Metrics:
+
+- Ordered items
+- Shipped items
+- Returned items
+- Qualifying purchases
+- Reported commissions
+- Pending commissions
+- Confirmed commissions
+
+Distinguish estimates from confirmed reports.
+
+Never calculate fake commission amounts.
+
+Never claim Pinterest impressions are Amazon sales.
+
+====================================================
+PART 18 — AI CAMPAIGN ASSISTANT
+
+Create an intelligent AI assistant inside the dashboard.
+
+User can ask:
+
+- Find products for my selected category.
+- Create a new campaign.
+- Suggest five poster styles.
+- Improve my Pin descriptions.
+- Recommend appropriate boards.
+- Analyze my previous publishing performance.
+- Identify duplicate products.
+- Suggest a better publishing schedule.
+- Explain a failed publishing job.
+
+AI must use real user-authorized data.
+
+AI must not invent analytics or claim that a recommendation guarantees sales.
+
+Add contextual explanations and action previews before major operations.
+
+====================================================
+PART 19 — DUPLICATE AND QUALITY CONTROL
+
+Implement:
+
+- Duplicate ASIN detection
+- Duplicate destination detection
+- Duplicate poster detection
+- Similar title detection
+- Repeated description detection
+- Broken affiliate link detection
+- Missing product image detection
+- Invalid board detection
+- Missing disclosure detection
+
+Use image hashes and normalized content fingerprints where appropriate.
+
+Allow a user to override a duplicate warning after confirmation when legitimate.
+
+====================================================
+PART 20 — AFFILIATE DISCLOSURE AND COMPLIANCE
+
+Build a compliance system.
+
+Amazon affiliate content must display the required Associate disclosure.
+
+Use the appropriate marketplace-specific wording.
+
+Provide a configurable visible disclosure near the Pin description or other suitable location, and make sure required account-level identification is explained to users.
+
+Do not assume text embedded only in a poster satisfies all disclosure requirements.
+
+Follow:
+
+- Amazon Associates Operating Agreement
+- Amazon Creators API license
+- Amazon image and content rules
+- Pinterest Developer Terms
+- Pinterest Community Guidelines
+- Pinterest spam and content policies
+- Applicable privacy requirements
+
+Do not use misleading claims.
+
+Do not create deceptive redirect links.
+
+Do not publish content without the necessary user authorization.
+
+====================================================
+PART 21 — ADMIN CONTROL CENTER
+
+Create a complete admin dashboard.
+
+Admin overview:
+
+- Total registered users
+- Active users
+- Connected Pinterest accounts
+- Configured Amazon accounts
+- Active campaigns
+- Total scheduled jobs
+- Successful publications
+- Failed jobs
+- AI generation usage
+- API usage
+- Infrastructure costs
+
+Admin management:
+
+- User management
+- Account status
+- Integration health
+- Pinterest app configuration
+- Amazon provider configuration
+- AI provider configuration
+- User plans
+- User quotas
+- Usage limits
+- Job queue monitoring
+- Failed job management
+- System logs
+- Audit logs
+- Feature flags
+- Maintenance mode
+
+Admin actions:
+
+- Suspend user automation
+- Resume user automation
+- Disable integration
+- Revoke access where supported
+- Adjust quotas
+- Pause global publishing
+- Emergency shutdown
+
+Do not expose plaintext OAuth tokens to administrators.
+
+====================================================
+PART 22 — SUBSCRIPTION AND MONETIZATION
+
+Prepare a configurable subscription architecture.
+
+FREE PLAN:
+
+- Limited product discovery
+- Limited poster generation
+- Manual approval
+- Limited scheduled Pins
+
+STARTER:
+
+- More product discovery
+- More poster designs
+- Scheduled publishing
+- Multiple boards
+
+PRO:
+
+- Bulk discovery
+- Advanced templates
+- Multiple campaigns
+- Advanced analytics
+
+BUSINESS:
+
+- Higher quotas
+- Multiple campaigns
+- Advanced scheduling
+- Priority jobs
+- Advanced reporting
+
+Admin must control:
+
+- Monthly quota
+- Daily quota
+- Product discovery limit
+- Poster generation limit
+- Campaign limit
+- Publishing limit
+- Storage limit
+
+Do not promise unlimited AI or API usage.
+
+Do not activate paid subscriptions without a properly configured payment provider.
+
+====================================================
+PART 23 — SECURITY
+
+Implement production-grade security.
+
+Requirements:
+
+- Secure authentication
+- Password hashing
+- Encrypted OAuth tokens
+- Secret management
+- CSRF protection
+- OAuth state validation
+- XSS prevention
+- SQL injection prevention
+- Input validation
+- Output encoding
+- API rate limiting
+- Request validation
+- Secure CORS
+- Audit logging
+- Session expiration
+- Token rotation
+- Account ownership enforcement
+- Webhook signature verification when used
+- Data deletion workflow
+- Error sanitization
+
+Never commit secrets to GitHub.
+
+Use Cloudflare secrets or approved secure secret storage.
+
+Never return API secrets in public responses.
+
+====================================================
+PART 24 — DATABASE ARCHITECTURE
+
+Inspect the existing database first.
+
+Do not blindly create duplicate tables.
+
+Design appropriate data structures for:
+
+- Users
+- Pinterest connections
+- Amazon configurations
+- Products
+- Affiliate links
+- Poster assets
+- Campaigns
+- Boards
+- Publishing jobs
+- Publishing logs
+- Analytics
+- Usage
+- Subscriptions
+- Audit logs
+
+Suggested logical table names:
+
+mdn_pa_pinterest_connections
+mdn_pa_amazon_accounts
+mdn_pa_products
+mdn_pa_affiliate_links
+mdn_pa_posters
+mdn_pa_campaigns
+mdn_pa_campaign_products
+mdn_pa_board_selections
+mdn_pa_publish_jobs
+mdn_pa_publish_logs
+mdn_pa_analytics
+mdn_pa_usage
+mdn_pa_settings
+mdn_pa_audit_logs
+
+Use database migrations compatible with the actual existing storage technology.
+
+Include:
+
+- Unique constraints
+- Indexes
+- User ownership
+- Status fields
+- Created timestamps
+- Updated timestamps
+- Retention policies
+
+====================================================
+PART 25 — API ARCHITECTURE
+
+Create properly structured API endpoints following the existing application's routing conventions.
+
+Suggested routes:
+
+GET /api/pinterest-affiliate/status
+
+POST /api/pinterest-affiliate/pinterest/connect
+
+GET /api/pinterest-affiliate/pinterest/callback
+
+POST /api/pinterest-affiliate/pinterest/disconnect
+
+GET /api/pinterest-affiliate/pinterest/boards
+
+POST /api/pinterest-affiliate/pinterest/boards/select
+
+GET /api/pinterest-affiliate/amazon/status
+
+POST /api/pinterest-affiliate/amazon/configure
+
+POST /api/pinterest-affiliate/amazon/validate
+
+POST /api/pinterest-affiliate/products/search
+
+GET /api/pinterest-affiliate/products
+
+POST /api/pinterest-affiliate/products/select
+
+POST /api/pinterest-affiliate/links/generate
+
+POST /api/pinterest-affiliate/posters/generate
+
+GET /api/pinterest-affiliate/posters
+
+POST /api/pinterest-affiliate/posters/approve
+
+POST /api/pinterest-affiliate/campaigns
+
+GET /api/pinterest-affiliate/campaigns
+
+POST /api/pinterest-affiliate/publishing/schedule
+
+GET /api/pinterest-affiliate/publishing/history
+
+POST /api/pinterest-affiliate/automation/start
+
+POST /api/pinterest-affiliate/automation/pause
+
+POST /api/pinterest-affiliate/automation/resume
+
+GET /api/pinterest-affiliate/analytics
+
+GET /api/pinterest-affiliate/usage
+
+These are proposed routes. Adapt them to the existing application's architecture.
+
+All routes must enforce authentication and ownership.
+
+====================================================
+PART 26 — NOTIFICATIONS
+
+Build in-app notifications for:
+
+- Pinterest connected
+- Pinterest authorization expired
+- Amazon setup completed
+- Product discovery completed
+- Poster generated
+- Pin scheduled
+- Pin published
+- Pin publishing failed
+- Campaign paused
+- Quota reached
+- API access blocked
+- Affiliate link invalid
+
+Prepare optional email notification integration.
+
+Do not send unnecessary promotional emails without consent.
+
+====================================================
+PART 27 — USER HELP CENTER
+
+Create a help section with:
+
+- How to connect Pinterest
+- How to create a Pinterest developer app
+- Why app approval may be required
+- How to join Amazon Associates
+- How to find a Tracking ID
+- Creators API eligibility
+- How to create a campaign
+- How to generate posters
+- How auto-publishing works
+- How affiliate commissions work
+- How to disconnect accounts
+- Troubleshooting
+
+Show accurate marketplace-specific instructions.
+
+====================================================
+PART 28 — PERFORMANCE AND SCALABILITY
+
+The application must be designed for multiple users and concurrent jobs.
+
+Requirements:
+
+- Efficient database queries
+- Pagination
+- Caching according to source licensing
+- Background job processing
+- Rate limiting
+- Image optimization
+- Lazy loading
+- Responsive layouts
+- Efficient API usage
+- Retry management
+- Observability
+- Error tracking
+
+Do not cache restricted Amazon data beyond permitted retention periods.
+
+Do not assume all external services provide unlimited requests.
+
+====================================================
+PART 29 — TESTING AND VERIFICATION
+
+Create real automated tests.
+
+Test categories:
+
+1. Existing application regression
+2. Registration and authentication
+3. User isolation
+4. Pinterest OAuth
+5. Pinterest token refresh
+6. Pinterest board retrieval
+7. Pinterest Pin creation
+8. Amazon marketplace configuration
+9. Amazon tracking ID validation
+10. Creators API integration
+11. Product discovery
+12. Affiliate URL validation
+13. Image licensing validation
+14. Poster generation
+15. SEO generation
+16. Duplicate detection
+17. Campaign creation
+18. Scheduling
+19. Background jobs
+20. Retry recovery
+21. Rate limit handling
+22. Analytics
+23. Admin permissions
+24. Mobile responsiveness
+25. Security
+
+Use test fixtures and mocked APIs for unit tests.
+
+Use actual authorized external accounts for live integration tests.
+
+Clearly report:
+
+PASS
+FAIL
+BLOCKED
+NOT_TESTED
+
+Do not claim a mock test is a live external API test.
+
+Do not claim a Pin was published without an actual successful API response.
+
+Do not claim an Amazon commission was earned without an actual report.
+
+====================================================
+PART 30 — PRODUCTION DEPLOYMENT
+
+Use the existing repository and Cloudflare deployment pipeline.
+
+Before deployment:
+
+- Inspect Git status.
+- Create a safe checkpoint.
+- Review all modified files.
+- Run lint.
+- Run type checks where applicable.
+- Run unit tests.
+- Run integration tests.
+- Run production build.
+- Run security checks.
+- Verify existing homepage.
+- Verify existing tools.
+- Verify direct routes.
+
+Deploy only after the build passes.
+
+Verify:
+
+https://tools.multipledarknews.com/
+
+https://tools.multipledarknews.com/pinterest-amazon-affiliate
+
+Verify:
+
+- Homepage still works
+- Existing tools still work
+- New module loads
+- Direct URLs work
+- Authentication works
+- API requests work
+- Database writes work
+- OAuth callback works when credentials are configured
+- Scheduled jobs run when scheduler is configured
+
+Do not report a successful deployment based only on a Git commit.
+
+====================================================
+PART 31 — REQUIRED DELIVERABLES
+
+Deliver all of the following:
+
+1. Complete source code.
+2. Integrated navigation.
+3. New Affiliate Studio route.
+4. User onboarding.
+5. Pinterest OAuth.
+6. Amazon Associates setup.
+7. Authorized Amazon product discovery.
+8. Affiliate link generator.
+9. AI Poster Studio.
+10. Pinterest SEO generator.
+11. Board manager.
+12. Campaign manager.
+13. Automatic publishing.
+14. Publishing calendar.
+15. Background job system.
+16. Analytics.
+17. Admin dashboard.
+18. Usage and plan management.
+19. Notification system.
+20. Help center.
+21. Security controls.
+22. Database migrations.
+23. Automated tests.
+24. Deployment configuration.
+25. Setup documentation.
+26. Troubleshooting guide.
+27. Rollback instructions.
+28. Final technical report.
+
+====================================================
+PART 32 — EXECUTION PLAN
+
+Implement in controlled phases.
+
+PHASE 1:
+Repository audit and architecture analysis.
+
+PHASE 2:
+System design and database design.
+
+PHASE 3:
+User isolation and integration security.
+
+PHASE 4:
+Pinterest OAuth.
+
+PHASE 5:
+Amazon Associates configuration and Creators API.
+
+PHASE 6:
+Product Finder.
+
+PHASE 7:
+Affiliate Link Manager.
+
+PHASE 8:
+AI Poster Studio.
+
+PHASE 9:
+Pinterest SEO Writer.
+
+PHASE 10:
+Campaign Manager.
+
+PHASE 11:
+Publishing Scheduler.
+
+PHASE 12:
+Pinterest Auto Publisher.
+
+PHASE 13:
+Analytics and reporting.
+
+PHASE 14:
+Admin and subscription management.
+
+PHASE 15:
+Security and performance testing.
+
+PHASE 16:
+Production deployment and verification.
+
+After every phase report:
+
+- What was implemented
+- Files created
+- Files modified
+- Database changes
+- Tests executed
+- Actual test results
+- External credentials required
+- Remaining blockers
+
+Do not skip phases.
+
+Do not make unverified claims.
+
+Do not remove existing features.
+
+Do not leave fake buttons.
+
+Do not leave fake statistics.
+
+Do not use placeholder production integrations.
+
+====================================================
+FINAL ACCEPTANCE CRITERIA
+
+The project is considered complete only when:
+
+1. Existing Tools website remains functional.
+2. New Affiliate Studio is accessible on the Tools domain.
+3. A user can register and log in.
+4. A user can authorize their Pinterest account.
+5. A user can configure their own Amazon tracking ID.
+6. Authorized Amazon product discovery works.
+7. Correct user-specific affiliate URLs are generated.
+8. Poster generation works with permitted assets.
+9. SEO content generation works.
+10. Users can select their own Pinterest boards.
+11. Users can create campaigns.
+12. Scheduled jobs persist reliably.
+13. Actual Pinterest Pins can be published when app approval and credentials permit.
+14. Successful publishing is verified.
+15. Failed publishing is reported accurately.
+16. Multiple users remain isolated.
+17. Admin controls work.
+18. All existing tools continue to function.
+19. Tests have real evidence.
+20. Deployment has been independently verified.
+
+FINAL VISION:
+
+MultipleDarkNews Pinterest Affiliate Studio should become a complete, easy-to-use, multi-user affiliate marketing automation platform.
+
+A normal user should only need to:
+
+- Log in
+- Connect Pinterest
+- Configure their Amazon Associates tracking ID
+- Choose products
+- Select boards
+- Choose a poster style
+- Activate automation
+
+After that, the system should automatically discover eligible products, generate original and attractive Pins, attach the user's correct affiliate destination and publish according to their schedule.
+
+Build it securely, legally, reliably and with real integrations.
+
+START WITH PHASE 1: INSPECT THE EXISTING GITHUB REPOSITORY AND WRITE THE ARCHITECTURE AUDIT BEFORE MODIFYING ANY FILE.
